@@ -1,0 +1,11 @@
+D:\QLTP\BLL\bin\Debug\BLL.dll
+D:\QLTP\BLL\bin\Debug\BLL.pdb
+D:\QLTP\BLL\bin\Debug\DAO.dll
+D:\QLTP\BLL\bin\Debug\DTO.dll
+D:\QLTP\BLL\bin\Debug\DAO.pdb
+D:\QLTP\BLL\bin\Debug\DTO.pdb
+D:\QLTP\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\QLTP\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\QLTP\BLL\obj\Debug\BLL.csproj.Up2Date
+D:\QLTP\BLL\obj\Debug\BLL.dll
+D:\QLTP\BLL\obj\Debug\BLL.pdb
