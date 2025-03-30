@@ -45,13 +45,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.radFullTime = new System.Windows.Forms.RadioButton();
+            this.radPartTime = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
             this.btnSelectImage = new System.Windows.Forms.Button();
             this.ptbImageEmployee = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.radFemale = new System.Windows.Forms.RadioButton();
-            this.radPartTime = new System.Windows.Forms.RadioButton();
-            this.radFullTime = new System.Windows.Forms.RadioButton();
             this.radMale = new System.Windows.Forms.RadioButton();
             this.cbPosition = new System.Windows.Forms.ComboBox();
             this.txtPhoneEmployee = new System.Windows.Forms.TextBox();
@@ -70,18 +71,17 @@
             this.btnInsertEmployee = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dtgvEmployee = new System.Windows.Forms.DataGridView();
-            this.panel8 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbImageEmployee)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvEmployee)).BeginInit();
-            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -222,6 +222,37 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.radFullTime);
+            this.panel8.Controls.Add(this.radPartTime);
+            this.panel8.Location = new System.Drawing.Point(174, 555);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(256, 37);
+            this.panel8.TabIndex = 16;
+            // 
+            // radFullTime
+            // 
+            this.radFullTime.AutoSize = true;
+            this.radFullTime.Location = new System.Drawing.Point(3, 5);
+            this.radFullTime.Name = "radFullTime";
+            this.radFullTime.Size = new System.Drawing.Size(98, 27);
+            this.radFullTime.TabIndex = 1;
+            this.radFullTime.TabStop = true;
+            this.radFullTime.Text = "Full-time";
+            this.radFullTime.UseVisualStyleBackColor = true;
+            // 
+            // radPartTime
+            // 
+            this.radPartTime.AutoSize = true;
+            this.radPartTime.Location = new System.Drawing.Point(124, 5);
+            this.radPartTime.Name = "radPartTime";
+            this.radPartTime.Size = new System.Drawing.Size(102, 27);
+            this.radPartTime.TabIndex = 1;
+            this.radPartTime.TabStop = true;
+            this.radPartTime.Text = "Part-time";
+            this.radPartTime.UseVisualStyleBackColor = true;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -271,28 +302,6 @@
             this.radFemale.TabStop = true;
             this.radFemale.Text = "Nữ";
             this.radFemale.UseVisualStyleBackColor = true;
-            // 
-            // radPartTime
-            // 
-            this.radPartTime.AutoSize = true;
-            this.radPartTime.Location = new System.Drawing.Point(124, 5);
-            this.radPartTime.Name = "radPartTime";
-            this.radPartTime.Size = new System.Drawing.Size(102, 27);
-            this.radPartTime.TabIndex = 1;
-            this.radPartTime.TabStop = true;
-            this.radPartTime.Text = "Part-time";
-            this.radPartTime.UseVisualStyleBackColor = true;
-            // 
-            // radFullTime
-            // 
-            this.radFullTime.AutoSize = true;
-            this.radFullTime.Location = new System.Drawing.Point(3, 5);
-            this.radFullTime.Name = "radFullTime";
-            this.radFullTime.Size = new System.Drawing.Size(98, 27);
-            this.radFullTime.TabIndex = 1;
-            this.radFullTime.TabStop = true;
-            this.radFullTime.Text = "Full-time";
-            this.radFullTime.UseVisualStyleBackColor = true;
             // 
             // radMale
             // 
@@ -545,15 +554,6 @@
             this.dtgvEmployee.TabIndex = 1;
             this.dtgvEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvEmployee_CellClick);
             // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.radFullTime);
-            this.panel8.Controls.Add(this.radPartTime);
-            this.panel8.Location = new System.Drawing.Point(174, 555);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(256, 37);
-            this.panel8.TabIndex = 16;
-            // 
             // frmEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -577,12 +577,12 @@
             this.panel4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbImageEmployee)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvEmployee)).EndInit();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }

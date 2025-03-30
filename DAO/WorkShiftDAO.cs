@@ -12,7 +12,7 @@ namespace DAO
     {
         public static bool InsertWorkShift(WorkShiftDTO workShift)
         {
-            string query = "EXEC sp_InsertWorkShift @MaNV , @MaCa , @NgayLam , @GioCheckin , @GioCheckout , @SoGioThucTe , @MucLuongCoBan , @Thuong ";
+            string query = "EXEC USP_InserWorkShift @MaNV , @MaCa , @NgayLam , @GioCheckin , @GioCheckout , @SoGioThucTe , @MucLuongCoBan , @Thuong ";
             if (DataProvider.Instance.ExecuteNonQuery(query,
                 new object[] { workShift.IdEmployee, workShift.IdWork, workShift.DateWork, workShift.DateIn, workShift.DateOut, workShift.NumberHour, workShift.Salary , workShift.AWard}) == 1)
             {  
@@ -23,7 +23,7 @@ namespace DAO
 
         public static bool UpdateWorkShift(WorkShiftDTO workShift)
         {
-            string query = "EXEC sp_UpdateWorkShift @MaPhien , @MaNV , @MaCa , @NgayLam , @GioCheckin , @GioCheckout , @SoGioThucTe , @MucLuongCoBan ";
+            string query = "EXEC USP_UpdateWorkShift @MaPhien , @MaNV , @MaCa , @NgayLam , @GioCheckin , @GioCheckout , @SoGioThucTe , @MucLuongCoBan ";
             if (DataProvider.Instance.ExecuteNonQuery(query, 
                 new object[] { workShift.IdWorkshift, workShift.IdEmployee, workShift.IdWork, workShift.DateWork, workShift.DateIn, workShift.DateOut, workShift.NumberHour, workShift.Salary , workShift.AWard }) == 1)
             { 
@@ -34,12 +34,25 @@ namespace DAO
 
         public static bool DeleteWorkShift(int idWorkShift)
         {
-            string query = "EXEC sp_Delete @MaPhien ";
+            string query = "EXEC USP_DeleteWorkShift @MaPhien ";
             if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { idWorkShift }) == 1)
             {
                 return true;
             }
             return false;
+        }
+
+
+        public static void CalculateSalary(int idEmployee)
+        {
+            string query = "EXEC USP_CalculateSalary @MaNV ";
+            DataProvider.Instance.ExecuteNonQuery(query, new object[] { idEmployee });
+        }
+
+        public static DataTable LoadListWorkShift(int maNV)
+        {
+            string query = "EXEC USP_GetWorkShiftList @MaNV";
+            return DataProvider.Instance.ExecuteQuery(query, new object[] { maNV, null });
         }
     }
 }

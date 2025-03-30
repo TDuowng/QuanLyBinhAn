@@ -36,21 +36,23 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelSideBar = new System.Windows.Forms.Panel();
             this.btnManager = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.flowTable = new System.Windows.Forms.FlowLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnTable = new System.Windows.Forms.Button();
+            this.flowCategory = new System.Windows.Forms.FlowLayoutPanel();
             this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.btnCategory = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -73,9 +75,9 @@
             this.button5 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.timerFood = new System.Timers.Timer();
-            this.flowTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowCategory = new System.Windows.Forms.FlowLayoutPanel();
             this.panelSideBar.SuspendLayout();
+            this.flowTable.SuspendLayout();
+            this.flowCategory.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -85,8 +87,6 @@
             this.panel3.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timerFood)).BeginInit();
-            this.flowTable.SuspendLayout();
-            this.flowCategory.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -142,25 +142,16 @@
             this.btnManager.UseVisualStyleBackColor = false;
             this.btnManager.Click += new System.EventHandler(this.btnManager_Click);
             // 
-            // button2
+            // flowTable
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.button2.Image = global::GUI.Properties.Resources.playorange;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(3, 59);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(259, 47);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "  Tầng 2";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
+            this.flowTable.BackColor = System.Drawing.Color.White;
+            this.flowTable.Controls.Add(this.button3);
+            this.flowTable.Controls.Add(this.button2);
+            this.flowTable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowTable.Location = new System.Drawing.Point(0, 800);
+            this.flowTable.Name = "flowTable";
+            this.flowTable.Size = new System.Drawing.Size(265, 110);
+            this.flowTable.TabIndex = 30;
             // 
             // button3
             // 
@@ -181,6 +172,26 @@
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button2.Image = global::GUI.Properties.Resources.playorange;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(3, 59);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(259, 47);
+            this.button2.TabIndex = 29;
+            this.button2.Text = "  Tầng 2";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // btnTable
             // 
@@ -204,6 +215,28 @@
             this.btnTable.UseVisualStyleBackColor = false;
             this.btnTable.Click += new System.EventHandler(this.btnTable_Click);
             // 
+            // flowCategory
+            // 
+            this.flowCategory.AutoScroll = true;
+            this.flowCategory.BackColor = System.Drawing.Color.White;
+            this.flowCategory.Controls.Add(this.button13);
+            this.flowCategory.Controls.Add(this.button21);
+            this.flowCategory.Controls.Add(this.button22);
+            this.flowCategory.Controls.Add(this.button20);
+            this.flowCategory.Controls.Add(this.button23);
+            this.flowCategory.Controls.Add(this.button19);
+            this.flowCategory.Controls.Add(this.button24);
+            this.flowCategory.Controls.Add(this.button18);
+            this.flowCategory.Controls.Add(this.button17);
+            this.flowCategory.Controls.Add(this.button16);
+            this.flowCategory.Controls.Add(this.button15);
+            this.flowCategory.Controls.Add(this.button14);
+            this.flowCategory.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowCategory.Location = new System.Drawing.Point(0, 60);
+            this.flowCategory.Name = "flowCategory";
+            this.flowCategory.Size = new System.Drawing.Size(265, 680);
+            this.flowCategory.TabIndex = 3;
+            // 
             // button13
             // 
             this.button13.Dock = System.Windows.Forms.DockStyle.Top;
@@ -223,146 +256,6 @@
             this.button13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button13.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            this.button14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.button14.Image = global::GUI.Properties.Resources.playorange;
-            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(3, 621);
-            this.button14.Name = "button14";
-            this.button14.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button14.Size = new System.Drawing.Size(259, 39);
-            this.button14.TabIndex = 26;
-            this.button14.Text = "  Chè Sài Gòn";
-            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // button15
-            // 
-            this.button15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button15.FlatAppearance.BorderSize = 0;
-            this.button15.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.button15.Image = global::GUI.Properties.Resources.playorange;
-            this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button15.Location = new System.Drawing.Point(3, 565);
-            this.button15.Name = "button15";
-            this.button15.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button15.Size = new System.Drawing.Size(259, 50);
-            this.button15.TabIndex = 25;
-            this.button15.Text = "  Tàu hũ";
-            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button15.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button15.UseVisualStyleBackColor = true;
-            // 
-            // button16
-            // 
-            this.button16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button16.FlatAppearance.BorderSize = 0;
-            this.button16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.button16.Image = global::GUI.Properties.Resources.playorange;
-            this.button16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button16.Location = new System.Drawing.Point(3, 509);
-            this.button16.Name = "button16";
-            this.button16.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button16.Size = new System.Drawing.Size(259, 50);
-            this.button16.TabIndex = 24;
-            this.button16.Text = "  Tào phớ";
-            this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button16.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button16.UseVisualStyleBackColor = true;
-            // 
-            // button17
-            // 
-            this.button17.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button17.FlatAppearance.BorderSize = 0;
-            this.button17.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.button17.Image = global::GUI.Properties.Resources.playorange;
-            this.button17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button17.Location = new System.Drawing.Point(3, 453);
-            this.button17.Name = "button17";
-            this.button17.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button17.Size = new System.Drawing.Size(259, 50);
-            this.button17.TabIndex = 23;
-            this.button17.Text = "  Nước ngọt";
-            this.button17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button17.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button17.UseVisualStyleBackColor = true;
-            // 
-            // button18
-            // 
-            this.button18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button18.FlatAppearance.BorderSize = 0;
-            this.button18.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.button18.Image = global::GUI.Properties.Resources.playorange;
-            this.button18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button18.Location = new System.Drawing.Point(3, 397);
-            this.button18.Name = "button18";
-            this.button18.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button18.Size = new System.Drawing.Size(259, 50);
-            this.button18.TabIndex = 22;
-            this.button18.Text = "  Nước trái cây";
-            this.button18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button18.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button18.UseVisualStyleBackColor = true;
-            // 
-            // button19
-            // 
-            this.button19.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button19.FlatAppearance.BorderSize = 0;
-            this.button19.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.button19.Image = global::GUI.Properties.Resources.playorange;
-            this.button19.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button19.Location = new System.Drawing.Point(3, 285);
-            this.button19.Name = "button19";
-            this.button19.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button19.Size = new System.Drawing.Size(259, 50);
-            this.button19.TabIndex = 21;
-            this.button19.Text = "  Trà sữa";
-            this.button19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button19.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button19.UseVisualStyleBackColor = true;
-            // 
-            // button20
-            // 
-            this.button20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button20.FlatAppearance.BorderSize = 0;
-            this.button20.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.button20.Image = global::GUI.Properties.Resources.playorange;
-            this.button20.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button20.Location = new System.Drawing.Point(3, 173);
-            this.button20.Name = "button20";
-            this.button20.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.button20.Size = new System.Drawing.Size(259, 50);
-            this.button20.TabIndex = 20;
-            this.button20.Text = "  Sữa chua";
-            this.button20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button20.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button20.UseVisualStyleBackColor = true;
             // 
             // button21
             // 
@@ -404,6 +297,26 @@
             this.button22.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button22.UseVisualStyleBackColor = true;
             // 
+            // button20
+            // 
+            this.button20.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button20.FlatAppearance.BorderSize = 0;
+            this.button20.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button20.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button20.Image = global::GUI.Properties.Resources.playorange;
+            this.button20.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button20.Location = new System.Drawing.Point(3, 173);
+            this.button20.Name = "button20";
+            this.button20.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button20.Size = new System.Drawing.Size(259, 50);
+            this.button20.TabIndex = 20;
+            this.button20.Text = "  Sữa chua";
+            this.button20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button20.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button20.UseVisualStyleBackColor = true;
+            // 
             // button23
             // 
             this.button23.Dock = System.Windows.Forms.DockStyle.Top;
@@ -424,6 +337,26 @@
             this.button23.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button23.UseVisualStyleBackColor = true;
             // 
+            // button19
+            // 
+            this.button19.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button19.FlatAppearance.BorderSize = 0;
+            this.button19.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button19.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button19.Image = global::GUI.Properties.Resources.playorange;
+            this.button19.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button19.Location = new System.Drawing.Point(3, 285);
+            this.button19.Name = "button19";
+            this.button19.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button19.Size = new System.Drawing.Size(259, 50);
+            this.button19.TabIndex = 21;
+            this.button19.Text = "  Trà sữa";
+            this.button19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button19.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button19.UseVisualStyleBackColor = true;
+            // 
             // button24
             // 
             this.button24.Dock = System.Windows.Forms.DockStyle.Top;
@@ -443,6 +376,106 @@
             this.button24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button24.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button24.UseVisualStyleBackColor = true;
+            // 
+            // button18
+            // 
+            this.button18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button18.FlatAppearance.BorderSize = 0;
+            this.button18.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button18.Image = global::GUI.Properties.Resources.playorange;
+            this.button18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button18.Location = new System.Drawing.Point(3, 397);
+            this.button18.Name = "button18";
+            this.button18.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button18.Size = new System.Drawing.Size(259, 50);
+            this.button18.TabIndex = 22;
+            this.button18.Text = "  Nước trái cây";
+            this.button18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button18.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button18.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            this.button17.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button17.FlatAppearance.BorderSize = 0;
+            this.button17.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button17.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button17.Image = global::GUI.Properties.Resources.playorange;
+            this.button17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button17.Location = new System.Drawing.Point(3, 453);
+            this.button17.Name = "button17";
+            this.button17.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button17.Size = new System.Drawing.Size(259, 50);
+            this.button17.TabIndex = 23;
+            this.button17.Text = "  Nước ngọt";
+            this.button17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button17.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button16.FlatAppearance.BorderSize = 0;
+            this.button16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button16.Image = global::GUI.Properties.Resources.playorange;
+            this.button16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button16.Location = new System.Drawing.Point(3, 509);
+            this.button16.Name = "button16";
+            this.button16.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button16.Size = new System.Drawing.Size(259, 50);
+            this.button16.TabIndex = 24;
+            this.button16.Text = "  Tào phớ";
+            this.button16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button16.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button15.FlatAppearance.BorderSize = 0;
+            this.button15.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button15.Image = global::GUI.Properties.Resources.playorange;
+            this.button15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button15.Location = new System.Drawing.Point(3, 565);
+            this.button15.Name = "button15";
+            this.button15.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button15.Size = new System.Drawing.Size(259, 50);
+            this.button15.TabIndex = 25;
+            this.button15.Text = "  Tàu hũ";
+            this.button15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button15.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button15.UseVisualStyleBackColor = true;
+            // 
+            // button14
+            // 
+            this.button14.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.button14.Image = global::GUI.Properties.Resources.playorange;
+            this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button14.Location = new System.Drawing.Point(3, 621);
+            this.button14.Name = "button14";
+            this.button14.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button14.Size = new System.Drawing.Size(259, 39);
+            this.button14.TabIndex = 26;
+            this.button14.Text = "  Chè Sài Gòn";
+            this.button14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button14.UseVisualStyleBackColor = true;
             // 
             // btnCategory
             // 
@@ -717,39 +750,6 @@
             this.timerFood.Enabled = true;
             this.timerFood.SynchronizingObject = this;
             // 
-            // flowTable
-            // 
-            this.flowTable.BackColor = System.Drawing.Color.White;
-            this.flowTable.Controls.Add(this.button3);
-            this.flowTable.Controls.Add(this.button2);
-            this.flowTable.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowTable.Location = new System.Drawing.Point(0, 800);
-            this.flowTable.Name = "flowTable";
-            this.flowTable.Size = new System.Drawing.Size(265, 110);
-            this.flowTable.TabIndex = 30;
-            // 
-            // flowCategory
-            // 
-            this.flowCategory.AutoScroll = true;
-            this.flowCategory.BackColor = System.Drawing.Color.White;
-            this.flowCategory.Controls.Add(this.button13);
-            this.flowCategory.Controls.Add(this.button21);
-            this.flowCategory.Controls.Add(this.button22);
-            this.flowCategory.Controls.Add(this.button20);
-            this.flowCategory.Controls.Add(this.button23);
-            this.flowCategory.Controls.Add(this.button19);
-            this.flowCategory.Controls.Add(this.button24);
-            this.flowCategory.Controls.Add(this.button18);
-            this.flowCategory.Controls.Add(this.button17);
-            this.flowCategory.Controls.Add(this.button16);
-            this.flowCategory.Controls.Add(this.button15);
-            this.flowCategory.Controls.Add(this.button14);
-            this.flowCategory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowCategory.Location = new System.Drawing.Point(0, 60);
-            this.flowCategory.Name = "flowCategory";
-            this.flowCategory.Size = new System.Drawing.Size(265, 680);
-            this.flowCategory.TabIndex = 3;
-            // 
             // frmTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -766,6 +766,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmTableManager_Load);
             this.panelSideBar.ResumeLayout(false);
+            this.flowTable.ResumeLayout(false);
+            this.flowCategory.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -778,8 +780,6 @@
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timerFood)).EndInit();
-            this.flowTable.ResumeLayout(false);
-            this.flowCategory.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

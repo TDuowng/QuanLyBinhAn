@@ -89,5 +89,13 @@ namespace DAO
             }
             return list;
         }
+
+        public static string GetTypeEmployee(int maNV)
+        {
+            string query = "SELECT LoaiNV FROM NhanVien WHERE MaNV = @maNV";
+            object result = DataProvider.Instance.ExecuteScalar(query, new object[] { maNV });
+
+            return result != null ? result.ToString() : null;
+        }
     }
 }

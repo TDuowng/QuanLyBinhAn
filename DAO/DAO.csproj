@@ -48,7 +48,10 @@
     <Compile Include="DataProvider.cs" />
     <Compile Include="EmployeeDAO.cs" />
     <Compile Include="FoodDAO.cs" />
+    <Compile Include="IngredientsDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvideDAO.cs" />
+    <Compile Include="TableDAO.cs" />
     <Compile Include="WorkDAO.cs" />
     <Compile Include="WorkShiftDAO.cs" />
   </ItemGroup>

@@ -45,6 +45,54 @@ namespace GUI
             cbWork.DisplayMember = "NameWork";
             cbWork.ValueMember = "IdWork";
         }
+        private void LoadWorkShiftList(int maNV)
+        {
+            DataTable workShiftList = WorkShiftBLL.LoadListWorkShift(maNV);
+            dtgvListSalaryEmployee.DataSource = workShiftList;
+
+
+            if (dtgvListSalaryEmployee.Columns.Contains("MaPhien"))
+            {
+                dtgvListSalaryEmployee.Columns["MaPhien"].HeaderText = "Mã phiên";
+            }
+
+            if (dtgvListSalaryEmployee.Columns.Contains("NgayLam"))
+            {
+                dtgvListSalaryEmployee.Columns["NgayLam"].HeaderText = "Ngày làm";
+            }
+
+            if (dtgvListSalaryEmployee.Columns.Contains("GioCheckin"))
+            {
+                dtgvListSalaryEmployee.Columns["GioCheckin"].HeaderText = "Giờ vào ca";
+            }
+
+            if (dtgvListSalaryEmployee.Columns.Contains("GioCheckout"))
+            {
+                dtgvListSalaryEmployee.Columns["GioCheckout"].HeaderText = "Giờ kết ca";
+            }
+            else
+            {
+                MessageBox.Show("Column 'GioCheckout' does not exist.");
+            }
+
+            if (dtgvListSalaryEmployee.Columns.Contains("SoGioThucTe"))
+            {
+                dtgvListSalaryEmployee.Columns["SoGioThucTe"].HeaderText = "Số giờ";
+            }
+
+            if (dtgvListSalaryEmployee.Columns.Contains("TongLuong"))
+            {
+                dtgvListSalaryEmployee.Columns["TongLuong"].HeaderText = "Tổng lương";
+            }
+
+            if (dtgvListSalaryEmployee.Columns.Contains("Thuong"))
+            {
+                dtgvListSalaryEmployee.Columns["Thuong"].HeaderText = "Thưởng";
+            }
+            dtgvListSalaryEmployee.RowTemplate.Height = 40;
+
+        }
+
 
         private void ClearText()
         {
@@ -100,6 +148,8 @@ namespace GUI
             }
         }
 
+
+
         #endregion
 
         #region Events
@@ -122,6 +172,8 @@ namespace GUI
                         WorkShiftControlsByFullTime();
                     }
                 }
+                int maNV = Convert.ToInt32(txtIdEmployee.Text);
+                LoadWorkShiftList(maNV);
             }
         }
 
@@ -142,17 +194,163 @@ namespace GUI
 
         private void btnInsertSalaryEmployee_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtIdEmployee.Text))
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên cần hiển thị!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            try
+            {
+                int maNV = Convert.ToInt32(txtIdEmployee.Text);
+                string loaiNV = EmployeeBLL.GetTypeEmployee(maNV);
+
+                // Chuẩn hoá kiểu dữ liệu
+                double mucLuongCoBan = Convert.ToDouble(numSalary.Value);
+                double thuong = Convert.ToDouble(numBonus.Value);
+                DateTime ngayLam = dtpkDateWork.Value;
+                DateTime gioCheckin = dtpkIn.Value;
+                DateTime gioCheckout = dtpkOut.Value;
+
+                if (loaiNV.Trim().ToLower() == "part-time")
+                {
+                    if (cbWork.SelectedValue == null)
+                    {
+                        MessageBox.Show("Vui lòng chọn ca làm việc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    int maCa = Convert.ToInt32(cbWork.SelectedValue);
+                    double soGioThucTe = Convert.ToDouble(numCountHour.Value);
+
+                    WorkShiftDTO workShift = new WorkShiftDTO
+                    {
+                        IdEmployee = maNV,
+                        IdWork = maCa,
+                        DateWork = ngayLam,
+                        DateIn = gioCheckin,
+                        DateOut = gioCheckout,
+                        NumberHour = soGioThucTe,
+                        Salary = mucLuongCoBan,
+                        AWard = thuong
+                    };
+
+                    if (WorkShiftBLL.InsertWorkShift(workShift))
+                    {
+                        MessageBox.Show("Thêm phiên làm việc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        WorkShiftBLL.CalculateSalary(maNV); 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm phiên làm việc thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (loaiNV.Trim().ToLower() == "full-time")
+                {
+                    if (mucLuongCoBan == 0)
+                    {
+                        MessageBox.Show("Vui lòng nhập mức lương cơ bản!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    WorkShiftDTO workShift = new WorkShiftDTO(maNV, -1, 0, ngayLam, gioCheckin, gioCheckout, 0, mucLuongCoBan, thuong);
+
+                    if (WorkShiftBLL.InsertWorkShift(workShift))
+                    {
+                        MessageBox.Show("Thêm phiên làm việc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        WorkShiftBLL.CalculateSalary(maNV);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm phiên làm việc thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnUpdateSalaryEmployee_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtIdEmployee.Text))
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên cần hiển thị!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                int maNV = Convert.ToInt32(txtIdEmployee.Text);
+                string loaiNV = EmployeeBLL.GetTypeEmployee(maNV);
+                if (loaiNV.Trim().ToLower() == "part-time")
+                {
+                    if (cbWork.SelectedValue == null)
+                    {
+                        MessageBox.Show("Vui lòng chọn ca làm việc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    int maCa = Convert.ToInt32(cbWork.SelectedValue);
+                    DateTime ngayLam = dtpkDateWork.Value;
+                    DateTime gioCheckin = dtpkIn.Value;
+                    DateTime gioCheckout = dtpkOut.Value;
+                    double soGioThucTe = Convert.ToDouble(numCountHour.Value);
+                    double mucLuongCoBan = Convert.ToDouble(numSalary.Value);
+                    double thuong = Convert.ToDouble(numBonus.Value);
+                    WorkShiftDTO workShift = new WorkShiftDTO
+                    {
+                        IdEmployee = maNV,
+                        IdWork = maCa,
+                        DateWork = ngayLam,
+                        DateIn = gioCheckin,
+                        DateOut = gioCheckout,
+                        NumberHour = soGioThucTe,
+                        Salary = mucLuongCoBan,
+                        AWard = thuong
+                    };
+
+                    if (WorkShiftBLL.UpdateWorkShift(workShift))
+                    {
+                        MessageBox.Show("Cập nhật phiên làm việc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật làm việc thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (loaiNV.Trim().ToLower() == "full-time")
+                {
+                    if (numSalary.Value == 0)
+                    {
+                        MessageBox.Show("Vui lòng nhập mức lương cơ bản!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    float mucLuongCoBan = Convert.ToSingle(numSalary.Value);
+                    float thuong = 0;
+                    DateTime ngayLam = dtpkDateWork.Value;
+                    DateTime gioCheckin = dtpkIn.Value;
+                    DateTime gioCheckout = dtpkOut.Value;
+                    WorkShiftDTO workShift = new WorkShiftDTO(maNV, -1, 0, ngayLam, gioCheckin, gioCheckout, 0, mucLuongCoBan, thuong);
+                    if (WorkShiftBLL.UpdateWorkShift(workShift))
+                    {
+                        MessageBox.Show("Cập nhật phiên làm việc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật phiên việc thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void btnDeleteSalaryEmployee_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnRefreshSalaryEmployee_Click(object sender, EventArgs e)
@@ -178,11 +376,10 @@ namespace GUI
                     dtpkIn.Text = work.DateIn.ToString("HH:mm");
                     dtpkOut.Text = work.DateOut.ToString("HH:mm");
                     numCountHour.Text = work.NumberHour.ToString();
+                    numSalary.Text = work.Salary.ToString();
                 }
             }
         }
-
-        #endregion
 
         private void dtgvEmployee_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -205,5 +402,8 @@ namespace GUI
         {
             CountHour();
         }
+        #endregion
+
+
     }
 }

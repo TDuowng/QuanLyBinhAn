@@ -103,7 +103,7 @@ namespace DAO
         public static BindingList<FoodDTO> GetFoodListInToFlow()
         {
             BindingList<FoodDTO> list = new BindingList<FoodDTO>();
-            string query = "SELECT TenTD, DonGia, Anh FROM ThucDon"; // Giả sử tên bảng là 'ThucDon'
+            string query = "SELECT TenTD, DonGia, Anh FROM ThucDon"; 
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 

@@ -56,7 +56,7 @@ namespace DAO
 
         public static List<WorkDTO> GetHourByWork(int maCa)
         {
-            string query = "SELECT GioBatDau, GioKetThuc, SoGio FROM CaLamViec WHERE MaCa = " + maCa;
+            string query = "SELECT GioBatDau, GioKetThuc, SoGio, MucLuong FROM CaLamViec WHERE MaCa = " + maCa;
             List<WorkDTO> list = new List<WorkDTO>();
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -66,12 +66,15 @@ namespace DAO
                 {
                     DateIn = Convert.ToDateTime(item["GioBatDau"]),
                     DateOut = Convert.ToDateTime(item["GioKetThuc"]),
-                    NumberHour = Convert.ToInt32(item["SoGio"])
+                    NumberHour = Convert.ToInt32(item["SoGio"]),
+                    Salary = (float)Convert.ToDouble(item["MucLuong"])
                 };
                 list.Add(work);
             }
             return list;
         }
+
+        
 
     }
 }

@@ -16,12 +16,15 @@ namespace GUI
     public partial class frmTableManager : Form
     {
         public BindingList<FoodDTO> FoodList { get; set; }
+
+        public BindingList<TableDTO> TableList { get; set; }
         public frmTableManager()
         {
             InitializeComponent();
             customizeDesign();
-            LoadFoodList();
+            LoadTableList();
             frmFood.FoodListUpdated += LoadFoodList;
+            frmTable.TableListUpdated += LoadTableList;
         }
         #region Methods
         private void LoadFoodList()
@@ -44,6 +47,7 @@ namespace GUI
                 flowFood.Controls.Add(uc);
             }
         }
+
 
         private void LoadCategoryButtons()
         {
@@ -74,6 +78,8 @@ namespace GUI
                 flowCategory.Controls.Add(btn); // Thêm Button vào giao diện
             }
         }
+
+
 
         private void BtnCategory_Click(object sender, EventArgs e)
         {
@@ -144,6 +150,28 @@ namespace GUI
             else
                 customer.Visible = false;
         }
+
+        private void LoadTableList()
+        {
+            TableList = TableBLL.GetTableList();
+            LoadTableIntoFlowPanel();
+        }
+
+        private void LoadTableIntoFlowPanel()
+        {
+            flowFood.Controls.Clear();
+            foreach (var table in TableList)
+            {
+                UcTable uc = new UcTable();
+                uc.SetTableData(table.TableName, table.Status);
+                uc.OnSelect += UcTable_OnSelect;
+                flowFood.Controls.Add(uc);
+            }
+        }
+        private void UcTable_OnSelect(object sender, EventArgs e)
+        {
+            // Handle the event when a table is selected
+        }
         #endregion
 
         #region Event
@@ -155,6 +183,7 @@ namespace GUI
         private void btnTable_Click(object sender, EventArgs e)
         {
             showTable(flowTable);
+            LoadTableList();
         }
 
         private void btnManager_Click(object sender, EventArgs e)

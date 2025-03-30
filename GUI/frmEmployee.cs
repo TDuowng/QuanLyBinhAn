@@ -286,7 +286,6 @@ namespace GUI
             {
                 List<EmployeeDTO> employeeList = EmployeeBLL.SearchEmployee(keyword);
                 dtgvEmployee.DataSource = employeeList;
-                dtgvEmployee.DataSource = employeeList;
                 dtgvEmployee.Columns["idEmployee"].HeaderText = "Mã nhân viên";
                 dtgvEmployee.Columns["Name"].HeaderText = "Tên nhân viên";
                 dtgvEmployee.Columns["Gender"].HeaderText = "Giới tính";

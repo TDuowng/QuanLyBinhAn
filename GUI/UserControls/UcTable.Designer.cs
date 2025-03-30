@@ -29,39 +29,41 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcTable));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.grbUcTable = new System.Windows.Forms.GroupBox();
+            this.lblName = new System.Windows.Forms.Label();
             this.ptbFood = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.pnlBackground = new System.Windows.Forms.Panel();
+            this.grbUcTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbFood)).BeginInit();
+            this.pnlBackground.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // grbUcTable
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.ptbFood);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(9, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(197, 115);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
+            this.grbUcTable.BackColor = System.Drawing.Color.Transparent;
+            this.grbUcTable.Controls.Add(this.lblName);
+            this.grbUcTable.Controls.Add(this.ptbFood);
+            this.grbUcTable.Controls.Add(this.lblStatus);
+            this.grbUcTable.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbUcTable.Location = new System.Drawing.Point(6, -5);
+            this.grbUcTable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grbUcTable.Name = "grbUcTable";
+            this.grbUcTable.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grbUcTable.Size = new System.Drawing.Size(201, 121);
+            this.grbUcTable.TabIndex = 4;
+            this.grbUcTable.TabStop = false;
             // 
-            // label1
+            // lblName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(44)))), ((int)(((byte)(73)))));
-            this.label1.Location = new System.Drawing.Point(9, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 28);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Bàn 1";
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(44)))), ((int)(((byte)(73)))));
+            this.lblName.Location = new System.Drawing.Point(9, 20);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(60, 28);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Bàn 1";
             // 
             // ptbFood
             // 
@@ -72,47 +74,59 @@
             this.ptbFood.Location = new System.Drawing.Point(117, 31);
             this.ptbFood.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ptbFood.Name = "ptbFood";
-            this.ptbFood.Size = new System.Drawing.Size(74, 74);
+            this.ptbFood.Size = new System.Drawing.Size(78, 80);
             this.ptbFood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbFood.TabIndex = 2;
             this.ptbFood.TabStop = false;
             // 
-            // label2
+            // lblStatus
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.label2.Location = new System.Drawing.Point(9, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 28);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Bàn trống";
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.lblStatus.Location = new System.Drawing.Point(9, 73);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(102, 28);
+            this.lblStatus.TabIndex = 1;
+            this.lblStatus.Text = "Bàn trống";
+            // 
+            // pnlBackground
+            // 
+            this.pnlBackground.Controls.Add(this.grbUcTable);
+            this.pnlBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBackground.Location = new System.Drawing.Point(0, 0);
+            this.pnlBackground.Name = "pnlBackground";
+            this.pnlBackground.Size = new System.Drawing.Size(213, 123);
+            this.pnlBackground.TabIndex = 5;
             // 
             // UcTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pnlBackground);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UcTable";
             this.Size = new System.Drawing.Size(213, 123);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Load += new System.EventHandler(this.UcTable_Load);
+            this.grbUcTable.ResumeLayout(false);
+            this.grbUcTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbFood)).EndInit();
+            this.pnlBackground.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox grbUcTable;
+        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.PictureBox ptbFood;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Panel pnlBackground;
     }
 }

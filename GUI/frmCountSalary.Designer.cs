@@ -28,17 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCountSalary));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numCountHour = new System.Windows.Forms.NumericUpDown();
+            this.numSalary = new System.Windows.Forms.NumericUpDown();
+            this.cbPositionEmployee = new System.Windows.Forms.TextBox();
+            this.cbWork = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dtpkDateWork = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.numBonus = new System.Windows.Forms.NumericUpDown();
             this.txtPhoneEmployee = new System.Windows.Forms.TextBox();
@@ -53,6 +66,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtNameEmployee = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.txtSearchSalary = new System.Windows.Forms.TextBox();
+            this.btnSearchSalary = new System.Windows.Forms.Button();
+            this.btnWork = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -60,40 +77,27 @@
             this.dtgvListSalaryEmployee = new System.Windows.Forms.DataGridView();
             this.dtpkDateOut = new System.Windows.Forms.DateTimePicker();
             this.dtpkDateIn = new System.Windows.Forms.DateTimePicker();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.txtSearchSalary = new System.Windows.Forms.TextBox();
-            this.btnSearchSalary = new System.Windows.Forms.Button();
             this.btnStatistical = new System.Windows.Forms.Button();
             this.btnPrintList = new System.Windows.Forms.Button();
             this.btnDeleteSalaryEmployee = new System.Windows.Forms.Button();
             this.btnUpdateSalaryEmployee = new System.Windows.Forms.Button();
             this.btnRefreshSalaryEmployee = new System.Windows.Forms.Button();
             this.btnInsertSalaryEmployee = new System.Windows.Forms.Button();
-            this.btnWork = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dtpkDateWork = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cbWork = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.cbPositionEmployee = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numSalary = new System.Windows.Forms.NumericUpDown();
-            this.numCountHour = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCountHour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSalary)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBonus)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListSalaryEmployee)).BeginInit();
-            this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numSalary)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numCountHour)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -172,6 +176,98 @@
             this.groupBox1.Size = new System.Drawing.Size(1552, 123);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // numCountHour
+            // 
+            this.numCountHour.DecimalPlaces = 2;
+            this.numCountHour.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numCountHour.Location = new System.Drawing.Point(1132, 79);
+            this.numCountHour.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.numCountHour.Name = "numCountHour";
+            this.numCountHour.ReadOnly = true;
+            this.numCountHour.Size = new System.Drawing.Size(77, 30);
+            this.numCountHour.TabIndex = 25;
+            // 
+            // numSalary
+            // 
+            this.numSalary.Location = new System.Drawing.Point(662, 30);
+            this.numSalary.Maximum = new decimal(new int[] {
+            276447231,
+            23283,
+            0,
+            0});
+            this.numSalary.Name = "numSalary";
+            this.numSalary.Size = new System.Drawing.Size(191, 30);
+            this.numSalary.TabIndex = 24;
+            // 
+            // cbPositionEmployee
+            // 
+            this.cbPositionEmployee.Location = new System.Drawing.Point(378, 29);
+            this.cbPositionEmployee.Name = "cbPositionEmployee";
+            this.cbPositionEmployee.ReadOnly = true;
+            this.cbPositionEmployee.Size = new System.Drawing.Size(190, 30);
+            this.cbPositionEmployee.TabIndex = 23;
+            // 
+            // cbWork
+            // 
+            this.cbWork.FormattingEnabled = true;
+            this.cbWork.Location = new System.Drawing.Point(952, 77);
+            this.cbWork.Name = "cbWork";
+            this.cbWork.Size = new System.Drawing.Size(106, 31);
+            this.cbWork.TabIndex = 21;
+            this.cbWork.SelectedIndexChanged += new System.EventHandler(this.cbWork_SelectedIndexChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(1064, 81);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(62, 23);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "Số giờ:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(878, 81);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(67, 23);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "Ca làm:";
+            // 
+            // dtpkDateWork
+            // 
+            this.dtpkDateWork.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpkDateWork.Location = new System.Drawing.Point(951, 28);
+            this.dtpkDateWork.Name = "dtpkDateWork";
+            this.dtpkDateWork.Size = new System.Drawing.Size(258, 30);
+            this.dtpkDateWork.TabIndex = 19;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(858, 32);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(87, 23);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Ngày làm:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(591, 33);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(62, 23);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Lương:";
             // 
             // label3
             // 
@@ -304,112 +400,6 @@
             this.panel3.Size = new System.Drawing.Size(580, 662);
             this.panel3.TabIndex = 10;
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.panel4.Controls.Add(this.label10);
-            this.panel4.ForeColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(6, 6);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(549, 47);
-            this.panel4.TabIndex = 11;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(21, 6);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(227, 31);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Danh sách nhân viên";
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.White;
-            this.panel7.Controls.Add(this.dtgvEmployee);
-            this.panel7.Location = new System.Drawing.Point(15, 3);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(561, 570);
-            this.panel7.TabIndex = 12;
-            // 
-            // dtgvEmployee
-            // 
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtgvEmployee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
-            this.dtgvEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dtgvEmployee.BackgroundColor = System.Drawing.Color.White;
-            this.dtgvEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
-            this.dtgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle23.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvEmployee.DefaultCellStyle = dataGridViewCellStyle23;
-            this.dtgvEmployee.GridColor = System.Drawing.Color.WhiteSmoke;
-            this.dtgvEmployee.Location = new System.Drawing.Point(14, 70);
-            this.dtgvEmployee.Name = "dtgvEmployee";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvEmployee.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
-            this.dtgvEmployee.RowHeadersVisible = false;
-            this.dtgvEmployee.RowHeadersWidth = 51;
-            this.dtgvEmployee.RowTemplate.Height = 24;
-            this.dtgvEmployee.Size = new System.Drawing.Size(534, 486);
-            this.dtgvEmployee.TabIndex = 0;
-            this.dtgvEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvEmployee_CellClick);
-            this.dtgvEmployee.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvEmployee_RowEnter);
-            // 
-            // dtgvListSalaryEmployee
-            // 
-            this.dtgvListSalaryEmployee.BackgroundColor = System.Drawing.Color.White;
-            this.dtgvListSalaryEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtgvListSalaryEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvListSalaryEmployee.Location = new System.Drawing.Point(630, 276);
-            this.dtgvListSalaryEmployee.Name = "dtgvListSalaryEmployee";
-            this.dtgvListSalaryEmployee.RowHeadersWidth = 51;
-            this.dtgvListSalaryEmployee.RowTemplate.Height = 24;
-            this.dtgvListSalaryEmployee.Size = new System.Drawing.Size(992, 500);
-            this.dtgvListSalaryEmployee.TabIndex = 11;
-            // 
-            // dtpkDateOut
-            // 
-            this.dtpkDateOut.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpkDateOut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpkDateOut.Location = new System.Drawing.Point(1132, 223);
-            this.dtpkDateOut.Name = "dtpkDateOut";
-            this.dtpkDateOut.Size = new System.Drawing.Size(288, 30);
-            this.dtpkDateOut.TabIndex = 28;
-            // 
-            // dtpkDateIn
-            // 
-            this.dtpkDateIn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpkDateIn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpkDateIn.Location = new System.Drawing.Point(669, 223);
-            this.dtpkDateIn.Name = "dtpkDateIn";
-            this.dtpkDateIn.Size = new System.Drawing.Size(288, 30);
-            this.dtpkDateIn.TabIndex = 28;
-            // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
@@ -443,6 +433,166 @@
             this.btnSearchSalary.TabIndex = 14;
             this.btnSearchSalary.UseVisualStyleBackColor = false;
             this.btnSearchSalary.Click += new System.EventHandler(this.btnSearchSalary_Click);
+            // 
+            // btnWork
+            // 
+            this.btnWork.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnWork.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWork.FlatAppearance.BorderSize = 0;
+            this.btnWork.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWork.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWork.ForeColor = System.Drawing.Color.White;
+            this.btnWork.Image = ((System.Drawing.Image)(resources.GetObject("btnWork.Image")));
+            this.btnWork.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnWork.Location = new System.Drawing.Point(15, 586);
+            this.btnWork.Name = "btnWork";
+            this.btnWork.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnWork.Size = new System.Drawing.Size(200, 56);
+            this.btnWork.TabIndex = 22;
+            this.btnWork.Text = "   Ca làm việc";
+            this.btnWork.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnWork.UseVisualStyleBackColor = false;
+            this.btnWork.Click += new System.EventHandler(this.btnWork_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.panel4.Controls.Add(this.label10);
+            this.panel4.ForeColor = System.Drawing.Color.White;
+            this.panel4.Location = new System.Drawing.Point(6, 6);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(549, 47);
+            this.panel4.TabIndex = 11;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(21, 6);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(227, 31);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Danh sách nhân viên";
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.White;
+            this.panel7.Controls.Add(this.dtgvEmployee);
+            this.panel7.Location = new System.Drawing.Point(15, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(561, 570);
+            this.panel7.TabIndex = 12;
+            // 
+            // dtgvEmployee
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgvEmployee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgvEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dtgvEmployee.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvEmployee.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgvEmployee.GridColor = System.Drawing.Color.WhiteSmoke;
+            this.dtgvEmployee.Location = new System.Drawing.Point(14, 70);
+            this.dtgvEmployee.Name = "dtgvEmployee";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvEmployee.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgvEmployee.RowHeadersVisible = false;
+            this.dtgvEmployee.RowHeadersWidth = 51;
+            this.dtgvEmployee.RowTemplate.Height = 24;
+            this.dtgvEmployee.Size = new System.Drawing.Size(534, 486);
+            this.dtgvEmployee.TabIndex = 0;
+            this.dtgvEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvEmployee_CellClick);
+            this.dtgvEmployee.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvEmployee_RowEnter);
+            // 
+            // dtgvListSalaryEmployee
+            // 
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgvListSalaryEmployee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgvListSalaryEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvListSalaryEmployee.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvListSalaryEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvListSalaryEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dtgvListSalaryEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvListSalaryEmployee.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dtgvListSalaryEmployee.GridColor = System.Drawing.Color.WhiteSmoke;
+            this.dtgvListSalaryEmployee.Location = new System.Drawing.Point(630, 276);
+            this.dtgvListSalaryEmployee.Name = "dtgvListSalaryEmployee";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvListSalaryEmployee.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dtgvListSalaryEmployee.RowHeadersVisible = false;
+            this.dtgvListSalaryEmployee.RowHeadersWidth = 51;
+            this.dtgvListSalaryEmployee.RowTemplate.Height = 24;
+            this.dtgvListSalaryEmployee.Size = new System.Drawing.Size(992, 500);
+            this.dtgvListSalaryEmployee.TabIndex = 11;
+            // 
+            // dtpkDateOut
+            // 
+            this.dtpkDateOut.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpkDateOut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpkDateOut.Location = new System.Drawing.Point(1132, 223);
+            this.dtpkDateOut.Name = "dtpkDateOut";
+            this.dtpkDateOut.Size = new System.Drawing.Size(288, 30);
+            this.dtpkDateOut.TabIndex = 28;
+            // 
+            // dtpkDateIn
+            // 
+            this.dtpkDateIn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpkDateIn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpkDateIn.Location = new System.Drawing.Point(669, 223);
+            this.dtpkDateIn.Name = "dtpkDateIn";
+            this.dtpkDateIn.Size = new System.Drawing.Size(288, 30);
+            this.dtpkDateIn.TabIndex = 28;
             // 
             // btnStatistical
             // 
@@ -564,70 +714,6 @@
             this.btnInsertSalaryEmployee.UseVisualStyleBackColor = false;
             this.btnInsertSalaryEmployee.Click += new System.EventHandler(this.btnInsertSalaryEmployee_Click);
             // 
-            // btnWork
-            // 
-            this.btnWork.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.btnWork.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnWork.FlatAppearance.BorderSize = 0;
-            this.btnWork.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWork.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWork.ForeColor = System.Drawing.Color.White;
-            this.btnWork.Image = ((System.Drawing.Image)(resources.GetObject("btnWork.Image")));
-            this.btnWork.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnWork.Location = new System.Drawing.Point(15, 586);
-            this.btnWork.Name = "btnWork";
-            this.btnWork.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnWork.Size = new System.Drawing.Size(200, 56);
-            this.btnWork.TabIndex = 22;
-            this.btnWork.Text = "   Ca làm việc";
-            this.btnWork.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnWork.UseVisualStyleBackColor = false;
-            this.btnWork.Click += new System.EventHandler(this.btnWork_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(858, 32);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(87, 23);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "Ngày làm:";
-            // 
-            // dtpkDateWork
-            // 
-            this.dtpkDateWork.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpkDateWork.Location = new System.Drawing.Point(951, 28);
-            this.dtpkDateWork.Name = "dtpkDateWork";
-            this.dtpkDateWork.Size = new System.Drawing.Size(258, 30);
-            this.dtpkDateWork.TabIndex = 19;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(878, 81);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(67, 23);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "Ca làm:";
-            // 
-            // cbWork
-            // 
-            this.cbWork.FormattingEnabled = true;
-            this.cbWork.Location = new System.Drawing.Point(952, 77);
-            this.cbWork.Name = "cbWork";
-            this.cbWork.Size = new System.Drawing.Size(106, 31);
-            this.cbWork.TabIndex = 21;
-            this.cbWork.SelectedIndexChanged += new System.EventHandler(this.cbWork_SelectedIndexChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1064, 81);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(62, 23);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "Số giờ:";
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -644,49 +730,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(217, 30);
             this.textBox2.TabIndex = 30;
-            // 
-            // cbPositionEmployee
-            // 
-            this.cbPositionEmployee.Location = new System.Drawing.Point(378, 29);
-            this.cbPositionEmployee.Name = "cbPositionEmployee";
-            this.cbPositionEmployee.ReadOnly = true;
-            this.cbPositionEmployee.Size = new System.Drawing.Size(190, 30);
-            this.cbPositionEmployee.TabIndex = 23;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(591, 33);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 23);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Lương:";
-            // 
-            // numSalary
-            // 
-            this.numSalary.Location = new System.Drawing.Point(662, 30);
-            this.numSalary.Name = "numSalary";
-            this.numSalary.Size = new System.Drawing.Size(191, 30);
-            this.numSalary.TabIndex = 24;
-            // 
-            // numCountHour
-            // 
-            this.numCountHour.DecimalPlaces = 2;
-            this.numCountHour.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numCountHour.Location = new System.Drawing.Point(1132, 79);
-            this.numCountHour.Maximum = new decimal(new int[] {
-            24,
-            0,
-            0,
-            0});
-            this.numCountHour.Name = "numCountHour";
-            this.numCountHour.ReadOnly = true;
-            this.numCountHour.Size = new System.Drawing.Size(77, 30);
-            this.numCountHour.TabIndex = 25;
             // 
             // frmCountSalary
             // 
@@ -717,17 +760,17 @@
             this.panel6.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCountHour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSalary)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBonus)).EndInit();
             this.panel3.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListSalaryEmployee)).EndInit();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numSalary)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numCountHour)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

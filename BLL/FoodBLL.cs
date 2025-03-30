@@ -14,32 +14,32 @@ namespace BLL
     {
         public static List<FoodDTO> GetListFoodByCategoryID(int categoryID)
         {
-            return DAO.FoodDAO.GetListFoodByCategoryID(categoryID);
+            return FoodDAO.GetListFoodByCategoryID(categoryID);
         }
 
         public static List<FoodDTO> GetListFood()
         {
-            return DAO.FoodDAO.GetListFood();
+            return FoodDAO.GetListFood();
         }
 
         public static bool InsertFood(FoodDTO food)
         {
-            return DAO.FoodDAO.InsertFood(food);
+            return FoodDAO.InsertFood(food);
         }
 
         public static bool UpdateFood(FoodDTO food)
         {
-            return DAO.FoodDAO.UpdateFood(food);
+            return FoodDAO.UpdateFood(food);
         }
 
         public static bool DeleteFood(int food)
         {
-            return DAO.FoodDAO.DeleteFood(food);
+            return FoodDAO.DeleteFood(food);
         }
 
         public static bool IsFoodNameExists(string name)
         {
-            return DAO.FoodDAO.CheckFoodNameExists(name);
+            return FoodDAO.CheckFoodNameExists(name);
         }
 
         public static List<FoodDTO> SearchFood(string keyword)

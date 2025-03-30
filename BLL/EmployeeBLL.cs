@@ -44,5 +44,10 @@ namespace BLL
         {
             return EmployeeDAO.SearchEmployee(name);
         }
+
+        public static string GetTypeEmployee(int idEmployee)
+        {
+            return EmployeeDAO.GetTypeEmployee(idEmployee);
+        }
     } 
 }

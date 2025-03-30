@@ -28,8 +28,10 @@ namespace DTO
             this.DateOut = dateOut;
             this.NumberHour = (this.DateOut - this.DateIn).TotalHours;
             this.salary = salary;
-            this.AWard = aWard;
+            this.AWard = 0;
         }
+
+        public WorkShiftDTO() { }
 
         public int IdWorkshift { get => idWorkshift; set => idWorkshift = value; }
         public int IdEmployee { get => idEmployee; set => idEmployee = value; }
