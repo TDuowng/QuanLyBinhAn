@@ -23,19 +23,19 @@ namespace DAO
             return list;
         }
 
-        public static bool InsertIngredients( IngredientsDTO ingredients)
+        public static int InsertIngredients(IngredientsDTO ingredient)
         {
-            string query = "EXEC USP_InsertIngredients @TenNL , @DGNhap , @SLTon , @DVTinh , @Ngayquahan , @Ghichu , @Trangthai ";
-            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { ingredients.NameIngredient , ingredients.PriceIngredient , ingredients.Count , ingredients.Unit , ingredients.OverDate , ingredients.Note }) == 1)
-            {
-                return true;
-            }
-            return false;
+            string query = "EXEC USP_InsertIngredient @TenNL , @DGNhap , @SLTon , @DVTinh , @Ngayquahan , @Ghichu";
+            object result = DataProvider.Instance.ExecuteScalar(query,
+                new object[] { ingredient.NameIngredient, ingredient.PriceIngredient, ingredient.Count,
+        ingredient.Unit, ingredient.OverDate, ingredient.Note });
+
+            return (result != null) ? Convert.ToInt32(result) : -1;
         }
 
         public static bool UpdateIngredients(IngredientsDTO ingredients)
         {
-            string query = "EXEC USP_UpdateIngredients @MaNL , @TenNL , @DGNhap , @SLTon , @DVTinh , @Ngayquahan , @Ghichu , @Trangthai ";
+            string query = "EXEC USP_UpdateIngredient @MaNL , @TenNL , @DGNhap , @SLTon , @DVTinh , @Ngayquahan , @Ghichu  ";
             if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { ingredients.IdIngredient , ingredients.NameIngredient, ingredients.PriceIngredient, ingredients.Count, ingredients.Unit, ingredients.OverDate, ingredients.Note }) == 1)
             {
                 return true;
@@ -45,7 +45,7 @@ namespace DAO
 
         public static bool DeleteIngredients(int id)
         {
-            string query = "EXEC USP_DeleteIngredients @MaNL ";
+            string query = "EXEC USP_DeleteIngredient @MaNL ";
             if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { id }) == 1)
             {
                 return true;
@@ -63,9 +63,43 @@ namespace DAO
         {
             string query = "SELECT SUM(SLTon) FROM NguyenLieu";
             object result = DataProvider.Instance.ExecuteScalar(query, null);
-
-            return result != DBNull.Value ? Convert.ToInt32(result) : 0;
+            return Convert.ToInt32(result);
         }
+
+        public static List<string> GetAllUnits()
+        {
+            List<string> units = new List<string>();
+            string query = "SELECT DISTINCT DVTinh FROM NguyenLieu WHERE DVTinh IS NOT NULL AND DVTinh <> ''";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow row in data.Rows)
+            {
+                units.Add(row["DVTinh"].ToString());
+            }
+
+            return units;
+        }
+
+        /*public static List<IngredientsDTO> GetUnitandPriceByIngredient(int manl)
+        {
+            string query = "SELECT TenNL, DGNhap, DVTinh FROM NguyenLieu WHERE MaNL = " + manl;
+            List<IngredientsDTO> list = new List<IngredientsDTO>();
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                IngredientsDTO work = new IngredientsDTO
+                {
+                    NameIngredient = item["TenNL"].ToString(),
+                    PriceIngredient = (float)Convert.ToDouble(item["DGNhap"]),
+                    Unit = item["DVTinh"].ToString(),
+                };
+                list.Add(work);
+            }
+            return list;
+        }*/
+
 
     }
 }

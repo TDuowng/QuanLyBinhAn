@@ -96,5 +96,18 @@ namespace DAO
 
             return list;
         }
+
+        public static List<TableDTO> SearchTable(string keyword)
+        {
+            List<TableDTO> list = new List<TableDTO>();
+            string query = "EXEC USP_SearchTable @Keyword";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { keyword });
+            foreach (DataRow item in data.Rows)
+            {
+                TableDTO employee = new TableDTO(item);
+                list.Add(employee);
+            }
+            return list;
+        }
     }
 }

@@ -15,9 +15,11 @@ namespace BLL
             return IngredientsDAO.GetListIngredients();
         }
 
-        public static bool InsertIngredients(IngredientsDTO ingredients)
+        public static int InsertIngredients(IngredientsDTO ingredients)
         {
-            return IngredientsDAO.InsertIngredients(ingredients);
+            
+                return IngredientsDAO.InsertIngredients(ingredients);
+
         }
 
         public static bool UpdateIngredients(IngredientsDTO ingredients)
@@ -37,7 +39,18 @@ namespace BLL
 
         public static int GetCountIngredients()
         {
-            return IngredientsDAO.GetListIngredients().Count;
+            return IngredientsDAO.GetTotalStock();
         }
+
+        public static List<string> GetAllUnit()
+        {
+            return IngredientsDAO.GetAllUnits();
+        }
+
+        //public static List<IngredientsDTO> GetUnitandPriceByIngredient(int id)
+        //{
+            //return IngredientsDAO.GetUnitandPriceByIngredient(id);
+        //}
+
     }
 }

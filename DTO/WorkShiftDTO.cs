@@ -12,13 +12,16 @@ namespace DTO
         private int idEmployee;
         private int idWork;
         private DateTime dateWork;
-        private DateTime dateIn;
-        private DateTime dateOut;
-        private double numberHour;
-        private double salary;
-        private double aWard;
+        private DateTime? dateIn;
+        private DateTime? dateOut;
+        private double? numberHour;
+        private double? salary;
+        private double? aWard;
+        private double? total;
 
-        public WorkShiftDTO(int idWorkshift, int idEmployee, int idWork, DateTime dateWork, DateTime dateIn, DateTime dateOut, double numberHour, double salary, double aWard)
+        public WorkShiftDTO() { }
+
+        public WorkShiftDTO(int idWorkshift, int idEmployee, int idWork, DateTime dateWork, DateTime? dateIn, DateTime? dateOut, double? numberHour, double? salary, double? aWard, double? total)
         {
             this.IdWorkshift = idWorkshift;
             this.IdEmployee = idEmployee;
@@ -26,21 +29,21 @@ namespace DTO
             this.DateWork = dateWork;
             this.DateIn = dateIn;
             this.DateOut = dateOut;
-            this.NumberHour = (this.DateOut - this.DateIn).TotalHours;
-            this.salary = salary;
-            this.AWard = 0;
+            this.NumberHour = numberHour;
+            this.Salary = salary;
+            this.AWard = aWard;
+            this.Total = total;
         }
-
-        public WorkShiftDTO() { }
 
         public int IdWorkshift { get => idWorkshift; set => idWorkshift = value; }
         public int IdEmployee { get => idEmployee; set => idEmployee = value; }
         public int IdWork { get => idWork; set => idWork = value; }
         public DateTime DateWork { get => dateWork; set => dateWork = value; }
-        public DateTime DateIn { get => dateIn; set => dateIn = value; }
-        public DateTime DateOut { get => dateOut; set => dateOut = value; }
-        public double NumberHour { get => numberHour; set => numberHour = value; }
-        public double Salary { get => salary; set => salary = value; }
-        public double AWard { get => aWard; set => aWard = value; }
+        public DateTime? DateIn { get => dateIn; set => dateIn = value; }
+        public DateTime? DateOut { get => dateOut; set => dateOut = value; }
+        public double? NumberHour { get => numberHour; set => numberHour = value; }
+        public double? Salary { get => salary; set => salary = value; }
+        public double? AWard { get => aWard; set => aWard = value; }
+        public double? Total { get => total; set => total = value; }
     }
 }

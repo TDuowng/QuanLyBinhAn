@@ -55,5 +55,10 @@ namespace BLL
         {
             return TableDAO.GetTableListInToFlow();
         }
+
+        public static List<TableDTO> SearchTable(string query)
+        {
+            return TableDAO.SearchTable(query);
+        }
     }
 }

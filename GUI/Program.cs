@@ -20,7 +20,7 @@ namespace GUI
             {
                 SetProcessDPIAware();
             }
-            Application.Run(new frmTableManager());
+            Application.Run(new frmAdmin());
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

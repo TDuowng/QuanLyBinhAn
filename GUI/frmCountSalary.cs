@@ -45,8 +45,26 @@ namespace GUI
             cbWork.DisplayMember = "NameWork";
             cbWork.ValueMember = "IdWork";
         }
-        private void LoadWorkShiftList(int maNV)
+        private void LoadPhienLamViec(int maNV)
         {
+
+            /*// Thiết lập tiêu đề cột
+            dtgvListSalaryEmployee.Columns["MaPhien"].HeaderText = "Mã phiên";
+            dtgvListSalaryEmployee.Columns["MaNV"].HeaderText = "Mã NV";
+            dtgvListSalaryEmployee.Columns["TenCa"].HeaderText = "Ca làm";
+            dtgvListSalaryEmployee.Columns["NgayLam"].HeaderText = "Ngày làm";
+            dtgvListSalaryEmployee.Columns["GioCheckin"].HeaderText = "Vào ca";
+            dtgvListSalaryEmployee.Columns["GioCheckout"].HeaderText = "Kết ca";
+            dtgvListSalaryEmployee.Columns["SoGioThucTe"].HeaderText = "Số giờ";
+            dtgvListSalaryEmployee.Columns["MucLuongCoBan"].HeaderText = "Lương cơ bản";
+            dtgvListSalaryEmployee.Columns["Thuong"].HeaderText = "Thưởng";
+            dtgvListSalaryEmployee.Columns["TongLuong"].HeaderText = "Tổng lương";*/
+
+            // Định dạng tiền tệ cho các cột tiền
+            dtgvListSalaryEmployee.Columns["MucLuongCoBan"].DefaultCellStyle.Format = "N0";
+            dtgvListSalaryEmployee.Columns["Thuong"].DefaultCellStyle.Format = "N0";
+            dtgvListSalaryEmployee.Columns["TongLuong"].DefaultCellStyle.Format = "N0";
+
             DataTable workShiftList = WorkShiftBLL.LoadListWorkShift(maNV);
             dtgvListSalaryEmployee.DataSource = workShiftList;
 
@@ -89,7 +107,7 @@ namespace GUI
             {
                 dtgvListSalaryEmployee.Columns["Thuong"].HeaderText = "Thưởng";
             }
-            dtgvListSalaryEmployee.RowTemplate.Height = 40;
+            dtgvListSalaryEmployee.RowTemplate.Height = 40; 
 
         }
 
@@ -153,28 +171,10 @@ namespace GUI
         #endregion
 
         #region Events
+        private bool isLoading = false;
         private void dtgvEmployee_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // Đảm bảo không bấm vào header
-            {
-                DataGridViewRow row = dtgvEmployee.Rows[e.RowIndex];
-
-                string loaiNV = row.Cells["TypeEmployee"].Value?.ToString(); // Kiểm tra null
-
-                if (!string.IsNullOrEmpty(loaiNV))
-                {
-                    if (loaiNV.Trim().ToLower() == "part-time")
-                    {
-                        WorkShiftControlsByPartTime();
-                    }
-                    else if (loaiNV.Trim().ToLower() == "full-time")
-                    {
-                        WorkShiftControlsByFullTime();
-                    }
-                }
-                int maNV = Convert.ToInt32(txtIdEmployee.Text);
-                LoadWorkShiftList(maNV);
-            }
+            
         }
 
         private void btnStatistical_Click(object sender, EventArgs e)
@@ -194,157 +194,12 @@ namespace GUI
 
         private void btnInsertSalaryEmployee_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtIdEmployee.Text))
-            {
-                MessageBox.Show("Vui lòng chọn nhân viên cần hiển thị!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                int maNV = Convert.ToInt32(txtIdEmployee.Text);
-                string loaiNV = EmployeeBLL.GetTypeEmployee(maNV);
-
-                // Chuẩn hoá kiểu dữ liệu
-                double mucLuongCoBan = Convert.ToDouble(numSalary.Value);
-                double thuong = Convert.ToDouble(numBonus.Value);
-                DateTime ngayLam = dtpkDateWork.Value;
-                DateTime gioCheckin = dtpkIn.Value;
-                DateTime gioCheckout = dtpkOut.Value;
-
-                if (loaiNV.Trim().ToLower() == "part-time")
-                {
-                    if (cbWork.SelectedValue == null)
-                    {
-                        MessageBox.Show("Vui lòng chọn ca làm việc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    int maCa = Convert.ToInt32(cbWork.SelectedValue);
-                    double soGioThucTe = Convert.ToDouble(numCountHour.Value);
-
-                    WorkShiftDTO workShift = new WorkShiftDTO
-                    {
-                        IdEmployee = maNV,
-                        IdWork = maCa,
-                        DateWork = ngayLam,
-                        DateIn = gioCheckin,
-                        DateOut = gioCheckout,
-                        NumberHour = soGioThucTe,
-                        Salary = mucLuongCoBan,
-                        AWard = thuong
-                    };
-
-                    if (WorkShiftBLL.InsertWorkShift(workShift))
-                    {
-                        MessageBox.Show("Thêm phiên làm việc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        WorkShiftBLL.CalculateSalary(maNV); 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thêm phiên làm việc thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else if (loaiNV.Trim().ToLower() == "full-time")
-                {
-                    if (mucLuongCoBan == 0)
-                    {
-                        MessageBox.Show("Vui lòng nhập mức lương cơ bản!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    WorkShiftDTO workShift = new WorkShiftDTO(maNV, -1, 0, ngayLam, gioCheckin, gioCheckout, 0, mucLuongCoBan, thuong);
-
-                    if (WorkShiftBLL.InsertWorkShift(workShift))
-                    {
-                        MessageBox.Show("Thêm phiên làm việc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        WorkShiftBLL.CalculateSalary(maNV);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thêm phiên làm việc thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
         private void btnUpdateSalaryEmployee_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtIdEmployee.Text))
-            {
-                MessageBox.Show("Vui lòng chọn nhân viên cần hiển thị!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            try
-            {
-                int maNV = Convert.ToInt32(txtIdEmployee.Text);
-                string loaiNV = EmployeeBLL.GetTypeEmployee(maNV);
-                if (loaiNV.Trim().ToLower() == "part-time")
-                {
-                    if (cbWork.SelectedValue == null)
-                    {
-                        MessageBox.Show("Vui lòng chọn ca làm việc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    int maCa = Convert.ToInt32(cbWork.SelectedValue);
-                    DateTime ngayLam = dtpkDateWork.Value;
-                    DateTime gioCheckin = dtpkIn.Value;
-                    DateTime gioCheckout = dtpkOut.Value;
-                    double soGioThucTe = Convert.ToDouble(numCountHour.Value);
-                    double mucLuongCoBan = Convert.ToDouble(numSalary.Value);
-                    double thuong = Convert.ToDouble(numBonus.Value);
-                    WorkShiftDTO workShift = new WorkShiftDTO
-                    {
-                        IdEmployee = maNV,
-                        IdWork = maCa,
-                        DateWork = ngayLam,
-                        DateIn = gioCheckin,
-                        DateOut = gioCheckout,
-                        NumberHour = soGioThucTe,
-                        Salary = mucLuongCoBan,
-                        AWard = thuong
-                    };
-
-                    if (WorkShiftBLL.UpdateWorkShift(workShift))
-                    {
-                        MessageBox.Show("Cập nhật phiên làm việc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cập nhật làm việc thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else if (loaiNV.Trim().ToLower() == "full-time")
-                {
-                    if (numSalary.Value == 0)
-                    {
-                        MessageBox.Show("Vui lòng nhập mức lương cơ bản!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                    float mucLuongCoBan = Convert.ToSingle(numSalary.Value);
-                    float thuong = 0;
-                    DateTime ngayLam = dtpkDateWork.Value;
-                    DateTime gioCheckin = dtpkIn.Value;
-                    DateTime gioCheckout = dtpkOut.Value;
-                    WorkShiftDTO workShift = new WorkShiftDTO(maNV, -1, 0, ngayLam, gioCheckin, gioCheckout, 0, mucLuongCoBan, thuong);
-                    if (WorkShiftBLL.UpdateWorkShift(workShift))
-                    {
-                        MessageBox.Show("Cập nhật phiên làm việc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cập nhật phiên việc thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
 
         }
 

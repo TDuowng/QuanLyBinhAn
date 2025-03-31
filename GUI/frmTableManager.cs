@@ -182,7 +182,6 @@ namespace GUI
 
         private void btnTable_Click(object sender, EventArgs e)
         {
-            showTable(flowTable);
             LoadTableList();
         }
 

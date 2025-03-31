@@ -249,6 +249,26 @@ namespace GUI
         {
             SelectFloor();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                List<TableDTO> tableList = TableBLL.SearchTable(keyword);
+                dtgvTable.DataSource = tableList;
+                dtgvTable.Columns["idTable"].HeaderText = "Mã bàn";
+                dtgvTable.Columns["TableName"].HeaderText = "Tên bàn";
+                dtgvTable.Columns["Status"].HeaderText = "Trạng thái";
+                dtgvTable.Columns["Floor"].HeaderText = "Tầng";
+                dtgvTable.RowTemplate.Height = 40;
+            }
+            else
+            {
+                LoadListTable(); 
+            }
+        }
+
         #endregion
 
 

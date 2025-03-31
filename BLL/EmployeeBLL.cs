@@ -49,5 +49,6 @@ namespace BLL
         {
             return EmployeeDAO.GetTypeEmployee(idEmployee);
         }
+
     } 
 }

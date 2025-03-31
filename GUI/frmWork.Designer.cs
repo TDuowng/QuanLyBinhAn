@@ -29,36 +29,36 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWork));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtNameWork = new System.Windows.Forms.TextBox();
-            this.txtIdWord = new System.Windows.Forms.TextBox();
-            this.numCountHour = new System.Windows.Forms.NumericUpDown();
-            this.dtpkDateIn = new System.Windows.Forms.DateTimePicker();
             this.dtpkDateOut = new System.Windows.Forms.DateTimePicker();
+            this.dtpkDateIn = new System.Windows.Forms.DateTimePicker();
             this.numSalary = new System.Windows.Forms.NumericUpDown();
+            this.numCountHour = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtIdWord = new System.Windows.Forms.TextBox();
+            this.txtNameWork = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnInsertWork = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnUpdateWork = new System.Windows.Forms.Button();
             this.btnDeleteWork = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtgvWork = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCountHour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSalary)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCountHour)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvWork)).BeginInit();
             this.SuspendLayout();
@@ -72,8 +72,19 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(688, 45);
+            this.panel1.Size = new System.Drawing.Size(619, 45);
             this.panel1.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(14, 8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(131, 28);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "CA LÀM VIỆC";
             // 
             // btnClose
             // 
@@ -84,7 +95,7 @@
             this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(643, 0);
+            this.btnClose.Location = new System.Drawing.Point(574, 0);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(45, 45);
@@ -108,79 +119,42 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(9, 59);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(667, 152);
+            this.groupBox1.Size = new System.Drawing.Size(598, 152);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin ca làm việc";
             // 
-            // label1
+            // dtpkDateOut
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mã ca:";
+            this.dtpkDateOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpkDateOut.Location = new System.Drawing.Point(384, 69);
+            this.dtpkDateOut.Name = "dtpkDateOut";
+            this.dtpkDateOut.ShowUpDown = true;
+            this.dtpkDateOut.Size = new System.Drawing.Size(190, 30);
+            this.dtpkDateOut.TabIndex = 2;
+            this.dtpkDateOut.ValueChanged += new System.EventHandler(this.dtpkDateOut_ValueChanged);
             // 
-            // label2
+            // dtpkDateIn
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Tên ca:";
+            this.dtpkDateIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpkDateIn.Location = new System.Drawing.Point(384, 30);
+            this.dtpkDateIn.Name = "dtpkDateIn";
+            this.dtpkDateIn.ShowUpDown = true;
+            this.dtpkDateIn.Size = new System.Drawing.Size(190, 30);
+            this.dtpkDateIn.TabIndex = 1;
+            this.dtpkDateIn.ValueChanged += new System.EventHandler(this.dtpkDateIn_ValueChanged);
             // 
-            // label3
+            // numSalary
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(315, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 23);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Giờ bắt đầu:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(315, 72);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(107, 23);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Giờ kết thúc:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 113);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 23);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Số giờ:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(323, 111);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 23);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Mức lương:";
-            // 
-            // txtNameWork
-            // 
-            this.txtNameWork.Location = new System.Drawing.Point(94, 70);
-            this.txtNameWork.Name = "txtNameWork";
-            this.txtNameWork.Size = new System.Drawing.Size(215, 30);
-            this.txtNameWork.TabIndex = 0;
-            // 
-            // txtIdWord
-            // 
-            this.txtIdWord.Location = new System.Drawing.Point(94, 32);
-            this.txtIdWord.Name = "txtIdWord";
-            this.txtIdWord.ReadOnly = true;
-            this.txtIdWord.Size = new System.Drawing.Size(215, 30);
-            this.txtIdWord.TabIndex = 8;
+            this.numSalary.Location = new System.Drawing.Point(384, 107);
+            this.numSalary.Maximum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            0});
+            this.numSalary.Name = "numSalary";
+            this.numSalary.Size = new System.Drawing.Size(190, 30);
+            this.numSalary.TabIndex = 3;
             // 
             // numCountHour
             // 
@@ -198,40 +172,77 @@
             0});
             this.numCountHour.Name = "numCountHour";
             this.numCountHour.ReadOnly = true;
-            this.numCountHour.Size = new System.Drawing.Size(215, 30);
+            this.numCountHour.Size = new System.Drawing.Size(174, 30);
             this.numCountHour.TabIndex = 9;
             // 
-            // dtpkDateIn
+            // label6
             // 
-            this.dtpkDateIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpkDateIn.Location = new System.Drawing.Point(428, 30);
-            this.dtpkDateIn.Name = "dtpkDateIn";
-            this.dtpkDateIn.ShowUpDown = true;
-            this.dtpkDateIn.Size = new System.Drawing.Size(215, 30);
-            this.dtpkDateIn.TabIndex = 1;
-            this.dtpkDateIn.ValueChanged += new System.EventHandler(this.dtpkDateIn_ValueChanged);
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(282, 113);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 23);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Mức lương:";
             // 
-            // dtpkDateOut
+            // txtIdWord
             // 
-            this.dtpkDateOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpkDateOut.Location = new System.Drawing.Point(428, 69);
-            this.dtpkDateOut.Name = "dtpkDateOut";
-            this.dtpkDateOut.ShowUpDown = true;
-            this.dtpkDateOut.Size = new System.Drawing.Size(215, 30);
-            this.dtpkDateOut.TabIndex = 2;
-            this.dtpkDateOut.ValueChanged += new System.EventHandler(this.dtpkDateOut_ValueChanged);
+            this.txtIdWord.Location = new System.Drawing.Point(94, 32);
+            this.txtIdWord.Name = "txtIdWord";
+            this.txtIdWord.ReadOnly = true;
+            this.txtIdWord.Size = new System.Drawing.Size(174, 30);
+            this.txtIdWord.TabIndex = 8;
             // 
-            // numSalary
+            // txtNameWork
             // 
-            this.numSalary.Location = new System.Drawing.Point(428, 107);
-            this.numSalary.Maximum = new decimal(new int[] {
-            -1981284353,
-            -1966660860,
-            0,
-            0});
-            this.numSalary.Name = "numSalary";
-            this.numSalary.Size = new System.Drawing.Size(215, 30);
-            this.numSalary.TabIndex = 3;
+            this.txtNameWork.Location = new System.Drawing.Point(94, 70);
+            this.txtNameWork.Name = "txtNameWork";
+            this.txtNameWork.Size = new System.Drawing.Size(174, 30);
+            this.txtNameWork.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(26, 113);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 23);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Số giờ:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(274, 74);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 23);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Giờ kết thúc:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(274, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 23);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Giờ bắt đầu:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(26, 74);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Tên ca:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(28, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mã ca:";
             // 
             // btnInsertWork
             // 
@@ -243,7 +254,7 @@
             this.btnInsertWork.ForeColor = System.Drawing.Color.White;
             this.btnInsertWork.Image = ((System.Drawing.Image)(resources.GetObject("btnInsertWork.Image")));
             this.btnInsertWork.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInsertWork.Location = new System.Drawing.Point(46, 217);
+            this.btnInsertWork.Location = new System.Drawing.Point(36, 217);
             this.btnInsertWork.Name = "btnInsertWork";
             this.btnInsertWork.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnInsertWork.Size = new System.Drawing.Size(130, 40);
@@ -263,7 +274,7 @@
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
             this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRefresh.Location = new System.Drawing.Point(514, 217);
+            this.btnRefresh.Location = new System.Drawing.Point(444, 217);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnRefresh.Size = new System.Drawing.Size(130, 40);
@@ -283,7 +294,7 @@
             this.btnUpdateWork.ForeColor = System.Drawing.Color.White;
             this.btnUpdateWork.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateWork.Image")));
             this.btnUpdateWork.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdateWork.Location = new System.Drawing.Point(202, 217);
+            this.btnUpdateWork.Location = new System.Drawing.Point(172, 217);
             this.btnUpdateWork.Name = "btnUpdateWork";
             this.btnUpdateWork.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnUpdateWork.Size = new System.Drawing.Size(130, 40);
@@ -303,7 +314,7 @@
             this.btnDeleteWork.ForeColor = System.Drawing.Color.White;
             this.btnDeleteWork.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteWork.Image")));
             this.btnDeleteWork.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteWork.Location = new System.Drawing.Point(358, 217);
+            this.btnDeleteWork.Location = new System.Drawing.Point(308, 217);
             this.btnDeleteWork.Name = "btnDeleteWork";
             this.btnDeleteWork.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnDeleteWork.Size = new System.Drawing.Size(130, 40);
@@ -318,72 +329,61 @@
             this.groupBox2.Controls.Add(this.dtgvWork);
             this.groupBox2.Location = new System.Drawing.Point(10, 263);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(668, 258);
+            this.groupBox2.Size = new System.Drawing.Size(597, 258);
             this.groupBox2.TabIndex = 27;
             this.groupBox2.TabStop = false;
             // 
             // dtgvWork
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtgvWork.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgvWork.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvWork.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dtgvWork.BackgroundColor = System.Drawing.Color.White;
             this.dtgvWork.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvWork.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvWork.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgvWork.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvWork.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvWork.DefaultCellStyle = dataGridViewCellStyle7;
             this.dtgvWork.GridColor = System.Drawing.Color.Gainsboro;
             this.dtgvWork.Location = new System.Drawing.Point(5, 15);
             this.dtgvWork.Name = "dtgvWork";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvWork.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvWork.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgvWork.RowHeadersVisible = false;
             this.dtgvWork.RowHeadersWidth = 51;
             this.dtgvWork.RowTemplate.Height = 24;
-            this.dtgvWork.Size = new System.Drawing.Size(655, 237);
+            this.dtgvWork.Size = new System.Drawing.Size(586, 237);
             this.dtgvWork.TabIndex = 0;
             this.dtgvWork.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvWork_CellClick);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(14, 8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 28);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "CA LÀM VIỆC";
             // 
             // frmWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 530);
+            this.ClientSize = new System.Drawing.Size(619, 530);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnDeleteWork);
             this.Controls.Add(this.btnUpdateWork);
@@ -401,8 +401,8 @@
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCountHour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSalary)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCountHour)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvWork)).EndInit();
             this.ResumeLayout(false);

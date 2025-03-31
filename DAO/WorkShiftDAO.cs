@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,7 @@ namespace DAO
         }
 
 
-        public static void CalculateSalary(int idEmployee)
+        public  static void CalculateSalary(int idEmployee)
         {
             string query = "EXEC USP_CalculateSalary @MaNV ";
             DataProvider.Instance.ExecuteNonQuery(query, new object[] { idEmployee });
@@ -54,5 +55,6 @@ namespace DAO
             string query = "EXEC USP_GetWorkShiftList @MaNV";
             return DataProvider.Instance.ExecuteQuery(query, new object[] { maNV, null });
         }
+
     }
 }

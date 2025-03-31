@@ -157,6 +157,7 @@ namespace GUI
                     MessageBox.Show("Vui lòng chọn ca làm việc cần xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
                 if (WorkBLL.DeleteWork(int.Parse(txtIdWord.Text)))
                 {
                     MessageBox.Show("Xóa ca làm việc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
