@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCountSalary));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -74,17 +74,17 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dtgvEmployee = new System.Windows.Forms.DataGridView();
-            this.dtgvListSalaryEmployee = new System.Windows.Forms.DataGridView();
-            this.dtpkDateOut = new System.Windows.Forms.DateTimePicker();
-            this.dtpkDateIn = new System.Windows.Forms.DateTimePicker();
-            this.btnStatistical = new System.Windows.Forms.Button();
+            this.dtgvWorkShift = new System.Windows.Forms.DataGridView();
+            this.dtpkToDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpkFromDate = new System.Windows.Forms.DateTimePicker();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.btnPrintList = new System.Windows.Forms.Button();
             this.btnDeleteSalaryEmployee = new System.Windows.Forms.Button();
             this.btnUpdateSalaryEmployee = new System.Windows.Forms.Button();
             this.btnRefreshSalaryEmployee = new System.Windows.Forms.Button();
             this.btnInsertSalaryEmployee = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTotalSalary = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -97,7 +97,7 @@
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvEmployee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvListSalaryEmployee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvWorkShift)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -205,6 +205,7 @@
             0,
             0});
             this.numSalary.Name = "numSalary";
+            this.numSalary.ReadOnly = true;
             this.numSalary.Size = new System.Drawing.Size(191, 30);
             this.numSalary.TabIndex = 24;
             // 
@@ -415,7 +416,7 @@
             this.txtSearchSalary.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearchSalary.Location = new System.Drawing.Point(20, 17);
             this.txtSearchSalary.Name = "txtSearchSalary";
-            this.txtSearchSalary.Size = new System.Drawing.Size(274, 23);
+            this.txtSearchSalary.Size = new System.Drawing.Size(263, 23);
             this.txtSearchSalary.TabIndex = 15;
             // 
             // btnSearchSalary
@@ -485,134 +486,134 @@
             // 
             // dtgvEmployee
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtgvEmployee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgvEmployee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle25;
             this.dtgvEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dtgvEmployee.BackgroundColor = System.Drawing.Color.White;
             this.dtgvEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
             this.dtgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvEmployee.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle27.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvEmployee.DefaultCellStyle = dataGridViewCellStyle27;
             this.dtgvEmployee.GridColor = System.Drawing.Color.WhiteSmoke;
             this.dtgvEmployee.Location = new System.Drawing.Point(14, 70);
             this.dtgvEmployee.Name = "dtgvEmployee";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvEmployee.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvEmployee.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.dtgvEmployee.RowHeadersVisible = false;
             this.dtgvEmployee.RowHeadersWidth = 51;
             this.dtgvEmployee.RowTemplate.Height = 24;
             this.dtgvEmployee.Size = new System.Drawing.Size(534, 486);
             this.dtgvEmployee.TabIndex = 0;
-            this.dtgvEmployee.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvEmployee_CellClick);
+            this.dtgvEmployee.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvEmployee_CellDoubleClick);
             this.dtgvEmployee.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvEmployee_RowEnter);
             // 
-            // dtgvListSalaryEmployee
+            // dtgvWorkShift
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtgvListSalaryEmployee.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dtgvListSalaryEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgvListSalaryEmployee.BackgroundColor = System.Drawing.Color.White;
-            this.dtgvListSalaryEmployee.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvListSalaryEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dtgvListSalaryEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvListSalaryEmployee.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dtgvListSalaryEmployee.GridColor = System.Drawing.Color.WhiteSmoke;
-            this.dtgvListSalaryEmployee.Location = new System.Drawing.Point(630, 276);
-            this.dtgvListSalaryEmployee.Name = "dtgvListSalaryEmployee";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvListSalaryEmployee.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dtgvListSalaryEmployee.RowHeadersVisible = false;
-            this.dtgvListSalaryEmployee.RowHeadersWidth = 51;
-            this.dtgvListSalaryEmployee.RowTemplate.Height = 24;
-            this.dtgvListSalaryEmployee.Size = new System.Drawing.Size(992, 500);
-            this.dtgvListSalaryEmployee.TabIndex = 11;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgvWorkShift.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle29;
+            this.dtgvWorkShift.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dtgvWorkShift.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvWorkShift.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvWorkShift.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            this.dtgvWorkShift.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle31.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvWorkShift.DefaultCellStyle = dataGridViewCellStyle31;
+            this.dtgvWorkShift.GridColor = System.Drawing.Color.WhiteSmoke;
+            this.dtgvWorkShift.Location = new System.Drawing.Point(630, 276);
+            this.dtgvWorkShift.Name = "dtgvWorkShift";
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle32.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvWorkShift.RowHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            this.dtgvWorkShift.RowHeadersWidth = 51;
+            this.dtgvWorkShift.RowTemplate.Height = 24;
+            this.dtgvWorkShift.Size = new System.Drawing.Size(992, 500);
+            this.dtgvWorkShift.TabIndex = 11;
+            this.dtgvWorkShift.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvWorkShift_CellClick);
             // 
-            // dtpkDateOut
+            // dtpkToDate
             // 
-            this.dtpkDateOut.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpkDateOut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpkDateOut.Location = new System.Drawing.Point(1132, 223);
-            this.dtpkDateOut.Name = "dtpkDateOut";
-            this.dtpkDateOut.Size = new System.Drawing.Size(288, 30);
-            this.dtpkDateOut.TabIndex = 28;
+            this.dtpkToDate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpkToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpkToDate.Location = new System.Drawing.Point(1132, 223);
+            this.dtpkToDate.Name = "dtpkToDate";
+            this.dtpkToDate.Size = new System.Drawing.Size(288, 30);
+            this.dtpkToDate.TabIndex = 28;
             // 
-            // dtpkDateIn
+            // dtpkFromDate
             // 
-            this.dtpkDateIn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpkDateIn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpkDateIn.Location = new System.Drawing.Point(669, 223);
-            this.dtpkDateIn.Name = "dtpkDateIn";
-            this.dtpkDateIn.Size = new System.Drawing.Size(288, 30);
-            this.dtpkDateIn.TabIndex = 28;
+            this.dtpkFromDate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpkFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpkFromDate.Location = new System.Drawing.Point(669, 223);
+            this.dtpkFromDate.Name = "dtpkFromDate";
+            this.dtpkFromDate.Size = new System.Drawing.Size(288, 30);
+            this.dtpkFromDate.TabIndex = 28;
             // 
-            // btnStatistical
+            // btnFilter
             // 
-            this.btnStatistical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.btnStatistical.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStatistical.FlatAppearance.BorderSize = 0;
-            this.btnStatistical.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatistical.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistical.ForeColor = System.Drawing.Color.White;
-            this.btnStatistical.Image = ((System.Drawing.Image)(resources.GetObject("btnStatistical.Image")));
-            this.btnStatistical.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStatistical.Location = new System.Drawing.Point(967, 218);
-            this.btnStatistical.Name = "btnStatistical";
-            this.btnStatistical.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnStatistical.Size = new System.Drawing.Size(155, 42);
-            this.btnStatistical.TabIndex = 27;
-            this.btnStatistical.Text = "  Thống kê";
-            this.btnStatistical.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnStatistical.UseVisualStyleBackColor = false;
-            this.btnStatistical.Click += new System.EventHandler(this.btnStatistical_Click);
+            this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFilter.FlatAppearance.BorderSize = 0;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.Color.White;
+            this.btnFilter.Image = ((System.Drawing.Image)(resources.GetObject("btnFilter.Image")));
+            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilter.Location = new System.Drawing.Point(967, 218);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnFilter.Size = new System.Drawing.Size(155, 42);
+            this.btnFilter.TabIndex = 27;
+            this.btnFilter.Text = "  Thống kê";
+            this.btnFilter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // btnPrintList
             // 
@@ -724,29 +725,32 @@
             this.label14.TabIndex = 29;
             this.label14.Text = "Tổng lương:";
             // 
-            // textBox2
+            // txtTotalSalary
             // 
-            this.textBox2.Location = new System.Drawing.Point(1396, 803);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(217, 30);
-            this.textBox2.TabIndex = 30;
+            this.txtTotalSalary.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalSalary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.txtTotalSalary.Location = new System.Drawing.Point(1396, 803);
+            this.txtTotalSalary.Name = "txtTotalSalary";
+            this.txtTotalSalary.ReadOnly = true;
+            this.txtTotalSalary.Size = new System.Drawing.Size(217, 31);
+            this.txtTotalSalary.TabIndex = 30;
             // 
             // frmCountSalary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1638, 865);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtTotalSalary);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.dtpkDateIn);
-            this.Controls.Add(this.dtpkDateOut);
-            this.Controls.Add(this.btnStatistical);
+            this.Controls.Add(this.dtpkFromDate);
+            this.Controls.Add(this.dtpkToDate);
+            this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.btnPrintList);
             this.Controls.Add(this.btnDeleteSalaryEmployee);
             this.Controls.Add(this.btnUpdateSalaryEmployee);
             this.Controls.Add(this.btnRefreshSalaryEmployee);
             this.Controls.Add(this.btnInsertSalaryEmployee);
-            this.Controls.Add(this.dtgvListSalaryEmployee);
+            this.Controls.Add(this.dtgvWorkShift);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -770,7 +774,7 @@
             this.panel4.PerformLayout();
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvEmployee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvListSalaryEmployee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvWorkShift)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -802,15 +806,15 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.DataGridView dtgvEmployee;
-        private System.Windows.Forms.DataGridView dtgvListSalaryEmployee;
+        private System.Windows.Forms.DataGridView dtgvWorkShift;
         private System.Windows.Forms.Button btnDeleteSalaryEmployee;
         private System.Windows.Forms.Button btnUpdateSalaryEmployee;
         private System.Windows.Forms.Button btnRefreshSalaryEmployee;
         private System.Windows.Forms.Button btnInsertSalaryEmployee;
         private System.Windows.Forms.Button btnPrintList;
-        private System.Windows.Forms.Button btnStatistical;
-        private System.Windows.Forms.DateTimePicker dtpkDateOut;
-        private System.Windows.Forms.DateTimePicker dtpkDateIn;
+        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.DateTimePicker dtpkToDate;
+        private System.Windows.Forms.DateTimePicker dtpkFromDate;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.TextBox txtSearchSalary;
         private System.Windows.Forms.Button btnSearchSalary;
@@ -821,7 +825,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTotalSalary;
         private System.Windows.Forms.TextBox cbPositionEmployee;
         private System.Windows.Forms.NumericUpDown numSalary;
         private System.Windows.Forms.Label label7;

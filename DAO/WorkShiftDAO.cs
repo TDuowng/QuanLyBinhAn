@@ -11,50 +11,160 @@ namespace DAO
 {
     public class WorkShiftDAO
     {
-        public static bool InsertWorkShift(WorkShiftDTO workShift)
+        public static List<WorkShiftDTO> GetAllWorkShift()
         {
-            string query = "EXEC USP_InserWorkShift @MaNV , @MaCa , @NgayLam , @GioCheckin , @GioCheckout , @SoGioThucTe , @MucLuongCoBan , @Thuong ";
-            if (DataProvider.Instance.ExecuteNonQuery(query,
-                new object[] { workShift.IdEmployee, workShift.IdWork, workShift.DateWork, workShift.DateIn, workShift.DateOut, workShift.NumberHour, workShift.Salary , workShift.AWard}) == 1)
-            {  
-                return true;
-            }
-            return false;
-        }
-
-        public static bool UpdateWorkShift(WorkShiftDTO workShift)
-        {
-            string query = "EXEC USP_UpdateWorkShift @MaPhien , @MaNV , @MaCa , @NgayLam , @GioCheckin , @GioCheckout , @SoGioThucTe , @MucLuongCoBan ";
-            if (DataProvider.Instance.ExecuteNonQuery(query, 
-                new object[] { workShift.IdWorkshift, workShift.IdEmployee, workShift.IdWork, workShift.DateWork, workShift.DateIn, workShift.DateOut, workShift.NumberHour, workShift.Salary , workShift.AWard }) == 1)
-            { 
-                    return true; 
-            }
-            return false;
-        }
-
-        public static bool DeleteWorkShift(int idWorkShift)
-        {
-            string query = "EXEC USP_DeleteWorkShift @MaPhien ";
-            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { idWorkShift }) == 1)
+            string query = "SELECT p.MaPhien, p.MaCa, p.MaNV, nv.TenNV, c.TenCa,  p.NgayLam, p.GioCheckin, p.GioCheckout, p.SoGioThucTe, p.MucLuongCoBan, p.TongLuong, p.Thuong FROM PhienLamViec p INNER JOIN NhanVien nv ON p.MaNV = nv.MaNV INNER JOIN CaLamViec c ON p.MaCa = c.MaCa ORDER BY p.NgayLam DESC";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            List<WorkShiftDTO> workShifts = new List<WorkShiftDTO>();
+            foreach (DataRow row in data.Rows)
             {
-                return true;
+                WorkShiftDTO workShift = new WorkShiftDTO(row);
+                workShifts.Add(workShift);
             }
-            return false;
+            return workShifts;
         }
 
 
-        public  static void CalculateSalary(int idEmployee)
+        public static List<WorkShiftDTO> GetWorkShiftsByEmployeeID(int maNV)
         {
-            string query = "EXEC USP_CalculateSalary @MaNV ";
-            DataProvider.Instance.ExecuteNonQuery(query, new object[] { idEmployee });
+            List<WorkShiftDTO> list = new List<WorkShiftDTO>();
+            string query = "SELECT p.MaPhien, p.MaCa, p.MaNV, c.TenCa, p.NgayLam, p.GioCheckin, p.GioCheckout, p.SoGioThucTe, p.MucLuongCoBan, p.TongLuong, p.Thuong FROM PhienLamViec p INNER JOIN NhanVien nv ON p.MaNV = nv.MaNV INNER JOIN CaLamViec c ON p.MaCa = c.MaCa WHERE p.MaNV = @MaNV ORDER BY p.NgayLam DESC";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { maNV });
+            foreach (DataRow item in data.Rows)
+            {
+                WorkShiftDTO workshift = new WorkShiftDTO(item);
+                list.Add(workshift);
+            }
+            return list;
         }
 
-        public static DataTable LoadListWorkShift(int maNV)
+
+
+        public static List<WorkShiftDTO> GetWorkShiftByDateRange(DateTime fromDate, DateTime toDate)
         {
-            string query = "EXEC USP_GetWorkShiftList @MaNV";
-            return DataProvider.Instance.ExecuteQuery(query, new object[] { maNV, null });
+            List<WorkShiftDTO> listPhienLamViec = new List<WorkShiftDTO>();
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@NgayBatDau", fromDate),
+                new SqlParameter("@NgayKetThuc", toDate)
+            };
+
+            DataTable data = DataProvider.Instance.ExecuteStoredProcedureWithReturn("sp_TimKiemPhienLamViec", parameters);
+
+            foreach (DataRow row in data.Rows)
+            {
+                WorkShiftDTO phienLamViec = new WorkShiftDTO(row);
+                listPhienLamViec.Add(phienLamViec);
+            }
+
+            return listPhienLamViec;
         }
+
+        public static bool InsertWorkShift(WorkShiftDTO phienLamViec)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaNV", phienLamViec.IdEmployee),
+                new SqlParameter("@MaCa", phienLamViec.IdWork),
+                new SqlParameter("@NgayLam", phienLamViec.DateWork),
+                new SqlParameter("@GioCheckin", phienLamViec.CheckinHour),
+                new SqlParameter("@GioCheckout", phienLamViec.CheckoutHour),
+                new SqlParameter("@SoGioThucTe", (object)phienLamViec.NumberHour ?? DBNull.Value),
+                new SqlParameter("@MucLuongCoBan", phienLamViec.Salary),
+                new SqlParameter("@Thuong", (object)phienLamViec.Bonus ?? DBNull.Value)
+            };
+
+            int result = DataProvider.Instance.ExecuteStoredProcedure("sp_ThemPhienLamViec", parameters);
+            return result > 0;
+        }
+
+        public static bool UpdateWorkShift(WorkShiftDTO phienLamViec)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaPhien", phienLamViec.IdWorkShift),
+                new SqlParameter("@MaNV", phienLamViec.IdEmployee),
+                new SqlParameter("@MaCa", phienLamViec.IdWork),
+                new SqlParameter("@NgayLam", phienLamViec.DateWork),
+                new SqlParameter("@GioCheckin", phienLamViec.CheckinHour),
+                new SqlParameter("@GioCheckout", phienLamViec.CheckoutHour),
+                new SqlParameter("@SoGioThucTe", (object)phienLamViec.NumberHour ?? DBNull.Value),
+                new SqlParameter("@MucLuongCoBan", phienLamViec.Salary),
+                new SqlParameter("@Thuong", (object)phienLamViec.Bonus ?? DBNull.Value)
+            };
+
+            int result = DataProvider.Instance.ExecuteStoredProcedure("sp_CapNhatPhienLamViec", parameters);
+            return result > 0;
+        }
+
+        public static bool DeleteWorkShift(int maPhien)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaPhien", maPhien)
+            };
+
+            int result = DataProvider.Instance.ExecuteStoredProcedure("sp_XoaPhienLamViec", parameters);
+            return result > 0;
+        }
+
+        public static float GetTongLuongAll()
+        {
+            string query = @"SELECT SUM(TongLuong) FROM PhienLamViec";
+            object result = DataProvider.Instance.ExecuteScalar(query, null);
+
+            if (result != DBNull.Value && result != null)
+                return Convert.ToSingle(result);
+
+            return 0;
+        }
+
+
+        public static float GetTongLuongByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            string query = @"SELECT SUM(TongLuong) FROM PhienLamViec 
+                             WHERE NgayLam BETWEEN @FromDate AND @ToDate";
+
+            object result = DataProvider.Instance.ExecuteScalar(query, new object[] { fromDate, toDate });
+
+            if (result != DBNull.Value && result != null)
+                return Convert.ToSingle(result);
+
+            return 0;
+        }
+
+        public static List<WorkShiftDTO> GetWorkShiftsByEmployeeIDAndDateRange(int maNV, DateTime fromDate, DateTime toDate)
+        {
+            List<WorkShiftDTO> list = new List<WorkShiftDTO>();
+            string query = @"SELECT p.MaPhien, p.MaCa, p.MaNV, c.TenCa, p.NgayLam, p.GioCheckin, p.GioCheckout, 
+                     p.SoGioThucTe, p.MucLuongCoBan, p.TongLuong, p.Thuong 
+                     FROM PhienLamViec p 
+                     INNER JOIN NhanVien nv ON p.MaNV = nv.MaNV 
+                     INNER JOIN CaLamViec c ON p.MaCa = c.MaCa 
+                     WHERE p.MaNV = @MaNV AND p.NgayLam BETWEEN @FromDate AND @ToDate 
+                     ORDER BY p.NgayLam DESC";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { maNV, fromDate, toDate });
+            foreach (DataRow item in data.Rows)
+            {
+                WorkShiftDTO workshift = new WorkShiftDTO(item);
+                list.Add(workshift);
+            }
+            return list;
+        }
+
+        public static float GetTongLuongByEmployeeIDAndDateRange(int maNV, DateTime fromDate, DateTime toDate)
+        {
+            string query = @"SELECT SUM(TongLuong) FROM PhienLamViec 
+                     WHERE MaNV = @MaNV AND NgayLam BETWEEN @FromDate AND @ToDate";
+            object result = DataProvider.Instance.ExecuteScalar(query, new object[] { maNV, fromDate, toDate });
+
+            if (result != DBNull.Value && result != null)
+                return Convert.ToSingle(result);
+
+            return 0;
+        }
+
 
     }
 }

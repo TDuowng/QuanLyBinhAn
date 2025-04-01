@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,42 +9,67 @@ namespace DTO
 {
     public class WorkShiftDTO
     {
-        private int idWorkshift;
+        private int idWorkShift;
         private int idEmployee;
+        private string nameEmployee;
         private int idWork;
+        private string nameWork;
         private DateTime dateWork;
-        private DateTime? dateIn;
-        private DateTime? dateOut;
-        private double? numberHour;
-        private double? salary;
-        private double? aWard;
-        private double? total;
+        private DateTime checkinHour;
+        private DateTime checkoutHour;
+        private float? numberHour;
+        private float salary;
+        private float? bonus;
+        private float total;
+
+        public WorkShiftDTO(int idWorkShift, int idEmployee, string nameEmployee, int idWork, string nameWork, DateTime dateWork, DateTime checkinHour, DateTime checkoutHour, float? numberHour, float salary, float? bonus, float total)
+        {
+            this.idWorkShift = idWorkShift;
+            this.idEmployee = idEmployee;
+            this.nameEmployee = nameEmployee;
+            this.idWork = idWork;
+            this.nameWork = nameWork;
+            this.dateWork = dateWork;
+            this.checkinHour = checkinHour;
+            this.checkoutHour = checkoutHour;
+            this.numberHour = numberHour;
+            this.salary = salary;
+            this.bonus = bonus;
+            this.total = total;
+        }
 
         public WorkShiftDTO() { }
 
-        public WorkShiftDTO(int idWorkshift, int idEmployee, int idWork, DateTime dateWork, DateTime? dateIn, DateTime? dateOut, double? numberHour, double? salary, double? aWard, double? total)
+        public WorkShiftDTO(DataRow row)
         {
-            this.IdWorkshift = idWorkshift;
-            this.IdEmployee = idEmployee;
-            this.IdWork = idWork;
-            this.DateWork = dateWork;
-            this.DateIn = dateIn;
-            this.DateOut = dateOut;
-            this.NumberHour = numberHour;
-            this.Salary = salary;
-            this.AWard = aWard;
-            this.Total = total;
+            IdWorkShift = (int)row["MaPhien"];
+            IdEmployee = (int)row["MaNV"];
+            IdWork = (int)row["MaCa"];
+            NameEmployee = row.Table.Columns.Contains("TenNV") ? row["TenNV"].ToString() : string.Empty; // Kiểm tra cột TenNV
+            NameWork = row["TenCa"].ToString();
+            DateWork = Convert.ToDateTime(row["NgayLam"]);
+            CheckinHour = (DateTime)(row["GioCheckin"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(row["GioCheckin"]) : null);
+            CheckoutHour = (DateTime)(row["GioCheckout"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(row["GioCheckout"]) : null);
+            NumberHour = row["SoGioThucTe"] != DBNull.Value ? (float?)Convert.ToSingle(row["SoGioThucTe"]) : null;
+            Salary = Convert.ToSingle(row["MucLuongCoBan"]);
+            Bonus = row["Thuong"] != DBNull.Value ? (float?)Convert.ToSingle(row["Thuong"]) : null;
+            Total = row.Table.Columns.Contains("TongLuong") && row["TongLuong"] != DBNull.Value ? Convert.ToSingle(row["TongLuong"]) : 0; // Gán 0 nếu null
+
         }
 
-        public int IdWorkshift { get => idWorkshift; set => idWorkshift = value; }
+        public int IdWorkShift { get => idWorkShift; set => idWorkShift = value; }
         public int IdEmployee { get => idEmployee; set => idEmployee = value; }
         public int IdWork { get => idWork; set => idWork = value; }
+        public string NameEmployee { get => nameEmployee; set => nameEmployee = value; }
+        public string NameWork { get => nameWork; set => nameWork = value; }
         public DateTime DateWork { get => dateWork; set => dateWork = value; }
-        public DateTime? DateIn { get => dateIn; set => dateIn = value; }
-        public DateTime? DateOut { get => dateOut; set => dateOut = value; }
-        public double? NumberHour { get => numberHour; set => numberHour = value; }
-        public double? Salary { get => salary; set => salary = value; }
-        public double? AWard { get => aWard; set => aWard = value; }
-        public double? Total { get => total; set => total = value; }
+        public DateTime CheckinHour { get => checkinHour; set => checkinHour = value; }
+        public DateTime CheckoutHour { get => checkoutHour; set => checkoutHour = value; }
+        public float? NumberHour { get => numberHour; set => numberHour = value; }
+        public float Salary { get => salary; set => salary = value; }
+        public float? Bonus { get => bonus; set => bonus = value; }
+        public float Total { get => total; set => total = value; }
+        
     }
 }
+

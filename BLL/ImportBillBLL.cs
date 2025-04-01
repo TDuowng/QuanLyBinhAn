@@ -11,15 +11,6 @@ namespace BLL
 {
     public class ImportBillBLL
     {
-        public static List<ImportBillDTO> GetListHoaDonNhap()
-        {
-            // Replace this with the actual data retrieval logic
-            return ImportBillDAO.GetListHoaDonNhap();
-        }
-
-        public static int InsertImportBill(string tenNCC, DateTime ngayNhap)
-        {
-            return ImportBillDAO.InsertImportBill(tenNCC, ngayNhap);
-        }
+        
     }
 }

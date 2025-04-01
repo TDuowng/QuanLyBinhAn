@@ -10,9 +10,6 @@ namespace BLL
 {
     public class ImportBillDetailBLL
     {
-        public static bool InsertImportBillDetail(int maHDN, string tenNL, int soLuong, int donGia, string donViTinh)
-        {
-            return ImportBillDetailDAO.InsertImportBillDetail(maHDN, tenNL, soLuong, donGia, donViTinh);
-        }
+        
     }
 }

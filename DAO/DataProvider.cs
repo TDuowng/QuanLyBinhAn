@@ -20,6 +20,11 @@ namespace DAO
 
         private DataProvider() { }
 
+        public SqlConnection GetConnection()
+        {
+            return new SqlConnection(con);
+        }
+
         private string con = @"Data Source=LAPTOP-J2TR54TC;Initial Catalog=Quan_Ly_Binh_An;Integrated Security=True"; // chuỗi kết nối 
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
@@ -110,6 +115,55 @@ namespace DAO
             return data;
 
 
+        }
+
+        public int ExecuteStoredProcedure(string spName, SqlParameter[] parameters)
+        {
+            int result = 0;
+
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(spName, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                if (parameters != null)
+                {
+                    command.Parameters.AddRange(parameters);
+                }
+
+                result = command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+
+            return result;
+        }
+
+        public DataTable ExecuteStoredProcedureWithReturn(string spName, SqlParameter[] parameters)
+        {
+            DataTable data = new DataTable();
+
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(spName, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                if (parameters != null)
+                {
+                    command.Parameters.AddRange(parameters);
+                }
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(data);
+
+                connection.Close();
+            }
+
+            return data;
         }
     }
 }

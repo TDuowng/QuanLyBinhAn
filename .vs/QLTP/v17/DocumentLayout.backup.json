@@ -3,46 +3,6 @@
   "WorkspaceRootPath": "D:\\QLTP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|d:\\qltp\\dao\\importbilldao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\importbilldao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBD2F132-1265-400A-A464-61C3FA7C9FBA}|BLL\\BLL.csproj|d:\\qltp\\bll\\importbillbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBD2F132-1265-400A-A464-61C3FA7C9FBA}|BLL\\BLL.csproj|solutionrelative:bll\\importbillbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBD2F132-1265-400A-A464-61C3FA7C9FBA}|BLL\\BLL.csproj|d:\\qltp\\bll\\importbilldetailbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBD2F132-1265-400A-A464-61C3FA7C9FBA}|BLL\\BLL.csproj|solutionrelative:bll\\importbilldetailbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|d:\\qltp\\dto\\importbilldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|solutionrelative:dto\\importbilldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmimportmaterial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmimportmaterial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|d:\\qltp\\dao\\importbilldetaildao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\importbilldetaildao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmimportmaterial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmimportmaterial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|d:\\qltp\\dto\\importbilldetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|solutionrelative:dto\\importbilldetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|d:\\qltp\\dao\\ingredientsdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\ingredientsdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBD2F132-1265-400A-A464-61C3FA7C9FBA}|BLL\\BLL.csproj|d:\\qltp\\bll\\ingredientsbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBD2F132-1265-400A-A464-61C3FA7C9FBA}|BLL\\BLL.csproj|solutionrelative:bll\\ingredientsbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|d:\\qltp\\gui\\frmcountsalary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmcountsalary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -51,28 +11,20 @@
       "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmcountsalary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|d:\\qltp\\gui\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BBD2F132-1265-400A-A464-61C3FA7C9FBA}|BLL\\BLL.csproj|d:\\qltp\\bll\\workshiftbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBD2F132-1265-400A-A464-61C3FA7C9FBA}|BLL\\BLL.csproj|solutionrelative:bll\\workshiftbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmingredients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmingredients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|d:\\qltp\\dao\\workshiftdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\workshiftdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|D:\\QLTP\\dto\\ingredientsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|solutionrelative:dto\\ingredientsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|d:\\qltp\\dto\\workshiftdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|solutionrelative:dto\\workshiftdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmingredients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmingredients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|D:\\QLTP\\dto\\providedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|solutionrelative:dto\\providedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|d:\\qltp\\gui\\frmwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -82,20 +34,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "frmImportMaterial.cs [Design]",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmImportMaterial.cs",
-              "RelativeDocumentMoniker": "GUI\\frmImportMaterial.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmImportMaterial.cs [Design]",
-              "RelativeToolTip": "GUI\\frmImportMaterial.cs [Design]",
+              "DocumentIndex": 1,
+              "Title": "frmCountSalary.cs [Design]",
+              "DocumentMoniker": "D:\\QLTP\\GUI\\frmCountSalary.cs",
+              "RelativeDocumentMoniker": "GUI\\frmCountSalary.cs",
+              "ToolTip": "D:\\QLTP\\GUI\\frmCountSalary.cs [Design]",
+              "RelativeToolTip": "GUI\\frmCountSalary.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T00:50:41.913Z",
+              "WhenOpened": "2025-03-31T18:04:23.847Z",
               "IsPinned": true,
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmCountSalary.cs",
+              "DocumentMoniker": "D:\\QLTP\\GUI\\frmCountSalary.cs",
+              "RelativeDocumentMoniker": "GUI\\frmCountSalary.cs",
+              "ToolTip": "D:\\QLTP\\GUI\\frmCountSalary.cs",
+              "RelativeToolTip": "GUI\\frmCountSalary.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAzwHgAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T18:51:00.257Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -107,221 +73,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ImportBillDAO.cs",
-              "DocumentMoniker": "D:\\QLTP\\DAO\\ImportBillDAO.cs",
-              "RelativeDocumentMoniker": "DAO\\ImportBillDAO.cs",
-              "ToolTip": "D:\\QLTP\\DAO\\ImportBillDAO.cs*",
-              "RelativeToolTip": "DAO\\ImportBillDAO.cs*",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAxwBYAAABcAQAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T07:03:08.809Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ImportBillDTO.cs",
-              "DocumentMoniker": "D:\\QLTP\\DTO\\ImportBillDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\ImportBillDTO.cs",
-              "ToolTip": "D:\\QLTP\\DTO\\ImportBillDTO.cs",
-              "RelativeToolTip": "DTO\\ImportBillDTO.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAjwBEAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T12:22:49.255Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ImportBillDetailBLL.cs",
-              "DocumentMoniker": "D:\\QLTP\\BLL\\ImportBillDetailBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\ImportBillDetailBLL.cs",
-              "ToolTip": "D:\\QLTP\\BLL\\ImportBillDetailBLL.cs",
-              "RelativeToolTip": "BLL\\ImportBillDetailBLL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
+              "Title": "WorkShiftBLL.cs",
+              "DocumentMoniker": "D:\\QLTP\\BLL\\WorkShiftBLL.cs",
+              "RelativeDocumentMoniker": "BLL\\WorkShiftBLL.cs",
+              "ToolTip": "D:\\QLTP\\BLL\\WorkShiftBLL.cs",
+              "RelativeToolTip": "BLL\\WorkShiftBLL.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAAwD0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T12:34:48.981Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ImportBillBLL.cs",
-              "DocumentMoniker": "D:\\QLTP\\BLL\\ImportBillBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\ImportBillBLL.cs",
-              "ToolTip": "D:\\QLTP\\BLL\\ImportBillBLL.cs",
-              "RelativeToolTip": "BLL\\ImportBillBLL.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T07:40:29.258Z",
+              "WhenOpened": "2025-04-01T10:08:06.468Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "frmImportMaterial.cs",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmImportMaterial.cs",
-              "RelativeDocumentMoniker": "GUI\\frmImportMaterial.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmImportMaterial.cs",
-              "RelativeToolTip": "GUI\\frmImportMaterial.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAIA6wC4AAAAVAAAAAAAAAA==",
+              "Title": "WorkShiftDTO.cs",
+              "DocumentMoniker": "D:\\QLTP\\DTO\\WorkShiftDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\WorkShiftDTO.cs",
+              "ToolTip": "D:\\QLTP\\DTO\\WorkShiftDTO.cs",
+              "RelativeToolTip": "DTO\\WorkShiftDTO.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAQwC8AAAB+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T00:50:45.765Z",
+              "WhenOpened": "2025-04-01T09:39:47.045Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ImportBillDetailDAO.cs",
-              "DocumentMoniker": "D:\\QLTP\\DAO\\ImportBillDetailDAO.cs",
-              "RelativeDocumentMoniker": "DAO\\ImportBillDetailDAO.cs",
-              "ToolTip": "D:\\QLTP\\DAO\\ImportBillDetailDAO.cs",
-              "RelativeToolTip": "DAO\\ImportBillDetailDAO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Title": "frmWork.cs",
+              "DocumentMoniker": "D:\\QLTP\\GUI\\frmWork.cs",
+              "RelativeDocumentMoniker": "GUI\\frmWork.cs",
+              "ToolTip": "D:\\QLTP\\GUI\\frmWork.cs",
+              "RelativeToolTip": "GUI\\frmWork.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwCEAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T12:32:12.509Z",
+              "WhenOpened": "2025-04-01T06:08:55.742Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ImportBillDetailDTO.cs",
-              "DocumentMoniker": "D:\\QLTP\\DTO\\ImportBillDetailDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\ImportBillDetailDTO.cs",
-              "ToolTip": "D:\\QLTP\\DTO\\ImportBillDetailDTO.cs",
-              "RelativeToolTip": "DTO\\ImportBillDetailDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "WorkShiftDAO.cs",
+              "DocumentMoniker": "D:\\QLTP\\DAO\\WorkShiftDAO.cs",
+              "RelativeDocumentMoniker": "DAO\\WorkShiftDAO.cs",
+              "ToolTip": "D:\\QLTP\\DAO\\WorkShiftDAO.cs",
+              "RelativeToolTip": "DAO\\WorkShiftDAO.cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAcwKUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T12:25:39.141Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IngredientsDAO.cs",
-              "DocumentMoniker": "D:\\QLTP\\DAO\\IngredientsDAO.cs",
-              "RelativeDocumentMoniker": "DAO\\IngredientsDAO.cs",
-              "ToolTip": "D:\\QLTP\\DAO\\IngredientsDAO.cs",
-              "RelativeToolTip": "DAO\\IngredientsDAO.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAwwGQAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T11:53:28.57Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "frmCountSalary.cs",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmCountSalary.cs",
-              "RelativeDocumentMoniker": "GUI\\frmCountSalary.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmCountSalary.cs",
-              "RelativeToolTip": "GUI\\frmCountSalary.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAALEAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T11:48:56.631Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IngredientsBLL.cs",
-              "DocumentMoniker": "D:\\QLTP\\BLL\\IngredientsBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\IngredientsBLL.cs",
-              "ToolTip": "D:\\QLTP\\BLL\\IngredientsBLL.cs",
-              "RelativeToolTip": "BLL\\IngredientsBLL.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowDQAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T11:47:27.631Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "frmEmployee.cs",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmEmployee.cs",
-              "RelativeDocumentMoniker": "GUI\\frmEmployee.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmEmployee.cs",
-              "RelativeToolTip": "GUI\\frmEmployee.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T11:48:27.378Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "frmCountSalary.cs [Design]",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmCountSalary.cs",
-              "RelativeDocumentMoniker": "GUI\\frmCountSalary.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmCountSalary.cs [Design]",
-              "RelativeToolTip": "GUI\\frmCountSalary.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T11:48:50.628Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "IngredientsDTO.cs",
-              "DocumentMoniker": "D:\\QLTP\\DTO\\IngredientsDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\IngredientsDTO.cs",
-              "ToolTip": "D:\\QLTP\\DTO\\IngredientsDTO.cs",
-              "RelativeToolTip": "DTO\\IngredientsDTO.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T07:00:45.931Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "ProvideDTO.cs",
-              "DocumentMoniker": "D:\\QLTP\\DTO\\ProvideDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\ProvideDTO.cs",
-              "ToolTip": "D:\\QLTP\\DTO\\ProvideDTO.cs",
-              "RelativeToolTip": "DTO\\ProvideDTO.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T06:48:22.045Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "frmIngredients.cs",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmIngredients.cs",
-              "RelativeDocumentMoniker": "GUI\\frmIngredients.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmIngredients.cs",
-              "RelativeToolTip": "GUI\\frmIngredients.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAEwC4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T06:45:32.29Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "frmIngredients.cs [Design]",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmIngredients.cs",
-              "RelativeDocumentMoniker": "GUI\\frmIngredients.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmIngredients.cs [Design]",
-              "RelativeToolTip": "GUI\\frmIngredients.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T06:45:29.004Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\Program.cs",
-              "RelativeDocumentMoniker": "GUI\\Program.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\Program.cs",
-              "RelativeToolTip": "GUI\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T06:27:12.765Z",
+              "WhenOpened": "2025-03-31T18:26:18.619Z",
               "EditorCaption": ""
             }
           ]
