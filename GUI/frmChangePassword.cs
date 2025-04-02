@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class frmAccumulatePoints : Form
+    public partial class frmChangePassword : Form
     {
-        public frmAccumulatePoints()
+        public frmChangePassword()
         {
             InitializeComponent();
         }

@@ -100,6 +100,12 @@ namespace GUI
                     MessageBox.Show("Số điện thoại đã tồn tại", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                     return;
                 }
+                if(ptbImageEmployee.Image == null)
+                {
+                    MessageBox.Show("Vui lòng chọn ảnh nhân viên", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    return;
+                } 
+                    
                 string typeEmployee = radFullTime.Checked ? "Full-time" : "Part-time";
                 EmployeeDTO newEmployee = new EmployeeDTO
                 {

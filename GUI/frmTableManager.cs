@@ -13,18 +13,26 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class frmTableManager : Form
+    public partial class frmTableManager : Form, IDropTarget, ISynchronizeInvoke, IWin32Window, IBindableComponent, IComponent, IDisposable, IContainerControl
     {
+        private string currentUserName;
+        private int userType; // 0 = Admin, 1 = User
+        private List<int> userPermissions;
         public BindingList<FoodDTO> FoodList { get; set; }
 
         public BindingList<TableDTO> TableList { get; set; }
-        public frmTableManager()
+        public frmTableManager(string userName, int type, List<int> permissions)
         {
             InitializeComponent();
             customizeDesign();
             LoadTableList();
             frmFood.FoodListUpdated += LoadFoodList;
             frmTable.TableListUpdated += LoadTableList;
+
+            this.currentUserName = userName;
+            this.userType = type;
+            this.userPermissions = permissions;
+            ApplyPermissions();
         }
         #region Methods
         private void LoadFoodList()
@@ -32,6 +40,13 @@ namespace GUI
             FoodList = FoodBLL.GetFoodList();
             LoadFoodIntoFlowPanel();
         }
+
+        private void ApplyPermissions()
+        {
+            // Giả sử nút vào frmAdmin là btnAdmin
+            btnAdmin.Visible = (userType == 0 || userPermissions.Count > 0); // Admin hoặc User có quyền mới thấy nút
+        }
+
         private void LoadFoodByCategory(int categoryId)
         {
             FoodList = new BindingList<FoodDTO>(FoodBLL.GetListFoodByCategoryID(categoryId));
@@ -184,19 +199,26 @@ namespace GUI
         {
             LoadTableList();
         }
-
-        private void btnManager_Click(object sender, EventArgs e)
-        {
-            Form form = new frmAdmin();
-            form.Show();
-
-
-        }
-        #endregion
-
         private void frmTableManager_Load(object sender, EventArgs e)
         {
             LoadCategoryButtons();
         }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            if (userType == 0 || userPermissions.Count > 0) // Admin hoặc có ít nhất 1 quyền
+            {
+                frmAdmin adminForm = new frmAdmin(currentUserName, userType, userPermissions);
+                adminForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào quản lý!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        #endregion
+
+
     }
 }

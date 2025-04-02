@@ -35,7 +35,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelSideBar = new System.Windows.Forms.Panel();
-            this.btnManager = new System.Windows.Forms.Button();
+            this.btnAdmin = new System.Windows.Forms.Button();
             this.flowTable = new System.Windows.Forms.FlowLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -109,7 +109,7 @@
             // 
             // panelSideBar
             // 
-            this.panelSideBar.Controls.Add(this.btnManager);
+            this.panelSideBar.Controls.Add(this.btnAdmin);
             this.panelSideBar.Controls.Add(this.flowTable);
             this.panelSideBar.Controls.Add(this.btnTable);
             this.panelSideBar.Controls.Add(this.flowCategory);
@@ -120,27 +120,27 @@
             this.panelSideBar.Size = new System.Drawing.Size(265, 968);
             this.panelSideBar.TabIndex = 3;
             // 
-            // btnManager
+            // btnAdmin
             // 
-            this.btnManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.btnManager.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnManager.FlatAppearance.BorderSize = 0;
-            this.btnManager.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManager.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManager.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnManager.Image = ((System.Drawing.Image)(resources.GetObject("btnManager.Image")));
-            this.btnManager.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManager.Location = new System.Drawing.Point(0, 910);
-            this.btnManager.Name = "btnManager";
-            this.btnManager.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnManager.Size = new System.Drawing.Size(265, 60);
-            this.btnManager.TabIndex = 7;
-            this.btnManager.Text = "   QUẢN LÝ";
-            this.btnManager.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManager.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnManager.UseVisualStyleBackColor = false;
-            this.btnManager.Click += new System.EventHandler(this.btnManager_Click);
+            this.btnAdmin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnAdmin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAdmin.FlatAppearance.BorderSize = 0;
+            this.btnAdmin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdmin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdmin.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAdmin.Image = ((System.Drawing.Image)(resources.GetObject("btnAdmin.Image")));
+            this.btnAdmin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdmin.Location = new System.Drawing.Point(0, 910);
+            this.btnAdmin.Name = "btnAdmin";
+            this.btnAdmin.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnAdmin.Size = new System.Drawing.Size(265, 60);
+            this.btnAdmin.TabIndex = 7;
+            this.btnAdmin.Text = "   QUẢN LÝ";
+            this.btnAdmin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdmin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAdmin.UseVisualStyleBackColor = false;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // flowTable
             // 
@@ -822,7 +822,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Food;
         private System.Windows.Forms.DataGridViewTextBoxColumn Count;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.Button btnManager;
+        private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button5;

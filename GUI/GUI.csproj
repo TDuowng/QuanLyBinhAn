@@ -56,17 +56,17 @@
     <Compile Include="frmAccount.Designer.cs">
       <DependentUpon>frmAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAccumulatePoints.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmAccumulatePoints.Designer.cs">
-      <DependentUpon>frmAccumulatePoints.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAdmin.Designer.cs">
       <DependentUpon>frmAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCook.cs">
       <SubType>Form</SubType>
@@ -80,12 +80,6 @@
     <Compile Include="frmCountSalary.Designer.cs">
       <DependentUpon>frmCountSalary.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCustomer.Designer.cs">
-      <DependentUpon>frmCustomer.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,11 +92,23 @@
     <Compile Include="frmFood.Designer.cs">
       <DependentUpon>frmFood.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmForgotPassword.Designer.cs">
+      <DependentUpon>frmForgotPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmIngredients.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmIngredients.Designer.cs">
       <DependentUpon>frmIngredients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="frmProvide.cs">
       <SubType>Form</SubType>
@@ -157,11 +163,11 @@
     <EmbeddedResource Include="frmAccount.resx">
       <DependentUpon>frmAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAccumulatePoints.resx">
-      <DependentUpon>frmAccumulatePoints.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCook.resx">
       <DependentUpon>frmCook.cs</DependentUpon>
@@ -169,20 +175,23 @@
     <EmbeddedResource Include="frmCountSalary.resx">
       <DependentUpon>frmCountSalary.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCustomer.resx">
-      <DependentUpon>frmCustomer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmEmployee.resx">
       <DependentUpon>frmEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFood.resx">
       <DependentUpon>frmFood.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmForgotPassword.resx">
+      <DependentUpon>frmForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmImportMaterial.resx">
       <DependentUpon>frmImportMaterial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIngredients.resx">
       <DependentUpon>frmIngredients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProvide.resx">
       <DependentUpon>frmProvide.cs</DependentUpon>

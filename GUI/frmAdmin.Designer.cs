@@ -49,10 +49,6 @@
             this.btnListEmployee = new System.Windows.Forms.Button();
             this.btnSalary = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
-            this.panelCustomer = new System.Windows.Forms.Panel();
-            this.btnAccumulatePoints = new System.Windows.Forms.Button();
-            this.btnListCustomer = new System.Windows.Forms.Button();
-            this.btnCustomer = new System.Windows.Forms.Button();
             this.panelCategory = new System.Windows.Forms.Panel();
             this.btnCook = new System.Windows.Forms.Button();
             this.btnFood = new System.Windows.Forms.Button();
@@ -68,7 +64,6 @@
             this.panelReport.SuspendLayout();
             this.panelMaterial.SuspendLayout();
             this.panelEmployee.SuspendLayout();
-            this.panelCustomer.SuspendLayout();
             this.panelCategory.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,8 +130,6 @@
             this.panelSideBar.Controls.Add(this.btnMaterial);
             this.panelSideBar.Controls.Add(this.panelEmployee);
             this.panelSideBar.Controls.Add(this.btnEmployee);
-            this.panelSideBar.Controls.Add(this.panelCustomer);
-            this.panelSideBar.Controls.Add(this.btnCustomer);
             this.panelSideBar.Controls.Add(this.panelCategory);
             this.panelSideBar.Controls.Add(this.btnLogOut);
             this.panelSideBar.Controls.Add(this.btnCategory);
@@ -154,7 +147,7 @@
             this.panelReport.Controls.Add(this.btnSell);
             this.panelReport.Controls.Add(this.btnDailyReport);
             this.panelReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelReport.Location = new System.Drawing.Point(0, 880);
+            this.panelReport.Location = new System.Drawing.Point(0, 715);
             this.panelReport.Name = "panelReport";
             this.panelReport.Size = new System.Drawing.Size(249, 150);
             this.panelReport.TabIndex = 16;
@@ -233,7 +226,7 @@
             this.btnReport.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnReport.Image = ((System.Drawing.Image)(resources.GetObject("btnReport.Image")));
             this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReport.Location = new System.Drawing.Point(0, 815);
+            this.btnReport.Location = new System.Drawing.Point(0, 650);
             this.btnReport.Name = "btnReport";
             this.btnReport.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnReport.Size = new System.Drawing.Size(249, 65);
@@ -251,7 +244,7 @@
             this.panelMaterial.Controls.Add(this.btnImportMaterial);
             this.panelMaterial.Controls.Add(this.btnProvide);
             this.panelMaterial.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMaterial.Location = new System.Drawing.Point(0, 665);
+            this.panelMaterial.Location = new System.Drawing.Point(0, 500);
             this.panelMaterial.Name = "panelMaterial";
             this.panelMaterial.Size = new System.Drawing.Size(249, 150);
             this.panelMaterial.TabIndex = 14;
@@ -332,7 +325,7 @@
             this.btnMaterial.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnMaterial.Image = ((System.Drawing.Image)(resources.GetObject("btnMaterial.Image")));
             this.btnMaterial.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMaterial.Location = new System.Drawing.Point(0, 600);
+            this.btnMaterial.Location = new System.Drawing.Point(0, 435);
             this.btnMaterial.Name = "btnMaterial";
             this.btnMaterial.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnMaterial.Size = new System.Drawing.Size(249, 65);
@@ -349,7 +342,7 @@
             this.panelEmployee.Controls.Add(this.btnListEmployee);
             this.panelEmployee.Controls.Add(this.btnSalary);
             this.panelEmployee.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEmployee.Location = new System.Drawing.Point(0, 500);
+            this.panelEmployee.Location = new System.Drawing.Point(0, 335);
             this.panelEmployee.Name = "panelEmployee";
             this.panelEmployee.Size = new System.Drawing.Size(249, 100);
             this.panelEmployee.TabIndex = 12;
@@ -408,7 +401,7 @@
             this.btnEmployee.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployee.Image")));
             this.btnEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEmployee.Location = new System.Drawing.Point(0, 435);
+            this.btnEmployee.Location = new System.Drawing.Point(0, 270);
             this.btnEmployee.Name = "btnEmployee";
             this.btnEmployee.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnEmployee.Size = new System.Drawing.Size(249, 65);
@@ -418,82 +411,6 @@
             this.btnEmployee.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEmployee.UseVisualStyleBackColor = false;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
-            // 
-            // panelCustomer
-            // 
-            this.panelCustomer.BackColor = System.Drawing.SystemColors.Control;
-            this.panelCustomer.Controls.Add(this.btnAccumulatePoints);
-            this.panelCustomer.Controls.Add(this.btnListCustomer);
-            this.panelCustomer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelCustomer.Location = new System.Drawing.Point(0, 335);
-            this.panelCustomer.Name = "panelCustomer";
-            this.panelCustomer.Size = new System.Drawing.Size(249, 100);
-            this.panelCustomer.TabIndex = 10;
-            // 
-            // btnAccumulatePoints
-            // 
-            this.btnAccumulatePoints.BackColor = System.Drawing.Color.White;
-            this.btnAccumulatePoints.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAccumulatePoints.FlatAppearance.BorderSize = 0;
-            this.btnAccumulatePoints.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnAccumulatePoints.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccumulatePoints.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccumulatePoints.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnAccumulatePoints.Image = global::GUI.Properties.Resources.playorange;
-            this.btnAccumulatePoints.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAccumulatePoints.Location = new System.Drawing.Point(0, 50);
-            this.btnAccumulatePoints.Name = "btnAccumulatePoints";
-            this.btnAccumulatePoints.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnAccumulatePoints.Size = new System.Drawing.Size(249, 50);
-            this.btnAccumulatePoints.TabIndex = 1;
-            this.btnAccumulatePoints.Text = "  Lịch sử tích điểm";
-            this.btnAccumulatePoints.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAccumulatePoints.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAccumulatePoints.UseVisualStyleBackColor = false;
-            this.btnAccumulatePoints.Click += new System.EventHandler(this.btnAccumulatePoints_Click);
-            // 
-            // btnListCustomer
-            // 
-            this.btnListCustomer.BackColor = System.Drawing.Color.White;
-            this.btnListCustomer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnListCustomer.FlatAppearance.BorderSize = 0;
-            this.btnListCustomer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnListCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnListCustomer.Image = global::GUI.Properties.Resources.playorange;
-            this.btnListCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListCustomer.Location = new System.Drawing.Point(0, 0);
-            this.btnListCustomer.Name = "btnListCustomer";
-            this.btnListCustomer.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnListCustomer.Size = new System.Drawing.Size(249, 50);
-            this.btnListCustomer.TabIndex = 0;
-            this.btnListCustomer.Text = "  Danh sách khách hàng";
-            this.btnListCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnListCustomer.UseVisualStyleBackColor = false;
-            this.btnListCustomer.Click += new System.EventHandler(this.btnListCustomer_Click);
-            // 
-            // btnCustomer
-            // 
-            this.btnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.btnCustomer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCustomer.FlatAppearance.BorderSize = 0;
-            this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCustomer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomer.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomer.Image")));
-            this.btnCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCustomer.Location = new System.Drawing.Point(0, 270);
-            this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnCustomer.Size = new System.Drawing.Size(249, 65);
-            this.btnCustomer.TabIndex = 9;
-            this.btnCustomer.Text = "   KHÁCH HÀNG";
-            this.btnCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCustomer.UseVisualStyleBackColor = false;
-            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // panelCategory
             // 
@@ -583,7 +500,7 @@
             this.btnLogOut.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLogOut.Image = ((System.Drawing.Image)(resources.GetObject("btnLogOut.Image")));
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(0, 1030);
+            this.btnLogOut.Location = new System.Drawing.Point(0, 865);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnLogOut.Size = new System.Drawing.Size(249, 65);
@@ -667,7 +584,6 @@
             this.panelReport.ResumeLayout(false);
             this.panelMaterial.ResumeLayout(false);
             this.panelEmployee.ResumeLayout(false);
-            this.panelCustomer.ResumeLayout(false);
             this.panelCategory.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -692,10 +608,6 @@
         private System.Windows.Forms.Button btnListEmployee;
         private System.Windows.Forms.Button btnSalary;
         private System.Windows.Forms.Button btnEmployee;
-        private System.Windows.Forms.Panel panelCustomer;
-        private System.Windows.Forms.Button btnAccumulatePoints;
-        private System.Windows.Forms.Button btnListCustomer;
-        private System.Windows.Forms.Button btnCustomer;
         private System.Windows.Forms.Panel panelCategory;
         private System.Windows.Forms.Button btnCook;
         private System.Windows.Forms.Button btnFood;
