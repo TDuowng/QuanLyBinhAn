@@ -10,7 +10,7 @@ namespace DTO
     public class ImportBillDTO
     {
         private int id;
-        private DateTime dateIn;
+        private DateTime? dateIn;
         private DateTime? dateOut;
         private int tableId;
         private string userName;
@@ -19,7 +19,7 @@ namespace DTO
         private string note;
         private float totalPrice;
 
-        public ImportBillDTO(int id, DateTime dateIn, DateTime? dateOut, int tableId, string userName, int status, int discount, string note, float totalPrice)
+        public ImportBillDTO(int id, DateTime? dateIn, DateTime? dateOut, int tableId, string userName, int status, int discount, string note, float totalPrice)
         {
             this.id = id;
             this.dateIn = dateIn;
@@ -37,18 +37,18 @@ namespace DTO
         public ImportBillDTO(DataRow row)
         {
             this.Id = (int)row["MaHDB"];
-            this.DateIn = (DateTime)row["NgayVao"];
+            this.DateIn = row["NgayVao"] != DBNull.Value ? (DateTime)row["NgayVao"] : DateTime.MinValue;
             this.DateOut = row["NgayRa"] != DBNull.Value ? (DateTime?)row["NgayRa"] : null;
             this.TableId = (int)row["MaBan"];
             this.UserName = row["UserName"].ToString();
             this.Status = (int)row["Trangthai"];
-            this.Discount = row["GiamGia"] != DBNull.Value ? (int)row["GiamGia"] : 0;
             this.Note = row["Ghichu"] != DBNull.Value ? row["Ghichu"].ToString() : null;
+            this.Discount = row["GiamGia"] != DBNull.Value ? (int)row["GiamGia"] : 0;
             this.TotalPrice = row["ThanhTien"] != DBNull.Value ? Convert.ToSingle(row["ThanhTien"]) : 0;
         }
 
         public int Id { get => id; set => id = value; }
-        public DateTime DateIn { get => dateIn; set => dateIn = value; }
+        public DateTime? DateIn { get => dateIn; set => dateIn = value; }
         public DateTime? DateOut { get => dateOut; set => dateOut = value; }
         public int TableId { get => tableId; set => tableId = value; }
         public string UserName { get => userName; set => userName = value; }

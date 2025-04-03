@@ -17,6 +17,11 @@ namespace BLL
             return TableDAO.LoadListTable();
         }
 
+
+        public static TableDTO GetTableById(int tableId)
+        {
+            return TableDAO.GetTableById(tableId); // Giả sử TableDAO có phương thức này
+        }
         public static bool InsertTable(TableDTO table)
         { 
             if(TableDAO.IsTableNameExists(table.TableName))

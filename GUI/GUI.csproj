@@ -257,6 +257,10 @@
       <Project>{BBD2F132-1265-400A-A464-61C3FA7C9FBA}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{6009DF07-8E12-44A6-A718-FD1966318C8F}</Project>
       <Name>DTO</Name>

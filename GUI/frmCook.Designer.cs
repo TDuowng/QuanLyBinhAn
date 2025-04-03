@@ -271,16 +271,16 @@
             this.flowFood.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowFood.Location = new System.Drawing.Point(35, 209);
             this.flowFood.Name = "flowFood";
-            this.flowFood.Size = new System.Drawing.Size(599, 669);
+            this.flowFood.Size = new System.Drawing.Size(888, 669);
             this.flowFood.TabIndex = 9;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.dtgvCook);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(634, 209);
+            this.panel4.Location = new System.Drawing.Point(923, 209);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1004, 669);
+            this.panel4.Size = new System.Drawing.Size(715, 669);
             this.panel4.TabIndex = 10;
             // 
             // dtgvCook
@@ -288,11 +288,11 @@
             this.dtgvCook.BackgroundColor = System.Drawing.Color.White;
             this.dtgvCook.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgvCook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvCook.Location = new System.Drawing.Point(6, 6);
+            this.dtgvCook.Location = new System.Drawing.Point(6, 3);
             this.dtgvCook.Name = "dtgvCook";
             this.dtgvCook.RowHeadersWidth = 51;
             this.dtgvCook.RowTemplate.Height = 24;
-            this.dtgvCook.Size = new System.Drawing.Size(986, 637);
+            this.dtgvCook.Size = new System.Drawing.Size(697, 635);
             this.dtgvCook.TabIndex = 0;
             // 
             // frmCook

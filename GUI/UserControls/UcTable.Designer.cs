@@ -46,11 +46,11 @@
             this.grbUcTable.Controls.Add(this.ptbFood);
             this.grbUcTable.Controls.Add(this.lblStatus);
             this.grbUcTable.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbUcTable.Location = new System.Drawing.Point(6, -5);
+            this.grbUcTable.Location = new System.Drawing.Point(6, -7);
             this.grbUcTable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grbUcTable.Name = "grbUcTable";
             this.grbUcTable.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grbUcTable.Size = new System.Drawing.Size(201, 121);
+            this.grbUcTable.Size = new System.Drawing.Size(204, 124);
             this.grbUcTable.TabIndex = 4;
             this.grbUcTable.TabStop = false;
             // 
@@ -74,7 +74,7 @@
             this.ptbFood.Location = new System.Drawing.Point(117, 31);
             this.ptbFood.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ptbFood.Name = "ptbFood";
-            this.ptbFood.Size = new System.Drawing.Size(78, 80);
+            this.ptbFood.Size = new System.Drawing.Size(81, 83);
             this.ptbFood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbFood.TabIndex = 2;
             this.ptbFood.TabStop = false;
@@ -86,7 +86,7 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.lblStatus.Location = new System.Drawing.Point(9, 73);
+            this.lblStatus.Location = new System.Drawing.Point(9, 76);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(102, 28);
             this.lblStatus.TabIndex = 1;
@@ -113,6 +113,7 @@
             this.Name = "UcTable";
             this.Size = new System.Drawing.Size(213, 123);
             this.Load += new System.EventHandler(this.UcTable_Load);
+            this.Click += new System.EventHandler(this.UcTable_Click);
             this.grbUcTable.ResumeLayout(false);
             this.grbUcTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbFood)).EndInit();

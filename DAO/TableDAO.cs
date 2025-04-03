@@ -24,7 +24,15 @@ namespace DAO
             return list;
                 
         }
-
+        public static TableDTO GetTableById(int tableId)
+        {
+            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM Ban WHERE MaBan = @MaBan", new object[] { tableId });
+            if (data.Rows.Count > 0)
+            {
+                return new TableDTO(data.Rows[0]);
+            }
+            return null;
+        }
         public static bool InsertTable(TableDTO table)
         {
             string query = "EXEC USP_InsertTable @TenBan , @status , @Tang ";
@@ -78,17 +86,20 @@ namespace DAO
         public static BindingList<TableDTO> GetTableListInToFlow()
         {
             BindingList<TableDTO> list = new BindingList<TableDTO>();
-            string query = "SELECT TenBan, status FROM Ban"; 
+            // Câu truy vấn hiện tại chỉ chọn TenBan và status, thiếu MaBan
+            string query = "SELECT MaBan, TenBan, status FROM Ban"; // Thêm MaBan vào đây
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             foreach (DataRow row in data.Rows)
             {
+                int id = Convert.ToInt32(row["MaBan"]); // Lấy MaBan từ kết quả truy vấn
                 string name = row["TenBan"].ToString();
                 string status = row["status"].ToString();
 
                 list.Add(new TableDTO
                 {
+                    IdTable = id, // Gán giá trị MaBan cho IdTable
                     TableName = name,
                     Status = status,
                 });

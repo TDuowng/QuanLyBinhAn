@@ -1,14 +1,17 @@
 ﻿using BLL;
+using DAO;
 using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 
 namespace GUI
@@ -16,154 +19,152 @@ namespace GUI
     public partial class frmTableManager : Form, IDropTarget, ISynchronizeInvoke, IWin32Window, IBindableComponent, IComponent, IDisposable, IContainerControl
     {
         private string currentUserName;
-        private int userType; // 0 = Admin, 1 = User
+        private int userType;
         private List<int> userPermissions;
-        public BindingList<FoodDTO> FoodList { get; set; }
-
+        private int selectedTableId = -1;
+        private UcTable selectedTableUc = null;
         public BindingList<TableDTO> TableList { get; set; }
+
+        private DataGridViewRow selectedFoodRow = null;
         public frmTableManager(string userName, int type, List<int> permissions)
         {
             InitializeComponent();
-            customizeDesign();
             LoadTableList();
-            frmFood.FoodListUpdated += LoadFoodList;
             frmTable.TableListUpdated += LoadTableList;
 
             this.currentUserName = userName;
             this.userType = type;
             this.userPermissions = permissions;
             ApplyPermissions();
+            LoadCategoryComboBox();
+            SetupSidebar();
+            LoadAllFoods();
+
+            dgvFood.SelectionChanged += DgvFood_SelectionChanged;
         }
-        #region Methods
-        private void LoadFoodList()
+
+        private void DgvFood_SelectionChanged(object sender, EventArgs e)
         {
-            FoodList = FoodBLL.GetFoodList();
-            LoadFoodIntoFlowPanel();
+            if (dgvFood.SelectedRows.Count > 0)
+            {
+                selectedFoodRow = dgvFood.SelectedRows[0];
+            }
+            else
+            {
+                selectedFoodRow = null;
+            }
+        }
+
+
+
+        #region Methods
+
+        private void SetupSidebar()
+        {
+            btnTable.Click += BtnTable_Click;
+        }
+
+        
+        private void BtnTable_Click(object sender, EventArgs e)
+        {
+            LoadTables();
+        }
+        private void LoadTables()
+        {
+            List<TableDTO> tableList = TableBLL.GetListTable();
+            flowTable.Controls.Clear();
+            foreach (TableDTO table in tableList)
+            {
+                UcTable uc = new UcTable();
+                uc.SetTableData(table.TableName, table.Status);
+                uc.Tag = table;
+
+                uc.OnSelect += UcTable_Click;
+                flowTable.Controls.Add(uc);
+            }
+        }
+        private void LoadAllFoods()
+        {
+            List<FoodDTO> foodList = FoodBLL.GetListFood();
+
+            dgvFood.DataSource = foodList.Select(f => new
+            {
+                f.ID,
+                f.Name,
+                f.Price
+            }).ToList();
+
+            // Đặt tên cột cho DataGridView
+            if (dgvFood.Columns.Contains("ID"))
+                dgvFood.Columns["ID"].HeaderText = "Mã món";
+            if (dgvFood.Columns.Contains("Name"))
+                dgvFood.Columns["Name"].HeaderText = "Tên món";
+            if (dgvFood.Columns.Contains("Price"))
+                dgvFood.Columns["Price"].HeaderText = "Đơn giá";
+                dgvFood.Columns["Price"].DefaultCellStyle.Format = "N0";
+            dgvFood.RowTemplate.Height = 40;
+
+            selectedFoodRow = null;
+            dgvFood.ClearSelection();
+        }
+
+
+
+        private void LoadCategoryComboBox()
+        {
+            cboCategory.Items.Clear();
+            List<CategoryDTO> categories = CategoryBLL.GetListCategory();
+
+            // Thêm một item "Tất cả" vào đầu danh sách
+            CategoryDTO allCategory = new CategoryDTO { ID = -1, Name = "Tất cả" };
+            categories.Insert(0, allCategory);
+
+            cboCategory.DataSource = categories;
+            cboCategory.DisplayMember = "Name";
+            cboCategory.ValueMember = "ID";
+            cboCategory.SelectedIndex = 0; // Chọn mục "Tất cả" mặc định
+            cboCategory.SelectedIndexChanged += CboCategory_SelectedIndexChanged;
+        }
+
+        private void CboCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCategory.SelectedIndex == -1) return;
+
+            int categoryId = (int)cboCategory.SelectedValue;
+
+            if (categoryId == -1) // Nếu chọn "Tất cả"
+            {
+                LoadAllFoods();
+            }
+            else // Nếu chọn một loại cụ thể
+            {
+                List<FoodDTO> foodList = FoodBLL.GetListFoodByCategoryID(categoryId);
+
+                dgvFood.DataSource = foodList.Select(f => new
+                {
+                    f.ID,
+                    f.Name,
+                    f.Price
+                }).ToList();
+
+                // Đặt tên cột cho DataGridView
+                if (dgvFood.Columns.Contains("ID"))
+                    dgvFood.Columns["ID"].HeaderText = "Mã món";
+                if (dgvFood.Columns.Contains("Name"))
+                    dgvFood.Columns["Name"].HeaderText = "Tên món";
+                if (dgvFood.Columns.Contains("Price"))
+                    dgvFood.Columns["Price"].HeaderText = "Đơn giá";
+                dgvFood.RowTemplate.Height = 40;
+
+                selectedFoodRow = null;
+                dgvFood.ClearSelection();
+            }
         }
 
         private void ApplyPermissions()
         {
-            // Giả sử nút vào frmAdmin là btnAdmin
+
             btnAdmin.Visible = (userType == 0 || userPermissions.Count > 0); // Admin hoặc User có quyền mới thấy nút
-        }
-
-        private void LoadFoodByCategory(int categoryId)
-        {
-            FoodList = new BindingList<FoodDTO>(FoodBLL.GetListFoodByCategoryID(categoryId));
-            LoadFoodIntoFlowPanel();
-        }
-        private void LoadFoodIntoFlowPanel()
-        {
-            flowFood.Controls.Clear();
-            foreach (var food in FoodList)
-            {
-                UcFood uc = new UcFood();
-                uc.SetFoodData(food.Name, food.Price, food.Image);
-                flowFood.Controls.Add(uc);
-            }
-        }
-
-
-        private void LoadCategoryButtons()
-        {
-            List<CategoryDTO> categories = CategoryBLL.GetListCategory(); // Lấy danh sách loại thực đơn từ database
-            flowCategory.Controls.Clear(); // Xóa các Button cũ
-
-            foreach (var category in categories)
-            {
-                Button btn = new Button();
-                btn.Text = category.Name; // Hiển thị tên loại thực đơn
-                btn.Tag = category.ID; // Gán ID danh mục vào Tag
-                btn.Width = 238;
-                btn.Height = 51;
-                btn.BackColor = Color.White;
-                btn.FlatStyle = FlatStyle.Flat; // Ẩn viền button
-                btn.FlatAppearance.BorderSize = 0; // Loại bỏ border
-                btn.Font = new Font("Segoe UI", 10, FontStyle.Regular);
-                btn.TextAlign = ContentAlignment.MiddleLeft; // Chữ căn trái
-                btn.Padding = new Padding(30, 0, 0, 0); // Khoảng cách giữa chữ và viền bên trái
-
-                // Gán sự kiện Click
-                btn.Click += BtnCategory_Click;
-
-                // Thêm hiệu ứng hover (di chuột vào button)
-                btn.MouseEnter += (s, e) => { btn.BackColor = Color.LightGray; };
-                btn.MouseLeave += (s, e) => { btn.BackColor = Color.White; };
-
-                flowCategory.Controls.Add(btn); // Thêm Button vào giao diện
-            }
-        }
-
-
-
-        private void BtnCategory_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-
-
-            if (btn != null)
-            {
-                int categoryId = (int)btn.Tag; // Lấy ID danh mục từ Tag
-                LoadFoodByCategory(categoryId); // Gọi hàm hiển thị món ăn
-            }
-        }
-
-        private void btnCategoryToggle_Click(object sender, EventArgs e)
-        {
-            showCategory(flowCategory);
-        }
-
-        private void customizeDesign()
-        {
-            flowCategory.Visible = false;
-            flowTable.Visible = false;
-
-        }
-        private void hideSubMenu()
-        {
-            if (flowCategory.Visible == true)
-                flowCategory.Visible = false;
-            if (flowTable.Visible == true)
-                flowTable.Visible = false;
-        }
-        public static Image ByteArrayToImage(byte[] imageData)
-        {
-            if (imageData == null || imageData.Length == 0)
-                throw new ArgumentException("Dữ liệu ảnh trống hoặc null!");
-
-            try
-            {
-                using (MemoryStream ms = new MemoryStream(imageData))
-                {
-                    return Image.FromStream(ms);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while converting byte array to image: " + ex.Message);
-                return null;
-            }
-        }
-
-        private void showCategory(Panel caTegory)
-        {
-            if (caTegory.Visible == false)
-            {
-                hideSubMenu();
-                caTegory.Visible = true;
-            }
-            else
-                caTegory.Visible = false;
-        }
-        private void showTable(Panel customer)
-        {
-            if (customer.Visible == false)
-            {
-                hideSubMenu();
-                customer.Visible = true;
-            }
-            else
-                customer.Visible = false;
         }
 
         private void LoadTableList()
@@ -174,26 +175,113 @@ namespace GUI
 
         private void LoadTableIntoFlowPanel()
         {
-            flowFood.Controls.Clear();
+            flowTable.Controls.Clear();
             foreach (var table in TableList)
             {
                 UcTable uc = new UcTable();
                 uc.SetTableData(table.TableName, table.Status);
-                uc.OnSelect += UcTable_OnSelect;
-                flowFood.Controls.Add(uc);
+                uc.Tag = table;
+                uc.OnSelect += UcTable_Click;
+                flowTable.Controls.Add(uc);
             }
         }
-        private void UcTable_OnSelect(object sender, EventArgs e)
+
+        private void UcTable_Click(object sender, EventArgs e)
         {
-            // Handle the event when a table is selected
+            UcTable uc = sender as UcTable;
+            if (uc != null)
+            {
+                if (uc.Tag is TableDTO table)  // Kiểm tra Tag có dữ liệu không
+                {
+                    if (selectedTableUc != null && selectedTableUc != uc)
+                    {
+                        selectedTableUc.SetSelected(false);
+                    }
+
+                    uc.SetSelected(true);
+                    selectedTableUc = uc;
+
+                    selectedTableId = table.IdTable;  // Gán đúng MaBan
+                    lsvBill.Tag = table;
+
+                    ShowBill(selectedTableId);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: UcTable không có TableDTO!");
+                }
+            }
         }
+
+        private void ShowBill(int tableId)
+        {
+            lsvBill.Items.Clear();
+            int billId = ImportBillBLL.GetUncheckBillIDByTableID(tableId);
+            float totalPrice = 0;
+
+            if (billId != -1)
+            {
+                List<ImportBillDetailDTO> billDetails = ImportBillDetailBLL.GetBillDetailsByBillId(billId);
+                foreach (ImportBillDetailDTO detail in billDetails)
+                {
+                    FoodDTO food = FoodBLL.GetListFood().FirstOrDefault(f => f.ID == detail.FoodId);
+                    if (food != null)
+                    {
+                        ListViewItem item = new ListViewItem(food.Name);
+                        item.SubItems.Add(detail.Quantity.ToString());
+                        item.SubItems.Add(food.Price.ToString("N0"));
+                        item.SubItems.Add((food.Price * detail.Quantity).ToString("N0"));
+                        totalPrice += food.Price * detail.Quantity;
+                        lsvBill.Items.Add(item);
+                    }
+                }
+            }
+
+            lblTotal.Text = totalPrice.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + " VNĐ";
+            UpdateFinalPrice();
+        }
+
+        private void UpdateFinalPrice()
+        {
+            string totalText = lblTotal.Text.Replace(" VNĐ", "").Trim();
+            float totalPrice = float.Parse(totalText.Replace(".", ""), CultureInfo.GetCultureInfo("vi-VN"));
+
+            int discount = (int)nmrDiscount.Value;
+
+            // Tính số tiền giảm giá
+            float discountAmount = totalPrice * discount / 100;
+
+            // Hiển thị số tiền giảm giá
+            lblDiscountAmount.Text = discountAmount.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + " VNĐ";
+
+            // Tính giá cuối cùng
+            float finalPrice = totalPrice - discountAmount;
+            lblFinalPrice.Text = finalPrice.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + " VNĐ";
+        }
+
+
+        private void UpdateTableStatus()
+        {
+            if (selectedTableUc != null)
+            {
+                TableDTO table = selectedTableUc.Tag as TableDTO;
+                string newStatus = ImportBillBLL.GetUncheckBillIDByTableID(selectedTableId) != -1 ? "Có người" : "Bàn trống";
+                table.Status = newStatus;
+                selectedTableUc.SetTableData(table.TableName, newStatus);
+                selectedTableUc.SetSelected(true);
+            }
+        }
+
         #endregion
 
-        #region Event
-        private void btnCategory_Click(object sender, EventArgs e)
+        private void LoadBillInfo(int tableId)
         {
-            showCategory(flowCategory);
+            
         }
+
+
+        #region Event
+
 
         private void btnTable_Click(object sender, EventArgs e)
         {
@@ -201,7 +289,7 @@ namespace GUI
         }
         private void frmTableManager_Load(object sender, EventArgs e)
         {
-            LoadCategoryButtons();
+            
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
@@ -217,8 +305,82 @@ namespace GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         #endregion
 
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+            if (selectedTableId == -1)
+            {
+                MessageBox.Show("Hãy chọn bàn để thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            int idBill = ImportBillBLL.GetUncheckBillIDByTableID(selectedTableId);
+            if (idBill != -1)
+            {
+                float totalPrice = ImportBillBLL.CalculateTotalPrice(idBill);
+                int discount = (int)nmrDiscount.Value;
+                float finalPrice = totalPrice - (totalPrice * discount / 100);
+
+                TableDTO table = selectedTableUc.Tag as TableDTO;
+                if (MessageBox.Show($"Bạn có chắc muốn thanh toán hóa đơn cho {table.TableName}?\nTổng tiền: {finalPrice:N0} VNĐ", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    ImportBillBLL.CheckOut(idBill, discount, finalPrice, "Thanh toán từ btnCheckout");
+                    ShowBill(selectedTableId);
+                    selectedTableUc.SetTableData(table.TableName, "Bàn trống");
+                    selectedTableUc.SetSelected(false);
+                    selectedTableId = -1;
+                    selectedTableUc = null;
+                    nmrDiscount.Value = 0;
+                }
+            }
+
+        }
+
+        private void btnAddFood_Click(object sender, EventArgs e)
+        {
+            if (selectedTableId == -1)
+            {
+                MessageBox.Show("Hãy chọn bàn trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (selectedFoodRow == null)
+            {
+                MessageBox.Show("Hãy chọn một món từ danh sách!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int quantity = (int)nmrQuantity.Value;
+            // Lấy món được chọn từ DataGridView
+            int foodId = (int)selectedFoodRow.Cells["ID"].Value;
+            FoodDTO food = FoodBLL.GetListFood().FirstOrDefault(f => f.ID == foodId);
+
+            if (food == null)
+            {
+                MessageBox.Show("Không tìm thấy món ăn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int idBill = ImportBillBLL.GetUncheckBillIDByTableID(selectedTableId);
+            if (idBill == -1)
+            {
+                ImportBillBLL.InsertBill(selectedTableId, currentUserName, "Thêm món từ DataGridView");
+                idBill = ImportBillBLL.GetUncheckBillIDByTableID(selectedTableId);
+            }
+
+            ImportBillDetailBLL.InsertOrUpdateBillDetail(idBill, food.ID, quantity);
+            ShowBill(selectedTableId);
+            UpdateTableStatus();
+            nmrQuantity.Value = 0;
+
+            selectedFoodRow = null;
+            dgvFood.ClearSelection();
+        }
+
+        private void nmrDiscount_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateFinalPrice();
+        }
     }
 }

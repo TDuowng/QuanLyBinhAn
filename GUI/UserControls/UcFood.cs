@@ -40,5 +40,19 @@ namespace GUI
             }
         }
 
+        private void UcFood_Click(object sender, EventArgs e)
+        {
+            OnSelect?.Invoke(this, e);
+        }
+
+        // Gán sự kiện Click cho các thành phần trong Load
+        private void UcFood_Load(object sender, EventArgs e)
+        {
+            this.Click += UcFood_Click;
+            lblName.Click += UcFood_Click;
+            lblPrice.Click += UcFood_Click;
+            pbImage.Click += UcFood_Click;
+        }
+
     }
 }

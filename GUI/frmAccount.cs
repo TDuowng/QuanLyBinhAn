@@ -14,7 +14,6 @@ namespace GUI
 {
     public partial class frmAccount : Form
     {
-        private bool isLoadingPermissions = false; // Biến để kiểm soát khi load quyền
         public frmAccount()
         {
             InitializeComponent();
