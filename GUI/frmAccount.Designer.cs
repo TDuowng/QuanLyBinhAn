@@ -28,22 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccount));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnInsert = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnUpdatePermission = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.groupBoxPermissions = new System.Windows.Forms.GroupBox();
+            this.chkNhanVien = new System.Windows.Forms.CheckBox();
+            this.chkKhachHang = new System.Windows.Forms.CheckBox();
+            this.chkDanhMuc = new System.Windows.Forms.CheckBox();
+            this.chkNguyenLieu = new System.Windows.Forms.CheckBox();
+            this.chkBaoCao = new System.Windows.Forms.CheckBox();
+            this.chkBanHang = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbEmployee = new System.Windows.Forms.ComboBox();
             this.cbTypeAccount = new System.Windows.Forms.ComboBox();
@@ -55,31 +67,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnInsert = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dtgvAccount = new System.Windows.Forms.DataGridView();
-            this.groupBoxPermissions = new System.Windows.Forms.GroupBox();
-            this.btnUpdatePermission = new System.Windows.Forms.Button();
-            this.btnChangePass = new System.Windows.Forms.Button();
-            this.chkDanhMuc = new System.Windows.Forms.CheckBox();
-            this.chkBaoCao = new System.Windows.Forms.CheckBox();
-            this.chkBanHang = new System.Windows.Forms.CheckBox();
-            this.chkNguyenLieu = new System.Windows.Forms.CheckBox();
-            this.chkKhachHang = new System.Windows.Forms.CheckBox();
-            this.chkNhanVien = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.groupBoxPermissions.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).BeginInit();
-            this.groupBoxPermissions.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -105,6 +104,26 @@
             this.panel2.Size = new System.Drawing.Size(1603, 101);
             this.panel2.TabIndex = 7;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(1178, 27);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnDelete.Size = new System.Drawing.Size(194, 56);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "     Xoá ";
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
@@ -118,32 +137,91 @@
             // txtSearch
             // 
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSearch.Location = new System.Drawing.Point(62, 17);
+            this.txtSearch.Location = new System.Drawing.Point(10, 17);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(697, 23);
+            this.txtSearch.Size = new System.Drawing.Size(690, 23);
             this.txtSearch.TabIndex = 9;
             // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.White;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(0, 0);
+            this.btnSearch.Location = new System.Drawing.Point(706, 0);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(56, 56);
             this.btnSearch.TabIndex = 8;
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdate.FlatAppearance.BorderSize = 0;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdate.Location = new System.Drawing.Point(978, 27);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnUpdate.Size = new System.Drawing.Size(194, 56);
+            this.btnUpdate.TabIndex = 5;
+            this.btnUpdate.Text = "     Sửa ";
+            this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRefresh.Location = new System.Drawing.Point(1378, 27);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnRefresh.Size = new System.Drawing.Size(194, 56);
+            this.btnRefresh.TabIndex = 7;
+            this.btnRefresh.Text = "    Làm mới";
+            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnInsert
+            // 
+            this.btnInsert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnInsert.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInsert.FlatAppearance.BorderSize = 0;
+            this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInsert.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInsert.ForeColor = System.Drawing.Color.White;
+            this.btnInsert.Image = ((System.Drawing.Image)(resources.GetObject("btnInsert.Image")));
+            this.btnInsert.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInsert.Location = new System.Drawing.Point(778, 27);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnInsert.Size = new System.Drawing.Size(194, 56);
+            this.btnInsert.TabIndex = 4;
+            this.btnInsert.Text = "    Thêm ";
+            this.btnInsert.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInsert.UseVisualStyleBackColor = false;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.Controls.Add(this.btnUpdatePermission);
-            this.panel3.Controls.Add(this.btnChangePass);
             this.panel3.Controls.Add(this.panel8);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
@@ -152,6 +230,27 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(505, 777);
             this.panel3.TabIndex = 8;
+            // 
+            // btnUpdatePermission
+            // 
+            this.btnUpdatePermission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnUpdatePermission.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdatePermission.FlatAppearance.BorderSize = 0;
+            this.btnUpdatePermission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdatePermission.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdatePermission.ForeColor = System.Drawing.Color.White;
+            this.btnUpdatePermission.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdatePermission.Image")));
+            this.btnUpdatePermission.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdatePermission.Location = new System.Drawing.Point(15, 689);
+            this.btnUpdatePermission.Name = "btnUpdatePermission";
+            this.btnUpdatePermission.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnUpdatePermission.Size = new System.Drawing.Size(478, 60);
+            this.btnUpdatePermission.TabIndex = 14;
+            this.btnUpdatePermission.Text = "                       CẬP NHẬT QUYỀN";
+            this.btnUpdatePermission.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUpdatePermission.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUpdatePermission.UseVisualStyleBackColor = false;
+            this.btnUpdatePermission.Click += new System.EventHandler(this.btnUpdatePermission_Click);
             // 
             // panel8
             // 
@@ -202,6 +301,80 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(478, 667);
             this.panel4.TabIndex = 10;
+            // 
+            // groupBoxPermissions
+            // 
+            this.groupBoxPermissions.Controls.Add(this.chkNhanVien);
+            this.groupBoxPermissions.Controls.Add(this.chkKhachHang);
+            this.groupBoxPermissions.Controls.Add(this.chkDanhMuc);
+            this.groupBoxPermissions.Controls.Add(this.chkNguyenLieu);
+            this.groupBoxPermissions.Controls.Add(this.chkBaoCao);
+            this.groupBoxPermissions.Controls.Add(this.chkBanHang);
+            this.groupBoxPermissions.Location = new System.Drawing.Point(6, 452);
+            this.groupBoxPermissions.Name = "groupBoxPermissions";
+            this.groupBoxPermissions.Size = new System.Drawing.Size(461, 206);
+            this.groupBoxPermissions.TabIndex = 1;
+            this.groupBoxPermissions.TabStop = false;
+            // 
+            // chkNhanVien
+            // 
+            this.chkNhanVien.AutoSize = true;
+            this.chkNhanVien.Location = new System.Drawing.Point(34, 144);
+            this.chkNhanVien.Name = "chkNhanVien";
+            this.chkNhanVien.Size = new System.Drawing.Size(171, 27);
+            this.chkNhanVien.TabIndex = 3;
+            this.chkNhanVien.Text = "Quản lý nhân viên";
+            this.chkNhanVien.UseVisualStyleBackColor = true;
+            // 
+            // chkKhachHang
+            // 
+            this.chkKhachHang.AutoSize = true;
+            this.chkKhachHang.Location = new System.Drawing.Point(250, 94);
+            this.chkKhachHang.Name = "chkKhachHang";
+            this.chkKhachHang.Size = new System.Drawing.Size(185, 27);
+            this.chkKhachHang.TabIndex = 2;
+            this.chkKhachHang.Text = "Quản lý khách hàng";
+            this.chkKhachHang.UseVisualStyleBackColor = true;
+            // 
+            // chkDanhMuc
+            // 
+            this.chkDanhMuc.AutoSize = true;
+            this.chkDanhMuc.Location = new System.Drawing.Point(250, 144);
+            this.chkDanhMuc.Name = "chkDanhMuc";
+            this.chkDanhMuc.Size = new System.Drawing.Size(173, 27);
+            this.chkDanhMuc.TabIndex = 2;
+            this.chkDanhMuc.Text = "Quản lý danh mục";
+            this.chkDanhMuc.UseVisualStyleBackColor = true;
+            // 
+            // chkNguyenLieu
+            // 
+            this.chkNguyenLieu.AutoSize = true;
+            this.chkNguyenLieu.Location = new System.Drawing.Point(250, 43);
+            this.chkNguyenLieu.Name = "chkNguyenLieu";
+            this.chkNguyenLieu.Size = new System.Drawing.Size(185, 27);
+            this.chkNguyenLieu.TabIndex = 2;
+            this.chkNguyenLieu.Text = "Quản lý nguyên liệu";
+            this.chkNguyenLieu.UseVisualStyleBackColor = true;
+            // 
+            // chkBaoCao
+            // 
+            this.chkBaoCao.AutoSize = true;
+            this.chkBaoCao.Location = new System.Drawing.Point(34, 94);
+            this.chkBaoCao.Name = "chkBaoCao";
+            this.chkBaoCao.Size = new System.Drawing.Size(157, 27);
+            this.chkBaoCao.TabIndex = 1;
+            this.chkBaoCao.Text = "Quản lý báo cáo";
+            this.chkBaoCao.UseVisualStyleBackColor = true;
+            // 
+            // chkBanHang
+            // 
+            this.chkBanHang.AutoSize = true;
+            this.chkBanHang.Location = new System.Drawing.Point(34, 43);
+            this.chkBanHang.Name = "chkBanHang";
+            this.chkBanHang.Size = new System.Drawing.Size(169, 27);
+            this.chkBanHang.TabIndex = 0;
+            this.chkBanHang.Text = "Quản lý bán hàng";
+            this.chkBanHang.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -306,86 +479,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Tên đăng nhập:";
             // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(1178, 27);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnDelete.Size = new System.Drawing.Size(194, 56);
-            this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "     Xoá ";
-            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUpdate.FlatAppearance.BorderSize = 0;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(978, 27);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnUpdate.Size = new System.Drawing.Size(194, 56);
-            this.btnUpdate.TabIndex = 5;
-            this.btnUpdate.Text = "     Sửa ";
-            this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRefresh.Location = new System.Drawing.Point(1378, 27);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnRefresh.Size = new System.Drawing.Size(194, 56);
-            this.btnRefresh.TabIndex = 7;
-            this.btnRefresh.Text = "    Làm mới";
-            this.btnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // btnInsert
-            // 
-            this.btnInsert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.btnInsert.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInsert.FlatAppearance.BorderSize = 0;
-            this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInsert.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsert.ForeColor = System.Drawing.Color.White;
-            this.btnInsert.Image = ((System.Drawing.Image)(resources.GetObject("btnInsert.Image")));
-            this.btnInsert.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInsert.Location = new System.Drawing.Point(778, 27);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnInsert.Size = new System.Drawing.Size(194, 56);
-            this.btnInsert.TabIndex = 4;
-            this.btnInsert.Text = "    Thêm ";
-            this.btnInsert.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnInsert.UseVisualStyleBackColor = false;
-            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
-            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.Control;
@@ -398,167 +491,51 @@
             // 
             // dtgvAccount
             // 
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtgvAccount.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgvAccount.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvAccount.BackgroundColor = System.Drawing.Color.White;
             this.dtgvAccount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvAccount.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvAccount.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvAccount.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvAccount.DefaultCellStyle = dataGridViewCellStyle7;
             this.dtgvAccount.GridColor = System.Drawing.Color.Gainsboro;
             this.dtgvAccount.Location = new System.Drawing.Point(19, 7);
             this.dtgvAccount.Name = "dtgvAccount";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvAccount.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvAccount.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgvAccount.RowHeadersVisible = false;
             this.dtgvAccount.RowHeadersWidth = 51;
             this.dtgvAccount.RowTemplate.Height = 24;
             this.dtgvAccount.Size = new System.Drawing.Size(1056, 742);
             this.dtgvAccount.TabIndex = 1;
             this.dtgvAccount.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvAccount_CellClick);
-            // 
-            // groupBoxPermissions
-            // 
-            this.groupBoxPermissions.Controls.Add(this.chkNhanVien);
-            this.groupBoxPermissions.Controls.Add(this.chkKhachHang);
-            this.groupBoxPermissions.Controls.Add(this.chkDanhMuc);
-            this.groupBoxPermissions.Controls.Add(this.chkNguyenLieu);
-            this.groupBoxPermissions.Controls.Add(this.chkBaoCao);
-            this.groupBoxPermissions.Controls.Add(this.chkBanHang);
-            this.groupBoxPermissions.Location = new System.Drawing.Point(6, 452);
-            this.groupBoxPermissions.Name = "groupBoxPermissions";
-            this.groupBoxPermissions.Size = new System.Drawing.Size(461, 206);
-            this.groupBoxPermissions.TabIndex = 1;
-            this.groupBoxPermissions.TabStop = false;
-            // 
-            // btnUpdatePermission
-            // 
-            this.btnUpdatePermission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.btnUpdatePermission.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUpdatePermission.FlatAppearance.BorderSize = 0;
-            this.btnUpdatePermission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdatePermission.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdatePermission.ForeColor = System.Drawing.Color.White;
-            this.btnUpdatePermission.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdatePermission.Image")));
-            this.btnUpdatePermission.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdatePermission.Location = new System.Drawing.Point(15, 689);
-            this.btnUpdatePermission.Name = "btnUpdatePermission";
-            this.btnUpdatePermission.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnUpdatePermission.Size = new System.Drawing.Size(225, 60);
-            this.btnUpdatePermission.TabIndex = 14;
-            this.btnUpdatePermission.Text = " CẬP NHẬT QUYỀN";
-            this.btnUpdatePermission.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUpdatePermission.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnUpdatePermission.UseVisualStyleBackColor = false;
-            this.btnUpdatePermission.Click += new System.EventHandler(this.btnUpdatePermission_Click);
-            // 
-            // btnChangePass
-            // 
-            this.btnChangePass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.btnChangePass.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnChangePass.FlatAppearance.BorderSize = 0;
-            this.btnChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChangePass.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangePass.ForeColor = System.Drawing.Color.White;
-            this.btnChangePass.Image = ((System.Drawing.Image)(resources.GetObject("btnChangePass.Image")));
-            this.btnChangePass.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChangePass.Location = new System.Drawing.Point(271, 689);
-            this.btnChangePass.Name = "btnChangePass";
-            this.btnChangePass.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnChangePass.Size = new System.Drawing.Size(225, 60);
-            this.btnChangePass.TabIndex = 13;
-            this.btnChangePass.Text = " ĐỔI MẬT KHẨU";
-            this.btnChangePass.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnChangePass.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnChangePass.UseVisualStyleBackColor = false;
-            this.btnChangePass.Click += new System.EventHandler(this.btnChangePass_Click);
-            // 
-            // chkDanhMuc
-            // 
-            this.chkDanhMuc.AutoSize = true;
-            this.chkDanhMuc.Location = new System.Drawing.Point(250, 144);
-            this.chkDanhMuc.Name = "chkDanhMuc";
-            this.chkDanhMuc.Size = new System.Drawing.Size(173, 27);
-            this.chkDanhMuc.TabIndex = 2;
-            this.chkDanhMuc.Text = "Quản lý danh mục";
-            this.chkDanhMuc.UseVisualStyleBackColor = true;
-            // 
-            // chkBaoCao
-            // 
-            this.chkBaoCao.AutoSize = true;
-            this.chkBaoCao.Location = new System.Drawing.Point(34, 94);
-            this.chkBaoCao.Name = "chkBaoCao";
-            this.chkBaoCao.Size = new System.Drawing.Size(157, 27);
-            this.chkBaoCao.TabIndex = 1;
-            this.chkBaoCao.Text = "Quản lý báo cáo";
-            this.chkBaoCao.UseVisualStyleBackColor = true;
-            // 
-            // chkBanHang
-            // 
-            this.chkBanHang.AutoSize = true;
-            this.chkBanHang.Location = new System.Drawing.Point(34, 43);
-            this.chkBanHang.Name = "chkBanHang";
-            this.chkBanHang.Size = new System.Drawing.Size(169, 27);
-            this.chkBanHang.TabIndex = 0;
-            this.chkBanHang.Text = "Quản lý bán hàng";
-            this.chkBanHang.UseVisualStyleBackColor = true;
-            // 
-            // chkNguyenLieu
-            // 
-            this.chkNguyenLieu.AutoSize = true;
-            this.chkNguyenLieu.Location = new System.Drawing.Point(250, 43);
-            this.chkNguyenLieu.Name = "chkNguyenLieu";
-            this.chkNguyenLieu.Size = new System.Drawing.Size(185, 27);
-            this.chkNguyenLieu.TabIndex = 2;
-            this.chkNguyenLieu.Text = "Quản lý nguyên liệu";
-            this.chkNguyenLieu.UseVisualStyleBackColor = true;
-            // 
-            // chkKhachHang
-            // 
-            this.chkKhachHang.AutoSize = true;
-            this.chkKhachHang.Location = new System.Drawing.Point(250, 94);
-            this.chkKhachHang.Name = "chkKhachHang";
-            this.chkKhachHang.Size = new System.Drawing.Size(185, 27);
-            this.chkKhachHang.TabIndex = 2;
-            this.chkKhachHang.Text = "Quản lý khách hàng";
-            this.chkKhachHang.UseVisualStyleBackColor = true;
-            // 
-            // chkNhanVien
-            // 
-            this.chkNhanVien.AutoSize = true;
-            this.chkNhanVien.Location = new System.Drawing.Point(34, 144);
-            this.chkNhanVien.Name = "chkNhanVien";
-            this.chkNhanVien.Size = new System.Drawing.Size(171, 27);
-            this.chkNhanVien.TabIndex = 3;
-            this.chkNhanVien.Text = "Quản lý nhân viên";
-            this.chkNhanVien.UseVisualStyleBackColor = true;
             // 
             // frmAccount
             // 
@@ -583,12 +560,12 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.groupBoxPermissions.ResumeLayout(false);
+            this.groupBoxPermissions.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvAccount)).EndInit();
-            this.groupBoxPermissions.ResumeLayout(false);
-            this.groupBoxPermissions.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -625,7 +602,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBoxPermissions;
         private System.Windows.Forms.Button btnUpdatePermission;
-        private System.Windows.Forms.Button btnChangePass;
         private System.Windows.Forms.CheckBox chkNhanVien;
         private System.Windows.Forms.CheckBox chkKhachHang;
         private System.Windows.Forms.CheckBox chkDanhMuc;

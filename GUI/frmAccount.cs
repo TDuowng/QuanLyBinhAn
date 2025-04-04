@@ -57,6 +57,12 @@ namespace GUI
             });
             dtgvAccount.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                DataPropertyName = "NameEmployee",
+                HeaderText = "Tên nhân viên",
+                Name = "NameEmployee"
+            });
+            dtgvAccount.Columns.Add(new DataGridViewTextBoxColumn()
+            {
                 DataPropertyName = "TypeName",  // Hiển thị chuỗi "Admin"/"User"
                 HeaderText = "Loại tài khoản",
                 Name = "TypeName"
@@ -69,8 +75,8 @@ namespace GUI
         {
             cbTypeAccount.DataSource = new List<KeyValuePair<int, string>>()
             {
-                new KeyValuePair<int, string>(1, "Admin"),
-                new KeyValuePair<int, string>(0, "User")
+                new KeyValuePair<int, string>(0, "Admin"),
+                new KeyValuePair<int, string>(1, "User")
             };
             cbTypeAccount.DisplayMember = "Value";  // Hiển thị chữ "Admin" hoặc "User"
             cbTypeAccount.ValueMember = "Key";      // Khi chọn sẽ lấy giá trị 1 hoặc 0
@@ -102,38 +108,163 @@ namespace GUI
             }
         }
 
+        private void ClearInputFields()
+        {
+            txtUserName.Clear();
+            txtDisplayName.Clear();
+            txtEmail.Clear();
+            cbEmployee.SelectedIndex = -1;
+            cbTypeAccount.SelectedIndex = -1;
+            chkBanHang.Checked = false;
+            chkBaoCao.Checked = false;
+            chkNhanVien.Checked = false;
+            chkNguyenLieu.Checked = false;
+            chkKhachHang.Checked = false;
+            chkDanhMuc.Checked = false;
+        }
+
         #endregion
 
         #region Events
         private void btnInsert_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string userName = txtUserName.Text.Trim();
+                string displayName = txtDisplayName.Text.Trim();
+                string email = txtEmail.Text.Trim();
+                int type = (int)cbTypeAccount.SelectedValue;
+                int idEmployee = cbEmployee.SelectedValue != null ? (int)cbEmployee.SelectedValue : 0;
+
+                if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(displayName) || string.IsNullOrEmpty(email))
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin tài khoản!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (AccountBLL.IsUserNameExist(userName))
+                {
+                    MessageBox.Show("Tên đăng nhập đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if(cbEmployee.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Vui lòng chọn nhân viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                AccountDTO newAccount = new AccountDTO(userName, displayName, "0", email, type, idEmployee);
+                if (AccountBLL.InsertAccount(newAccount))
+                {
+                    MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadListAccount();
+                    ClearInputFields();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm tài khoản thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string userName = txtUserName.Text.Trim();
+                string displayName = txtDisplayName.Text.Trim();
+                string email = txtEmail.Text.Trim();
+                int type = (int)cbTypeAccount.SelectedValue;
+                int idEmployee = cbEmployee.SelectedValue != null ? (int)cbEmployee.SelectedValue : 0;
+                if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(displayName) || string.IsNullOrEmpty(email))
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin tài khoản!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                AccountDTO updatedAccount = new AccountDTO(userName, displayName, "0", email, type, idEmployee);
+                if (AccountBLL.UpdateAccount(updatedAccount))
+                {
+                    MessageBox.Show("Cập nhật tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadListAccount();
+                    ClearInputFields();
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật tài khoản thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string userName = txtUserName.Text.Trim();
+                if (string.IsNullOrEmpty(userName))
+                {
+                    MessageBox.Show("Vui lòng chọn tài khoản để xóa!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                DialogResult result = MessageBox.Show($"Bạn có chắc chắn muốn xóa tài khoản {userName} không?",
+                    "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    if (AccountBLL.DeleteAccount(userName))
+                    {
+                        MessageBox.Show("Xóa tài khoản thành công!", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadListAccount();
+                        ClearInputFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa tài khoản thất bại!", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-
+            ClearInputFields();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnChangePass_Click(object sender, EventArgs e)
-        {
-            Form f = new frmChangePassword();
-            f.ShowDialog();
+            string keyword = txtSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                List<AccountDTO> employeeList = AccountBLL.SearchAccount(keyword);
+                dtgvAccount.DataSource = employeeList;
+                dtgvAccount.Columns["UserName"].HeaderText = "Tên đăng nhập";
+                dtgvAccount.Columns["DisplayName"].HeaderText = "Tên hiển thị";
+                dtgvAccount.Columns["Email"].HeaderText = "Email";
+                dtgvAccount.Columns["NameEmployee"].HeaderText = "Tên nhân viên";
+                dtgvAccount.Columns["TypeName"].HeaderText = "Loại tài khoản";
+                dtgvAccount.RowTemplate.Height = 40;
+            }
+            else
+            {
+                LoadListAccount(); 
+            }
         }
 
         private void dtgvAccount_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -145,10 +276,18 @@ namespace GUI
                 txtDisplayName.Text = row.Cells["DisplayName"].Value.ToString();
                 txtEmail.Text = row.Cells["Email"].Value.ToString();
                 cbTypeAccount.Text = row.Cells["TypeName"].Value.ToString();
+                cbEmployee.Text = row.Cells["NameEmployee"].Value.ToString();
 
-
+                // Lấy thông tin employee từ database dựa vào username
                 string userName = row.Cells["UserName"].Value.ToString();
-                LoadPermissionsForUser(userName); // Load quyền mà không thay đổi ngay
+                AccountDTO account = AccountBLL.GetAccountByUserName(userName);
+                if (account != null)
+                {
+                    cbEmployee.SelectedValue = account.IdEmployee;
+                    cbTypeAccount.SelectedValue = account.Type;
+                }
+
+                LoadPermissionsForUser(userName);
             }
         }
 

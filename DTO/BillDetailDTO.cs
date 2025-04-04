@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class ImportBillDetailDTO
+    public class BillDetailDTO
     {
         private int id;
         private int billId;
@@ -19,9 +19,9 @@ namespace DTO
         public int FoodId { get => foodId; set => foodId = value; }
         public int Quantity { get => quantity; set => quantity = value; }
 
-        public ImportBillDetailDTO() { }
+        public BillDetailDTO() { }
 
-        public ImportBillDetailDTO(int id, int billId, int foodId, int quantity)
+        public BillDetailDTO(int id, int billId, int foodId, int quantity)
         {
             this.Id = id;
             this.BillId = billId;
@@ -29,7 +29,7 @@ namespace DTO
             this.Quantity = quantity;
         }
 
-        public ImportBillDetailDTO(DataRow row)
+        public BillDetailDTO(DataRow row)
         {
             this.Id = (int)row["MaCTHDB"];
             this.BillId = (int)row["MaHDB"];

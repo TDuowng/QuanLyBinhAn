@@ -45,8 +45,10 @@
     <Compile Include="CategoryDTO.cs" />
     <Compile Include="EmployeeDTO.cs" />
     <Compile Include="FoodDTO.cs" />
+    <Compile Include="BillDTO.cs" />
+    <Compile Include="BillDetailDTO.cs" />
     <Compile Include="ImportBillDTO.cs" />
-    <Compile Include="ImportBillDetailDTO.cs" />
+    <Compile Include="ImportBillInfoDTO.cs" />
     <Compile Include="IngredientsDTO.cs" />
     <Compile Include="ModuleDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

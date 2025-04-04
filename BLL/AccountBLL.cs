@@ -99,5 +99,10 @@ namespace BLL
         {
             return AccountDAO.GetPermissionsByUserName(userName);
         }
+
+        public static List<AccountDTO> SearchAccount(string keyword)
+        {
+            return AccountDAO.SearchAccount(keyword);
+        }
     }
 }

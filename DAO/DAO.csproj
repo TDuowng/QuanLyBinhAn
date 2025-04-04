@@ -49,8 +49,10 @@
     <Compile Include="DataProvider.cs" />
     <Compile Include="EmployeeDAO.cs" />
     <Compile Include="FoodDAO.cs" />
+    <Compile Include="BillDAO.cs" />
+    <Compile Include="BillInfoDAO.cs" />
     <Compile Include="ImportBillDAO.cs" />
-    <Compile Include="ImportBillDetailDAO.cs" />
+    <Compile Include="ImportBillInfoDAO.cs" />
     <Compile Include="IngredientsDAO.cs" />
     <Compile Include="ModuleDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -120,5 +120,25 @@ namespace DAO
             }
             return list;
         }
+
+        public static void SwitchTable(int id1, int id2, string username)
+        {
+            string query = "EXEC USP_SwitchTable @idTable1 , @idTable2 , @UserName ";
+            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { id1 , id2 , username }) == 1)
+            {
+                return;
+            }
+        }
+            
+
+        public static void MergerTables(int id1, int id2, string username)
+        {
+            string query = "EXEC USP_MergeTables @sourceTableID , @targetTableID , @UserName ";
+            if(DataProvider.Instance.ExecuteNonQuery(query, new object[] { id1 , id2 , username }) == 1)
+            {
+                return;
+            }
+            
+        }
     }
 }

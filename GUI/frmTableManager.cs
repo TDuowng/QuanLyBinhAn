@@ -40,6 +40,8 @@ namespace GUI
             SetupSidebar();
             LoadAllFoods();
 
+            LoadTargetTableComboBox();
+
             dgvFood.SelectionChanged += DgvFood_SelectionChanged;
         }
 
@@ -108,7 +110,20 @@ namespace GUI
             dgvFood.ClearSelection();
         }
 
-
+        private void LoadTargetTableComboBox()
+        {
+            cboTargetTable.Items.Clear();
+            if (TableList != null)
+            {
+                foreach (var table in TableList)
+                {
+                    cboTargetTable.Items.Add(new KeyValuePair<int, string>(table.IdTable, table.TableName));
+                }
+            }
+            cboTargetTable.DisplayMember = "Value";
+            cboTargetTable.ValueMember = "Key";
+            cboTargetTable.SelectedIndex = -1;
+        }
 
         private void LoadCategoryComboBox()
         {
@@ -216,13 +231,13 @@ namespace GUI
         private void ShowBill(int tableId)
         {
             lsvBill.Items.Clear();
-            int billId = ImportBillBLL.GetUncheckBillIDByTableID(tableId);
+            int billId = BillBLL.GetUncheckBillIDByTableID(tableId);
             float totalPrice = 0;
 
             if (billId != -1)
             {
-                List<ImportBillDetailDTO> billDetails = ImportBillDetailBLL.GetBillDetailsByBillId(billId);
-                foreach (ImportBillDetailDTO detail in billDetails)
+                List<BillDetailDTO> billDetails = BillDetailBLL.GetBillDetailsByBillId(billId);
+                foreach (BillDetailDTO detail in billDetails)
                 {
                     FoodDTO food = FoodBLL.GetListFood().FirstOrDefault(f => f.ID == detail.FoodId);
                     if (food != null)
@@ -265,7 +280,7 @@ namespace GUI
             if (selectedTableUc != null)
             {
                 TableDTO table = selectedTableUc.Tag as TableDTO;
-                string newStatus = ImportBillBLL.GetUncheckBillIDByTableID(selectedTableId) != -1 ? "Có người" : "Bàn trống";
+                string newStatus = BillBLL.GetUncheckBillIDByTableID(selectedTableId) != -1 ? "Có người" : "Bàn trống";
                 table.Status = newStatus;
                 selectedTableUc.SetTableData(table.TableName, newStatus);
                 selectedTableUc.SetSelected(true);
@@ -316,17 +331,17 @@ namespace GUI
                 return;
             }
 
-            int idBill = ImportBillBLL.GetUncheckBillIDByTableID(selectedTableId);
+            int idBill = BillBLL.GetUncheckBillIDByTableID(selectedTableId);
             if (idBill != -1)
             {
-                float totalPrice = ImportBillBLL.CalculateTotalPrice(idBill);
+                float totalPrice = BillBLL.CalculateTotalPrice(idBill);
                 int discount = (int)nmrDiscount.Value;
                 float finalPrice = totalPrice - (totalPrice * discount / 100);
 
                 TableDTO table = selectedTableUc.Tag as TableDTO;
                 if (MessageBox.Show($"Bạn có chắc muốn thanh toán hóa đơn cho {table.TableName}?\nTổng tiền: {finalPrice:N0} VNĐ", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
-                    ImportBillBLL.CheckOut(idBill, discount, finalPrice, "Thanh toán từ btnCheckout");
+                    BillBLL.CheckOut(idBill, discount, finalPrice, "Thanh toán từ btnCheckout");
                     ShowBill(selectedTableId);
                     selectedTableUc.SetTableData(table.TableName, "Bàn trống");
                     selectedTableUc.SetSelected(false);
@@ -362,14 +377,14 @@ namespace GUI
                 MessageBox.Show("Không tìm thấy món ăn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            int idBill = ImportBillBLL.GetUncheckBillIDByTableID(selectedTableId);
+            int idBill = BillBLL.GetUncheckBillIDByTableID(selectedTableId);
             if (idBill == -1)
             {
-                ImportBillBLL.InsertBill(selectedTableId, currentUserName, "Thêm món từ DataGridView");
-                idBill = ImportBillBLL.GetUncheckBillIDByTableID(selectedTableId);
+                BillBLL.InsertBill(selectedTableId, currentUserName, "Thêm món từ DataGridView");
+                idBill = BillBLL.GetUncheckBillIDByTableID(selectedTableId);
             }
 
-            ImportBillDetailBLL.InsertOrUpdateBillDetail(idBill, food.ID, quantity);
+            BillDetailBLL.InsertOrUpdateBillDetail(idBill, food.ID, quantity);
             ShowBill(selectedTableId);
             UpdateTableStatus();
             nmrQuantity.Value = 0;
@@ -381,6 +396,108 @@ namespace GUI
         private void nmrDiscount_ValueChanged(object sender, EventArgs e)
         {
             UpdateFinalPrice();
+        }
+
+        private void btnSwitchTable_Click(object sender, EventArgs e)
+        {
+            if (selectedTableId == -1)
+            {
+                MessageBox.Show("Hãy chọn bàn nguồn trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cboTargetTable.SelectedIndex == -1)
+            {
+                MessageBox.Show("Hãy chọn bàn đích để chuyển!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int targetTableId = ((KeyValuePair<int, string>)cboTargetTable.SelectedItem).Key;
+            TableDTO sourceTable = TableList.FirstOrDefault(t => t.IdTable == selectedTableId);
+            TableDTO targetTable = TableList.FirstOrDefault(t => t.IdTable == targetTableId);
+
+            if (sourceTable == null || targetTable == null)
+            {
+                MessageBox.Show("Bàn không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (MessageBox.Show($"Bạn có chắc chắn muốn chuyển {sourceTable.TableName} qua {targetTable.TableName} không?", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                TableBLL.SwitchTable(selectedTableId, targetTableId, currentUserName);
+                LoadTableList();
+                if (lsvBill.Tag != null)
+                    ShowBill(selectedTableId);
+            }
+        }
+
+        private void btnMergeTables_Click(object sender, EventArgs e)
+        {
+            if (selectedTableId == -1)
+            {
+                MessageBox.Show("Hãy chọn bàn nguồn trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cboTargetTable.SelectedIndex == -1)
+            {
+                MessageBox.Show("Hãy chọn bàn đích để gộp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int targetTableId = ((KeyValuePair<int, string>)cboTargetTable.SelectedItem).Key;
+            TableDTO sourceTable = TableList.FirstOrDefault(t => t.IdTable == selectedTableId);
+            TableDTO targetTable = TableList.FirstOrDefault(t => t.IdTable == targetTableId);
+
+            if (sourceTable == null || targetTable == null)
+            {
+                MessageBox.Show("Bàn không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (selectedTableId == targetTableId)
+            {
+                MessageBox.Show("Không thể gộp bàn giống nhau!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (MessageBox.Show($"Bạn có chắc muốn gộp bàn {sourceTable.TableName} vào bàn {targetTable.TableName}?", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                TableBLL.MergerTables(selectedTableId, targetTableId, currentUserName);
+                LoadTableList();
+                if (lsvBill.Tag != null)
+                    ShowBill(selectedTableId);
+            }
+        }
+
+        private void btnSearchFood_Click(object sender, EventArgs e)
+        {
+            string keyword = txtSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                List<FoodDTO> foodList = FoodBLL.SearchFood(keyword);
+                dgvFood.DataSource = foodList;
+                dgvFood.Columns["ID"].HeaderText = "Mã thực đơn";
+                dgvFood.Columns["Name"].HeaderText = "Tên thực đơn";
+                dgvFood.Columns["IdCategory"].Visible = false; 
+                dgvFood.Columns["CategoryName"].HeaderText = "Loại thực đơn";
+                dgvFood.Columns["CategoryName"].Visible = false;
+                dgvFood.Columns["Price"].HeaderText = "Đơn giá";
+                dgvFood.Columns["Price"].DefaultCellStyle.Format = "N0";
+                dgvFood.Columns["Image"].HeaderText = "Hình ảnh";
+                dgvFood.Columns["Image"].Visible = false;
+                dgvFood.RowTemplate.Height = 40;
+            }
+            else
+            {
+                LoadAllFoods(); // Load all food items if the search term is empty
+            }
+        }
+
+        private void thôngTinTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword f = new frmChangePassword(currentUserName);
+            f.ShowDialog();
         }
     }
 }

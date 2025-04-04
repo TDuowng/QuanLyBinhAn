@@ -47,10 +47,10 @@ namespace BLL
             return IngredientsDAO.GetAllUnits();
         }
 
-        //public static List<IngredientsDTO> GetUnitandPriceByIngredient(int id)
-        //{
-            //return IngredientsDAO.GetUnitandPriceByIngredient(id);
-        //}
+        public  static List<IngredientsDTO> GetIngredientsWithUnitAndPrice()
+        {
+            return IngredientsDAO.GetIngredientsWithUnitAndPrice();
+        }
 
     }
 }

@@ -45,8 +45,10 @@
     <Compile Include="CategoryBLL.cs" />
     <Compile Include="EmployeeBLL.cs" />
     <Compile Include="FoodBLL.cs" />
+    <Compile Include="BillBLL.cs" />
+    <Compile Include="BillDetailBLL.cs" />
     <Compile Include="ImportBillBLL.cs" />
-    <Compile Include="ImportBillDetailBLL.cs" />
+    <Compile Include="ImportBillInfoBLL.cs" />
     <Compile Include="IngredientsBLL.cs" />
     <Compile Include="ModuleBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

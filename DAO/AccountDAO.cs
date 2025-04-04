@@ -13,7 +13,7 @@ namespace DAO
         public static List<AccountDTO> GetListAccount()
         {
             List<AccountDTO> list = new List<AccountDTO>();
-            string query = "SELECT tk.UserName, tk.DisplayName, tk.PassWord, tk.Email, tk.Type, nv.MaNV " +
+            string query = "SELECT tk.UserName, tk.DisplayName, tk.PassWord, tk.Email, tk.Type, tk.MaNV, nv.TenNV " +
                           "FROM TaiKhoan tk LEFT JOIN NhanVien nv ON tk.MaNV = nv.MaNV";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -24,6 +24,7 @@ namespace DAO
             }
             return list;
         }
+
 
         public static List<EmployeeDTO> GetListEmployeeWithoutAccount()
         {
@@ -50,16 +51,29 @@ namespace DAO
 
         public static bool InsertAccount(AccountDTO account)
         {
-            string query = "EXEC USP_InsertAccount @UserName, @DisplayName, @Email, @Type, @MaNV";
-            object[] parameters = new object[] { account.UserName, account.DisplayName, account.Email, account.Type, account.IdEmployee };
+            string query = "EXEC USP_InsertAccount @UserName , @DisplayName , @PassWord , @Email , @Type , @MaNV ";
+            object[] parameters = new object[] {
+                account.UserName ,
+                account.DisplayName ,
+                account.Password ,  
+                account.Email ,
+                account.Type ,
+                account.IdEmployee
+    };
             return DataProvider.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
         // Sửa tài khoản (dùng thủ tục, không sửa PassWord)
         public static bool UpdateAccount(AccountDTO account)
         {
-            string query = "EXEC USP_UpdateAccount @UserName, @DisplayName, @Email, @Type, @MaNV";
-            object[] parameters = new object[] { account.UserName, account.DisplayName, account.Email, account.Type, account.IdEmployee };
+            string query = "EXEC USP_UpdateAccount @UserName , @DisplayName , @Email , @Type ,  @MaNV ";
+            object[] parameters = new object[] {
+                account.UserName ,
+                account.DisplayName ,
+                account.Email ,
+                account.Type ,
+                account.IdEmployee
+            };
             return DataProvider.Instance.ExecuteNonQuery(query, parameters) > 0;
         }
 
@@ -74,7 +88,7 @@ namespace DAO
         public static bool Login(string userName, string passWord)
         {
             string query = "SELECT COUNT(*) FROM TaiKhoan WHERE UserName = @UserName AND PassWord = @PassWord";
-            object result = DataProvider.Instance.ExecuteScalar(query, new object[] { userName, passWord });
+            object result = DataProvider.Instance.ExecuteScalar(query, new object[] { userName , passWord });
             return Convert.ToInt32(result) > 0;
         }
         // Lấy thông tin tài khoản sau khi đăng nhập
@@ -94,8 +108,8 @@ namespace DAO
         // Đổi mật khẩu (dùng thủ tục)
         public static bool ChangePassword(string userName, string oldPassWord, string newPassWord)
         {
-            string query = "EXEC USP_ChangePassword @UserName, @OldPassWord, @NewPassWord";
-            object result = DataProvider.Instance.ExecuteScalar(query, new object[] { userName, oldPassWord, newPassWord });
+            string query = "EXEC USP_ChangePassword @UserName , @OldPassWord , @NewPassWord ";
+            object result = DataProvider.Instance.ExecuteScalar(query, new object[] { userName , oldPassWord , newPassWord });
             return Convert.ToInt32(result) > 0;
         }
 
@@ -158,7 +172,20 @@ namespace DAO
             return list;
         }
 
-        
+
+        public static List<AccountDTO> SearchAccount(string keyword)
+        {
+            List<AccountDTO> list = new List<AccountDTO>();
+            string query = "EXEC USP_SearchAccount @Keyword";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { keyword });
+            foreach (DataRow item in data.Rows)
+            {
+                AccountDTO account = new AccountDTO(item);
+                list.Add(account);
+            }
+            return list;
+        }
+
 
 
 

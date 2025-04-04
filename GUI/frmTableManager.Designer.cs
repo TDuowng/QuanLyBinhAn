@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTableManager));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelSideBar = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
@@ -62,10 +61,10 @@
             this.dgvFood = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboTargetTable = new System.Windows.Forms.ComboBox();
             this.nmrDiscount = new System.Windows.Forms.NumericUpDown();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnSwitchTable = new System.Windows.Forms.Button();
+            this.btnMergeTables = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.flowTable = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -73,10 +72,17 @@
             this.nmrQuantity = new System.Windows.Forms.NumericUpDown();
             this.panel10 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnSearchFood = new System.Windows.Forms.Button();
             this.btnAddFood = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.timerFood = new System.Timers.Timer();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.thôngTinTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chứcNăngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel2.SuspendLayout();
             this.panelSideBar.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -91,24 +97,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmrQuantity)).BeginInit();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timerFood)).BeginInit();
+            this.menuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1924, 51);
-            this.panel1.TabIndex = 1;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.menuStrip1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 51);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1924, 36);
+            this.panel2.Size = new System.Drawing.Size(1924, 52);
             this.panel2.TabIndex = 2;
             // 
             // panelSideBar
@@ -117,9 +117,9 @@
             this.panelSideBar.Controls.Add(this.btnAdmin);
             this.panelSideBar.Controls.Add(this.btnTable);
             this.panelSideBar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSideBar.Location = new System.Drawing.Point(0, 87);
+            this.panelSideBar.Location = new System.Drawing.Point(0, 103);
             this.panelSideBar.Name = "panelSideBar";
-            this.panelSideBar.Size = new System.Drawing.Size(228, 968);
+            this.panelSideBar.Size = new System.Drawing.Size(228, 880);
             this.panelSideBar.TabIndex = 3;
             // 
             // button6
@@ -193,18 +193,18 @@
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.flowLayoutPanel1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(228, 87);
+            this.panel4.Location = new System.Drawing.Point(228, 103);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1696, 968);
+            this.panel4.Size = new System.Drawing.Size(1696, 880);
             this.panel4.TabIndex = 5;
             // 
             // panel7
             // 
             this.panel7.Controls.Add(this.panel8);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(1234, 0);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(1228, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(462, 968);
+            this.panel7.Size = new System.Drawing.Size(468, 949);
             this.panel7.TabIndex = 2;
             // 
             // panel8
@@ -216,9 +216,9 @@
             this.panel8.Controls.Add(this.panel9);
             this.panel8.Controls.Add(this.button1);
             this.panel8.Controls.Add(this.label1);
-            this.panel8.Location = new System.Drawing.Point(11, 74);
+            this.panel8.Location = new System.Drawing.Point(6, 6);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(433, 857);
+            this.panel8.Size = new System.Drawing.Size(439, 857);
             this.panel8.TabIndex = 0;
             // 
             // lsvBill
@@ -276,7 +276,7 @@
             this.panel9.Controls.Add(this.label2);
             this.panel9.Location = new System.Drawing.Point(14, 592);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(409, 252);
+            this.panel9.Size = new System.Drawing.Size(415, 252);
             this.panel9.TabIndex = 5;
             // 
             // lblFinalPrice
@@ -347,7 +347,7 @@
             this.btnCheckout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckout.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckout.ForeColor = System.Drawing.Color.White;
-            this.btnCheckout.Location = new System.Drawing.Point(7, 175);
+            this.btnCheckout.Location = new System.Drawing.Point(13, 175);
             this.btnCheckout.Name = "btnCheckout";
             this.btnCheckout.Size = new System.Drawing.Size(392, 63);
             this.btnCheckout.TabIndex = 5;
@@ -384,7 +384,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(85)))), ((int)(((byte)(118)))));
-            this.button1.Location = new System.Drawing.Point(285, 59);
+            this.button1.Location = new System.Drawing.Point(291, 59);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 50);
             this.button1.TabIndex = 4;
@@ -411,37 +411,37 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(24, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1204, 968);
+            this.panel6.Size = new System.Drawing.Size(1204, 880);
             this.panel6.TabIndex = 1;
             // 
             // dgvFood
             // 
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvFood.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvFood.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvFood.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFood.BackgroundColor = System.Drawing.Color.White;
             this.dgvFood.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(153)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFood.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(153)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFood.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFood.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFood.DefaultCellStyle = dataGridViewCellStyle18;
             this.dgvFood.GridColor = System.Drawing.Color.White;
             this.dgvFood.Location = new System.Drawing.Point(3, 88);
             this.dgvFood.Name = "dgvFood";
@@ -454,14 +454,14 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.label9);
-            this.panel5.Controls.Add(this.comboBox1);
+            this.panel5.Controls.Add(this.cboTargetTable);
             this.panel5.Controls.Add(this.nmrDiscount);
-            this.panel5.Controls.Add(this.button4);
-            this.panel5.Controls.Add(this.button3);
+            this.panel5.Controls.Add(this.btnSwitchTable);
+            this.panel5.Controls.Add(this.btnMergeTables);
             this.panel5.Controls.Add(this.label4);
             this.panel5.Location = new System.Drawing.Point(3, 739);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(514, 127);
+            this.panel5.Size = new System.Drawing.Size(514, 124);
             this.panel5.TabIndex = 2;
             // 
             // label9
@@ -474,13 +474,13 @@
             this.label9.TabIndex = 12;
             this.label9.Text = "(%)";
             // 
-            // comboBox1
+            // cboTargetTable
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(16, 72);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(356, 31);
-            this.comboBox1.TabIndex = 11;
+            this.cboTargetTable.FormattingEnabled = true;
+            this.cboTargetTable.Location = new System.Drawing.Point(16, 72);
+            this.cboTargetTable.Name = "cboTargetTable";
+            this.cboTargetTable.Size = new System.Drawing.Size(356, 31);
+            this.cboTargetTable.TabIndex = 11;
             // 
             // nmrDiscount
             // 
@@ -490,45 +490,47 @@
             this.nmrDiscount.TabIndex = 10;
             this.nmrDiscount.ValueChanged += new System.EventHandler(this.nmrDiscount_ValueChanged);
             // 
-            // button4
+            // btnSwitchTable
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(197, 15);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(175, 46);
-            this.button4.TabIndex = 9;
-            this.button4.Text = " Chuyển bàn";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnSwitchTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnSwitchTable.FlatAppearance.BorderSize = 0;
+            this.btnSwitchTable.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnSwitchTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSwitchTable.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSwitchTable.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSwitchTable.Image = ((System.Drawing.Image)(resources.GetObject("btnSwitchTable.Image")));
+            this.btnSwitchTable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSwitchTable.Location = new System.Drawing.Point(197, 15);
+            this.btnSwitchTable.Name = "btnSwitchTable";
+            this.btnSwitchTable.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnSwitchTable.Size = new System.Drawing.Size(175, 46);
+            this.btnSwitchTable.TabIndex = 9;
+            this.btnSwitchTable.Text = " Chuyển bàn";
+            this.btnSwitchTable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSwitchTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSwitchTable.UseVisualStyleBackColor = false;
+            this.btnSwitchTable.Click += new System.EventHandler(this.btnSwitchTable_Click);
             // 
-            // button3
+            // btnMergeTables
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(16, 15);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(175, 46);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "  Gộp bàn";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnMergeTables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnMergeTables.FlatAppearance.BorderSize = 0;
+            this.btnMergeTables.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnMergeTables.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMergeTables.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMergeTables.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMergeTables.Image = ((System.Drawing.Image)(resources.GetObject("btnMergeTables.Image")));
+            this.btnMergeTables.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMergeTables.Location = new System.Drawing.Point(16, 15);
+            this.btnMergeTables.Name = "btnMergeTables";
+            this.btnMergeTables.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnMergeTables.Size = new System.Drawing.Size(175, 46);
+            this.btnMergeTables.TabIndex = 9;
+            this.btnMergeTables.Text = "  Gộp bàn";
+            this.btnMergeTables.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMergeTables.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMergeTables.UseVisualStyleBackColor = false;
+            this.btnMergeTables.Click += new System.EventHandler(this.btnMergeTables_Click);
             // 
             // label4
             // 
@@ -572,15 +574,21 @@
             // nmrQuantity
             // 
             this.nmrQuantity.Location = new System.Drawing.Point(3, 41);
+            this.nmrQuantity.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.nmrQuantity.Name = "nmrQuantity";
             this.nmrQuantity.Size = new System.Drawing.Size(339, 30);
             this.nmrQuantity.TabIndex = 10;
+            this.nmrQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.White;
             this.panel10.Controls.Add(this.txtSearch);
-            this.panel10.Controls.Add(this.button5);
+            this.panel10.Controls.Add(this.btnSearchFood);
             this.panel10.Location = new System.Drawing.Point(538, 6);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(663, 65);
@@ -594,20 +602,21 @@
             this.txtSearch.Size = new System.Drawing.Size(582, 23);
             this.txtSearch.TabIndex = 15;
             // 
-            // button5
+            // btnSearchFood
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(599, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(64, 65);
-            this.button5.TabIndex = 14;
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnSearchFood.BackColor = System.Drawing.Color.White;
+            this.btnSearchFood.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearchFood.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSearchFood.FlatAppearance.BorderSize = 0;
+            this.btnSearchFood.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnSearchFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchFood.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchFood.Image")));
+            this.btnSearchFood.Location = new System.Drawing.Point(599, 0);
+            this.btnSearchFood.Name = "btnSearchFood";
+            this.btnSearchFood.Size = new System.Drawing.Size(64, 65);
+            this.btnSearchFood.TabIndex = 14;
+            this.btnSearchFood.UseVisualStyleBackColor = false;
+            this.btnSearchFood.Click += new System.EventHandler(this.btnSearchFood_Click);
             // 
             // btnAddFood
             // 
@@ -624,7 +633,7 @@
             this.btnAddFood.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnAddFood.Size = new System.Drawing.Size(169, 67);
             this.btnAddFood.TabIndex = 9;
-            this.btnAddFood.Text = "   Thêm món";
+            this.btnAddFood.Text = "  Thêm món";
             this.btnAddFood.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddFood.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddFood.UseVisualStyleBackColor = false;
@@ -635,7 +644,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(24, 968);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(24, 880);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // timerFood
@@ -643,20 +652,86 @@
             this.timerFood.Enabled = true;
             this.timerFood.SynchronizingObject = this;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thôngTinTàiKhoảnToolStripMenuItem,
+            this.chứcNăngToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.menuStrip1.Size = new System.Drawing.Size(1924, 47);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // thôngTinTàiKhoảnToolStripMenuItem
+            // 
+            this.thôngTinTàiKhoảnToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.thôngTinTàiKhoảnToolStripMenuItem.Name = "thôngTinTàiKhoảnToolStripMenuItem";
+            this.thôngTinTàiKhoảnToolStripMenuItem.Padding = new System.Windows.Forms.Padding(8);
+            this.thôngTinTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(180, 43);
+            this.thôngTinTàiKhoảnToolStripMenuItem.Text = "Thông tin tài khoản";
+            this.thôngTinTàiKhoảnToolStripMenuItem.Click += new System.EventHandler(this.thôngTinTàiKhoảnToolStripMenuItem_Click);
+            // 
+            // chứcNăngToolStripMenuItem
+            // 
+            this.chứcNăngToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.chứcNăngToolStripMenuItem.Name = "chứcNăngToolStripMenuItem";
+            this.chứcNăngToolStripMenuItem.Padding = new System.Windows.Forms.Padding(8);
+            this.chứcNăngToolStripMenuItem.Size = new System.Drawing.Size(113, 43);
+            this.chứcNăngToolStripMenuItem.Text = "Chức năng";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1924, 51);
+            this.panel1.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(68, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(566, 31);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "PHẦN MỀM QUẢN LÝ CỬA HÀNG TÀO PHỚ BÌNH AN";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(12, 10);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
             // frmTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.ClientSize = new System.Drawing.Size(1924, 983);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panelSideBar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmTableManager";
             this.Text = "frmTableManager";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panelSideBar.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
@@ -675,12 +750,16 @@
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timerFood)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panelSideBar;
         private System.Windows.Forms.Button btnTable;
@@ -701,7 +780,7 @@
         private System.Windows.Forms.Button btnAdmin;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnSearchFood;
         private System.Windows.Forms.ListView lsvBill;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -709,10 +788,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Label txtTotalPrice;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnSwitchTable;
+        private System.Windows.Forms.Button btnMergeTables;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboTargetTable;
         private System.Windows.Forms.NumericUpDown nmrDiscount;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblDiscountAmount;
@@ -725,5 +804,11 @@
         private System.Windows.Forms.DataGridView dgvFood;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem thôngTinTàiKhoảnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chứcNăngToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

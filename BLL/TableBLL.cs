@@ -65,5 +65,15 @@ namespace BLL
         {
             return TableDAO.SearchTable(query);
         }
+
+        public static void SwitchTable(int idTable1, int idTable2, string username)
+        {
+            TableDAO.SwitchTable(idTable1, idTable2, username);
+        }
+
+        public static void MergerTables(int idTable1, int idTable2, string username)
+        {
+            TableDAO.MergerTables(idTable1, idTable2, username);
+        }
     }
 }

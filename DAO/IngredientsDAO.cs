@@ -81,24 +81,24 @@ namespace DAO
             return units;
         }
 
-        /*public static List<IngredientsDTO> GetUnitandPriceByIngredient(int manl)
+        public static List<IngredientsDTO> GetIngredientsWithUnitAndPrice()
         {
-            string query = "SELECT TenNL, DGNhap, DVTinh FROM NguyenLieu WHERE MaNL = " + manl;
             List<IngredientsDTO> list = new List<IngredientsDTO>();
+            string query = "SELECT MaNL, TenNL, DGNhap, DVTinh FROM NguyenLieu";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
-
             foreach (DataRow item in data.Rows)
             {
-                IngredientsDTO work = new IngredientsDTO
+                IngredientsDTO ingredient = new IngredientsDTO
                 {
+                    IdIngredient = (int)item["MaNL"],
                     NameIngredient = item["TenNL"].ToString(),
-                    PriceIngredient = (float)Convert.ToDouble(item["DGNhap"]),
-                    Unit = item["DVTinh"].ToString(),
+                    PriceIngredient = (float)Convert.ToDouble(item["DGNhap"].ToString()),
+                    Unit = item["DVTinh"].ToString()
                 };
-                list.Add(work);
+                list.Add(ingredient);
             }
             return list;
-        }*/
+        }
 
 
     }

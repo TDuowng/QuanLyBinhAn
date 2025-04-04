@@ -36,10 +36,11 @@ namespace DTO
         {
             this.UserName = row["UserName"].ToString();
             this.DisplayName = row["DisplayName"].ToString();
-            this.Password = row["PassWord"].ToString(); // Khớp với truy vấn
+            this.Password = row["PassWord"].ToString(); 
             this.Email = row["Email"] == DBNull.Value ? null : row["Email"].ToString().Trim();
             this.Type = row["Type"] != DBNull.Value ? Convert.ToInt32(row["Type"]) : 0;
             this.IdEmployee = row["MaNV"] != DBNull.Value ? Convert.ToInt32(row["MaNV"]) : 0;
+            this.NameEmployee = row.Table.Columns.Contains("TenNV") && row["TenNV"] != DBNull.Value ? row["TenNV"].ToString() : "Không có";
         }
 
         public AccountDTO() { }

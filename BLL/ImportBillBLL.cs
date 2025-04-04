@@ -2,7 +2,6 @@
 using DTO;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,39 +10,70 @@ namespace BLL
 {
     public class ImportBillBLL
     {
-        public static int GetUncheckBillIDByTableID(int tableId)
+        public static List<ImportBillDTO> GetListImportBill()
         {
-            return ImportBillDAO.GetUncheckBillIDByTableID(tableId);
+            return ImportBillDAO.GetListImportBill();
         }
 
-        public static void InsertBill(int tableId, string userName, string note = null)
+        public static int CreateEmptyImportBill(int idProvide, string currentUserName)
         {
-            ImportBillDAO.InsertBill(tableId, userName, note);
+            ImportBillDTO importBill = new ImportBillDTO
+            {
+                DateImport = DateTime.Now,
+                IdProvide = idProvide,
+                TotalPrice = 0,
+                Username = currentUserName
+            };
+            return ImportBillDAO.InsertImportBill(importBill);
         }
 
-        public static void CheckOut(int billId, int discount, float totalPrice, string note = null)
+        public static bool InsertImportBill(ImportBillDTO importBill, List<ImportBillInfoDTO> details)
         {
-            ImportBillDAO.CheckOut(billId, discount, totalPrice, note);
-        }
-
-        public static ImportBillDTO GetBillById(int billId)
-        {
-            return ImportBillDAO.GetBillById(billId);
-        }
-
-        public static float CalculateTotalPrice(int billId)
-        {
-            var details = ImportBillDetailDAO.GetBillDetailsByBillId(billId);
-            float total = 0;
+            int newId = DAO.ImportBillDAO.InsertImportBill(importBill);
+            if(newId == -1) return false;
             foreach (var detail in details)
             {
-                var food = FoodBLL.GetListFood().FirstOrDefault(f => f.ID == detail.FoodId);
-                if (food != null)
+                detail.IdImportBill = newId;
+                if (!DAO.ImportBillInfoDAO.InsertImportBillInfo(detail))
                 {
-                    total += food.Price * detail.Quantity;
+                    return false; // Nếu có lỗi trong việc thêm chi tiết, trả về false
                 }
             }
-            return total;
+            importBill.IdImportBill = newId; // Cập nhật ID cho hóa đơn nhập
+            importBill.TotalPrice = details.Sum(d => d.Price * d.Count); // Tính tổng giá trị hóa đơn nhập
+            return ImportBillDAO.UpdateImportBill(importBill); // Cập nhật hóa đơn nhập với tổng giá trị
+        }
+        public static bool UpdateImportBill(ImportBillDTO importBill)
+        {
+            return ImportBillDAO.UpdateImportBill(importBill);
+        }
+
+        public static bool UpdateImportBill(ImportBillDTO importBill, List<ImportBillInfoDTO> details)
+        {
+            if (!ImportBillDAO.UpdateImportBill(importBill))
+                return false;
+
+            var oldDetails = ImportBillInfoDAO.GetListImportBillInfo(importBill.IdImportBill);
+            foreach (var oldDetail in oldDetails)
+                ImportBillInfoDAO.DeleteImportBillInfo(oldDetail.IdImportBillInfo);
+
+            foreach (var detail in details)
+            {
+                detail.IdImportBill = importBill.IdImportBill;
+                if (!ImportBillInfoDAO.InsertImportBillInfo(detail))
+                    return false;
+            }
+
+            return true;
+        }
+        public static bool DeleteImportBill(int idImportBill)
+        {
+            return ImportBillDAO.DeleteImportBill(idImportBill);
+        }
+
+        public static List<ImportBillInfoDTO> GetImportBillDetails(int idImportBill)
+        {
+            return ImportBillInfoDAO.GetListImportBillInfo(idImportBill);
         }
     }
 }

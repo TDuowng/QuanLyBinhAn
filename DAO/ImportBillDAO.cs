@@ -10,44 +10,45 @@ namespace DAO
 {
     public class ImportBillDAO
     {
-        /// <summary>
-        /// Thành công : bill ID
-        /// Thất bại: -1
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public static int GetUncheckBillIDByTableID(int tableId)
+        public static List<ImportBillDTO> GetListImportBill()
         {
-            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT MaHDB FROM HoaDonBan WHERE MaBan = @MaBan AND Trangthai = 0", new object[] { tableId });
-            if (data.Rows.Count > 0)
+            string query = "SELECT hdn.*, ncc.TenNCC FROM HoaDonNhap hdn INNER JOIN NhaCungCap ncc ON hdn.MaNCC = ncc.MaNCC";
+            List<ImportBillDTO> listImportBill = new List<ImportBillDTO>();
+            DataTable dataTable = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow row in dataTable.Rows)
             {
-                // Chỉ lấy MaHDB thay vì tạo đối tượng ImportBillDTO
-                return Convert.ToInt32(data.Rows[0]["MaHDB"]);
+                ImportBillDTO importBill = new ImportBillDTO(row);
+                listImportBill.Add(importBill);
             }
-            return -1;
-        }
-        public static void InsertBill(int tableId, string userName, string note = null)
-        {
-            string query = "INSERT INTO HoaDonBan ( NgayVao , MaBan , UserName , Trangthai , GiamGia , Ghichu ) " +
-                           "VALUES ( @NgayVao , @MaBan , @UserName , 0 , 0 , @Ghichu )";
-            DataProvider.Instance.ExecuteNonQuery(query, new object[] { DateTime.Now , tableId , userName , note ?? (object)DBNull.Value });
+            return listImportBill;
         }
 
-        public static void CheckOut(int billId, int discount, float totalPrice, string note = null)
+        public static int InsertImportBill(ImportBillDTO importBill)
         {
-            string query = "UPDATE HoaDonBan SET NgayRa = @NgayRa , Trangthai = 1 , GiamGia = @GiamGia , ThanhTien = @ThanhTien , Ghichu = @Ghichu " +
-                           "WHERE MaHDB = @MaHDB ";
-            DataProvider.Instance.ExecuteNonQuery(query, new object[] { DateTime.Now , discount , totalPrice , note ?? (object)DBNull.Value , billId });
+            string query = "EXEC USP_InsertImportBill @DateImport , @IdProvide , @TotalPrice , @NguoiNhap";
+            object result = DataProvider.Instance.ExecuteScalar(query, new object[] { importBill.DateImport , importBill.IdProvide , 0 , importBill.Username });
+            return (result != null) ? Convert.ToInt32(result) : -1;
         }
 
-        public static ImportBillDTO GetBillById(int billId)
+        public static bool UpdateImportBill(ImportBillDTO importBill)
         {
-            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM HoaDonBan WHERE MaHDB = @MaHDB " , new object[] { billId });
-            if (data.Rows.Count > 0)
+            string query = "EXEC USP_UpdateImportBill @IdImportBill , @DateImport , @IdProvide , @TotalPrice";
+            if(DataProvider.Instance.ExecuteNonQuery(query, new object[] { importBill.DateImport , importBill.IdProvide , importBill.TotalPrice , importBill.IdImportBill }) == 1)
             {
-                return new ImportBillDTO(data.Rows[0]);
+                return true;
             }
-            return null;
+            return false;
+
+        }
+
+        public static bool DeleteImportBill(int idImportBill)
+        {
+            string query = "EXEC USP_DeleteImportBill @IdImportBill";
+            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { idImportBill }) == 1)
+            {
+                return true;
+            }
+            return false;
         }
 
         

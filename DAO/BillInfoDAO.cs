@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class ImportBillDetailDAO
+    public class BillInfoDAO
     {
-        public static List<ImportBillDetailDTO> GetBillDetailsByBillId(int billId)
+        public static List<BillDetailDTO> GetBillDetailsByBillId(int billId)
         {
-            List<ImportBillDetailDTO> list = new List<ImportBillDetailDTO>();
+            List<BillDetailDTO> list = new List<BillDetailDTO>();
             string query = "SELECT * FROM CTHoaDonBan WHERE MaHDB = @MaHDB ";
             DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { billId });
             foreach (DataRow row in data.Rows)
             {
-                list.Add(new ImportBillDetailDTO(row));
+                list.Add(new BillDetailDTO(row));
             }
             return list;
         }
 
-        public static bool InsertBillDetail(ImportBillDetailDTO detail)
+        public static bool InsertBillDetail(BillDetailDTO detail)
         {
             string query = "INSERT INTO CTHoaDonBan ( MaHDB , MaTD , SoLuong ) VALUES ( @MaHDB , @MaTD , @SoLuong )";
             int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { detail.BillId , detail.FoodId , detail.Quantity });

@@ -171,7 +171,7 @@ namespace GUI
 
         private void btnImportMaterial_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmImportMaterial(), sender);
+            openChildForm(new frmImportMaterial(currentUserName), sender);
         }
 
         private void btnListMaterial_Click(object sender, EventArgs e)
