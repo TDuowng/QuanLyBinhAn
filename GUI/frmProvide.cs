@@ -18,6 +18,8 @@ namespace GUI
         {
             InitializeComponent();
             LoadData();
+
+            SetupAutoComplete();
         }
 
         #region Methos
@@ -32,7 +34,9 @@ namespace GUI
             dtgvProvide.Columns["Address"].HeaderText = "Địa chỉ";
             dtgvProvide.Columns["Note"].HeaderText = "Ghi chú";
             dtgvProvide.Columns["Borrow"].HeaderText = "Nợ cần trả";
+            dtgvProvide.Columns["Borrow"].DefaultCellStyle.Format = "N0";
             dtgvProvide.Columns["Total"].HeaderText = "Tổng mua";
+            dtgvProvide.Columns["Total"].DefaultCellStyle.Format = "N0";
             dtgvProvide.RowTemplate.Height = 30;
             dtgvProvide.RowTemplate.Height = 40;
         }
@@ -50,6 +54,22 @@ namespace GUI
             txtNote.Text = "";
             numBorrow.Text = "";
             numTotal.Text = "";
+        }
+
+        private void SetupAutoComplete()
+        {
+            var provide = ProvideBLL.GetListProvide()
+                                  .Select(i => i.NameProvide)
+                                  .ToArray();
+
+            // Cấu hình AutoComplete
+            txtSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            collection.AddRange(provide);
+
+            txtSearch.AutoCompleteCustomSource = collection;
         }
         #endregion
 

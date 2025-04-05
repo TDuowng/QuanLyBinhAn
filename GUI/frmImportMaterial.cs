@@ -1,9 +1,11 @@
 ﻿using BLL;
+using DAO;
 using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,6 +27,8 @@ namespace GUI
             LoadListImportBill();
             txtUserName.Text = userName;
             currentUserName = userName;
+
+            SetupAutoComplete();
         }
 
         #region Methods
@@ -77,27 +81,72 @@ namespace GUI
         private void LoadImportBillInfo(int idImportBill)
         {
             dtgvImportBillInfo.DataSource = ImportBillInfoBLL.GetListImportBillInfo(idImportBill);
+            dtgvImportBillInfo.Columns[0].HeaderText = "Mã CT HĐN";
+            dtgvImportBillInfo.Columns[1].HeaderText = "Mã HĐN";
+            dtgvImportBillInfo.Columns[1].Visible = false;
+            dtgvImportBillInfo.Columns[2].HeaderText = "Mã nguyên liệu";
+            dtgvImportBillInfo.Columns[2].Visible = false;
+            dtgvImportBillInfo.Columns[3].HeaderText = "Tên nguyên liệu";
+            dtgvImportBillInfo.Columns[4].HeaderText = "Đơn giá";
+            dtgvImportBillInfo.Columns[4].DefaultCellStyle.Format = "N0";
+            dtgvImportBillInfo.Columns[5].HeaderText = "Số lượng";
+            dtgvImportBillInfo.Columns[5].DefaultCellStyle.Format = "N0";
+            dtgvImportBillInfo.Columns[6].HeaderText = "Thành tiền";
+            dtgvImportBillInfo.Columns[6].DefaultCellStyle.Format = "N0";
+
+            dtgvImportBillInfo.RowTemplate.Height = 40;
+
         }
+        private void SetupAutoComplete()
+        {
+            var provide = ProvideBLL.GetListProvide()
+                                  .Select(i => i.NameProvide)
+                                  .ToArray();
+
+            // Cấu hình AutoComplete
+            txtSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            collection.AddRange(provide);
+
+            txtSearch.AutoCompleteCustomSource = collection;
+        }
+
         #endregion
 
         #region Events
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string keyword = txtSearch.Text.Trim(); // Giả sử bạn có TextBox txtSearch để nhập từ khóa
-            if (string.IsNullOrEmpty(keyword))
+            try
             {
-                LoadListImportBill();
-                return;
+                string keyword = txtSearch.Text.Trim();
+
+                if (string.IsNullOrEmpty(keyword))
+                {
+                    LoadListImportBill(); // Load tất cả nếu không có từ khóa
+                    return;
+                }
+
+                // Gọi phương thức từ BLL
+                List<ImportBillDTO> searchResult = ImportBillBLL.SearchImportBillsByProvider(keyword);
+
+                // Hiển thị kết quả
+                dtgvImportBill.DataSource = searchResult;
+
+                // Thông báo nếu không có kết quả
+                if (searchResult.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy hóa đơn nào cho nhà cung cấp: " + keyword,
+                                  "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-
-            var list = ImportBillBLL.GetListImportBill()
-                .Where(ib => ib.IdImportBill.ToString().Contains(keyword) ||
-                             ib.NameProvide.ToLower().Contains(keyword.ToLower()) ||
-                             ib.Username.ToLower().Contains(keyword.ToLower()))
-                .ToList();
-
-            dtgvImportBill.DataSource = list;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tìm kiếm: {ex.Message}",
+                              "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -105,8 +154,7 @@ namespace GUI
         {
             if (e.RowIndex >= 0)
             {
-                if (e.RowIndex >= 0) // Sửa thành >= 0
-                {
+                
                     DataGridViewRow selectedRow = dtgvImportBill.Rows[e.RowIndex];
                     txtIdImportBill.Text = selectedRow.Cells["IdImportBill"].Value.ToString();
                     dtpkDateImport.Text = selectedRow.Cells["DateImport"].Value.ToString();
@@ -115,7 +163,6 @@ namespace GUI
 
                     selectedImportBillId = int.Parse(txtIdImportBill.Text); // Cập nhật selectedImportBillId
                     LoadImportBillInfo(selectedImportBillId);
-                }
             }
 
         }
@@ -237,12 +284,6 @@ namespace GUI
             }
         }
 
-        private void btnRefresh_Click_1(object sender, EventArgs e)
-        {
-            LoadListImportBill();
-            ResetInput();
-        }
-
         private void btnInsertBillInfo_Click(object sender, EventArgs e)
         {
             try
@@ -253,23 +294,23 @@ namespace GUI
                     return;
                 }
 
-                selectedImportBillId = int.Parse(txtIdImportBill.Text); // Cập nhật selectedImportBillId
+                selectedImportBillId = int.Parse(txtIdImportBill.Text); 
                 int idIngredient = (int)cbIngredient.SelectedValue;
                 float price = float.Parse(numPrice.Text);
                 int count = int.Parse(numCountImport.Text);
 
-                var existingDetails = ImportBillBLL.GetImportBillDetails(selectedImportBillId); // Sửa thành GetImportBillDetails
+                var existingDetails = ImportBillBLL.GetImportBillDetails(selectedImportBillId);
                 var existingDetail = existingDetails.Find(d => d.IdIngredient == idIngredient);
-                Console.WriteLine($"DateImport: {dtpkDateImport.Value}");
+
                 if (existingDetail != null)
                 {
                     // Cập nhật số lượng nếu nguyên liệu đã tồn tại
                     existingDetail.Count += count;
-                    ImportBillBLL.UpdateImportBill(new ImportBillDTO { IdImportBill = selectedImportBillId }, existingDetails);
+                    ImportBillInfoDAO.UpdateImportBillInfo(existingDetail); 
                 }
                 else
                 {
-                    // Thêm mới chi tiết hóa đơn
+                   
                     var newDetail = new ImportBillInfoDTO
                     {
                         IdImportBill = selectedImportBillId,
@@ -277,17 +318,17 @@ namespace GUI
                         Price = price,
                         Count = count
                     };
-                    ImportBillBLL.InsertImportBill(new ImportBillDTO { IdImportBill = selectedImportBillId }, new List<ImportBillInfoDTO> { newDetail }); // Sửa thành AddImportBill
+                    ImportBillInfoDAO.InsertImportBillInfo(newDetail); 
                 }
-                
+
 
                 LoadImportBillInfo(selectedImportBillId);
                 LoadListImportBill();
-                MessageBox.Show("Thêm chi tiết hóa đơn thành công!");
+                MessageBox.Show("Thêm chi tiết hóa đơn thành công!","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             catch (FormatException)
             {
-                MessageBox.Show("Vui lòng nhập số lượng hợp lệ!");
+                MessageBox.Show("Vui lòng nhập số lượng hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
@@ -299,15 +340,24 @@ namespace GUI
         {
             try
             {
-                if (dtgvImportBillInfo.SelectedRows.Count == 0)
+                if (string.IsNullOrEmpty(txtImportBillInfo.Text) ||
+            dtgvImportBillInfo.SelectedRows.Count == 0) // Thêm kiểm tra SelectedRows
                 {
-                    MessageBox.Show("Vui lòng chọn chi tiết để sửa!");
+                    MessageBox.Show("Vui lòng chọn chi tiết để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                // Thêm kiểm tra null cho SelectedRows[0]
+                if (dtgvImportBillInfo.SelectedRows[0].Cells["IdImportBillInfo"].Value == null)
+                {
+                    MessageBox.Show("Dữ liệu không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
                 int idImportBillInfo = Convert.ToInt32(dtgvImportBillInfo.SelectedRows[0].Cells["IdImportBillInfo"].Value);
                 int idIngredient = (int)cbIngredient.SelectedValue;
-                float price = float.Parse(numPrice.Text); // Sửa lấy từ numPrice
+                float price = float.Parse(numPrice.Text); 
                 int count = int.Parse(numCountImport.Text);
 
                 var updatedDetail = new ImportBillInfoDTO
@@ -319,18 +369,15 @@ namespace GUI
                     Count = count
                 };
 
-                var details = ImportBillBLL.GetImportBillDetails(selectedImportBillId); // Sửa thành GetImportBillDetails
-                details.RemoveAll(d => d.IdImportBillInfo == idImportBillInfo);
-                details.Add(updatedDetail);
-                ImportBillBLL.UpdateImportBill(new ImportBillDTO { IdImportBill = selectedImportBillId }, details);
+                ImportBillInfoDAO.UpdateImportBillInfo(updatedDetail); 
 
                 LoadImportBillInfo(selectedImportBillId);
                 LoadListImportBill();
-                MessageBox.Show("Sửa chi tiết hóa đơn thành công!");
+                MessageBox.Show("Sửa chi tiết hóa đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (FormatException)
             {
-                MessageBox.Show("Vui lòng nhập số lượng hợp lệ!");
+                MessageBox.Show("Vui lòng nhập số lượng hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
@@ -342,20 +389,23 @@ namespace GUI
         {
             try
             {
-                if (dtgvImportBillInfo.SelectedRows.Count == 0)
+                if (dtgvImportBillInfo.Rows.Count == 0)
                 {
-                    MessageBox.Show("Vui lòng chọn chi tiết hoá đơn để xóa!");
+                    MessageBox.Show("Vui lòng chọn chi tiết để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                int idImportBillInfo = Convert.ToInt32(dtgvImportBill.SelectedRows[0].Cells["IdImportBillInfo"].Value);
-                var details = ImportBillInfoBLL.GetListImportBillInfo(selectedImportBillId);
-                details.RemoveAll(d => d.IdImportBillInfo == idImportBillInfo);
-                ImportBillBLL.UpdateImportBill(new ImportBillDTO { IdImportBill = selectedImportBillId }, details);
+                selectedImportBillId = int.Parse(txtIdImportBill.Text);
+                int idImportBillInfo = Convert.ToInt32(dtgvImportBillInfo.SelectedRows[0].Cells["IdImportBillInfo"].Value);
+                if (MessageBox.Show($"Bạn có chắc chắn muốn xóa hóa đơn nhập này không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
 
-                LoadImportBillInfo(selectedImportBillId);
-                LoadListImportBill();
-                MessageBox.Show("Xóa chi tiết hóa đơn thành công!");
+                    ImportBillInfoDAO.DeleteImportBillInfo(idImportBillInfo);
+                    LoadImportBillInfo(selectedImportBillId);
+                    LoadListImportBill();
+                    MessageBox.Show("Xóa chi tiết hóa đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }   
+                
             }
             catch (Exception ex)
             {
@@ -369,13 +419,55 @@ namespace GUI
             {
                 LoadImportBillInfo(selectedImportBillId);
             }
-            cbIngredient.SelectedIndex = -1;
-            numPrice.Value = 0;
-            numCountImport.Value = 0;
+            LoadListImportBill();
+            ResetInput();
+        }
+
+        private void dtgvImportBillInfo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dtgvImportBill.Rows.Count) 
+            {
+                DataGridViewRow selectedRow = dtgvImportBillInfo.Rows[e.RowIndex];
+                txtImportBillInfo.Text = selectedRow.Cells["IdImportBillInfo"].Value.ToString();
+                cbIngredient.Text = selectedRow.Cells["NameIngredient"].Value.ToString();
+                numCountImport.Text = selectedRow.Cells["Count"].Value.ToString();
+            }
         }
 
         #endregion
 
+        private void btnSearchByDate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime fromDate = dtpFromDate.Value.Date;
+                DateTime toDate = dtpToDate.Value.Date;
 
+                if (fromDate > toDate)
+                {
+                    MessageBox.Show("Ngày bắt đầu không được lớn hơn ngày kết thúc!", "Thông báo",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Lấy danh sách hóa đơn theo khoảng ngày
+                List<ImportBillDTO> filteredBills = ImportBillBLL.GetListImportBillByDateRange(fromDate , toDate);
+
+                // Hiển thị lên DataGridView
+                dtgvImportBill.DataSource = filteredBills;
+
+                if (filteredBills.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy hóa đơn nào trong khoảng thời gian này!",
+                                  "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadListImportBill();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tìm kiếm: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

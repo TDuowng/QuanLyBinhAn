@@ -51,7 +51,44 @@ namespace DAO
             return false;
         }
 
-        
+        public static List<ImportBillDTO> GetListImportBillByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            List<ImportBillDTO> listImportBill = new List<ImportBillDTO>();
+            string query = "EXEC USP_GetImportBillByDateRange @FromDate , @ToDate";
+
+            // Thêm 1 ngày vào toDate để bao gồm cả ngày kết thúc
+            DateTime endDate = toDate.AddDays(1);
+
+            DataTable dataTable = DataProvider.Instance.ExecuteQuery(query,
+                new object[] { fromDate , endDate });
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                ImportBillDTO importBill = new ImportBillDTO(row);
+                listImportBill.Add(importBill);
+            }
+            return listImportBill;
+        }
+
+        public static List<ImportBillDTO> SearchByProviderName(string providerName)
+        {
+            List<ImportBillDTO> list = new List<ImportBillDTO>();
+
+            string query = "EXEC USP_SearchImportBillByProvider @ProviderName";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query,
+                new object[] { providerName });
+
+            foreach (DataRow item in data.Rows)
+            {
+                ImportBillDTO bill = new ImportBillDTO(item);
+                list.Add(bill);
+            }
+
+            return list;
+        }
+
+
 
     }
 }

@@ -12,7 +12,7 @@ namespace DAO
     {
         public static List<ImportBillInfoDTO> GetListImportBillInfo(int idImportBill)
         {
-            string query = "SELECT cthdn.*, nl.TenNL FROM CTHoaDonNhap cthdn JOIN NguyenLieu nl ON cthdn.MaNL = nl.MaNL WHERE cthdn.MaHDN = @MaHDN";
+            string query = "SELECT ct.MaCTHDN, ct.MaHDN, nl.MaNL, nl.TenNL, ct.SLNhap, ct.DonGia, ct.SLNhap*ct.DonGia\tAS ThanhTien FROM CTHoaDonNhap ct INNER JOIN NguyenLieu nl ON ct.MaNL = nl.MaNL  WHERE ct.MaHDN = @MaHDN";
             List<ImportBillInfoDTO> listImportBillInfo = new List<ImportBillInfoDTO>();
             DataTable dataTable = DataProvider.Instance.ExecuteQuery(query, new object[] { idImportBill });
             foreach (DataRow row in dataTable.Rows)

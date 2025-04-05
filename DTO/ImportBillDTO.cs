@@ -30,7 +30,7 @@ namespace DTO
 
         public ImportBillDTO(DataRow row)
         {
-            this.idImportBill = (int)row["MaHDN"];
+            this.IdImportBill = (int)row["MaHDN"];
             this.dateImport = (DateTime)row["NgayNhap"];
             this.idProvide = (int)row["MaNCC"];
             this.totalPrice = row["TongTien"] != DBNull.Value ? Convert.ToSingle(row["TongTien"]) : 0;

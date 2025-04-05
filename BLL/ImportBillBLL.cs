@@ -48,24 +48,6 @@ namespace BLL
             return ImportBillDAO.UpdateImportBill(importBill);
         }
 
-        public static bool UpdateImportBill(ImportBillDTO importBill, List<ImportBillInfoDTO> details)
-        {
-            if (!ImportBillDAO.UpdateImportBill(importBill))
-                return false;
-
-            var oldDetails = ImportBillInfoDAO.GetListImportBillInfo(importBill.IdImportBill);
-            foreach (var oldDetail in oldDetails)
-                ImportBillInfoDAO.DeleteImportBillInfo(oldDetail.IdImportBillInfo);
-
-            foreach (var detail in details)
-            {
-                detail.IdImportBill = importBill.IdImportBill;
-                if (!ImportBillInfoDAO.InsertImportBillInfo(detail))
-                    return false;
-            }
-
-            return true;
-        }
         public static bool DeleteImportBill(int idImportBill)
         {
             return ImportBillDAO.DeleteImportBill(idImportBill);
@@ -75,5 +57,21 @@ namespace BLL
         {
             return ImportBillInfoDAO.GetListImportBillInfo(idImportBill);
         }
+
+        public static List<ImportBillDTO> GetListImportBillByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return ImportBillDAO.GetListImportBillByDateRange(fromDate, toDate);
+        }
+
+        public static List<ImportBillDTO> SearchImportBillsByProvider(string providerName)
+        {
+            if (string.IsNullOrWhiteSpace(providerName))
+                return new List<ImportBillDTO>();
+
+            return ImportBillDAO.SearchByProviderName(providerName);
+        }
+
+
+
     }
 }

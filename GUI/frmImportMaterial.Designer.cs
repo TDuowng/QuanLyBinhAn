@@ -32,14 +32,24 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSearchByDate = new System.Windows.Forms.Button();
+            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.dtpkViewHDN = new System.Windows.Forms.DateTimePicker();
+            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnInsert = new System.Windows.Forms.Button();
+            this.dtgvImportBill = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -54,31 +64,28 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txtUnit = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.numPrice = new System.Windows.Forms.NumericUpDown();
             this.numCountImport = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.cbIngredient = new System.Windows.Forms.ComboBox();
             this.txtImportBillInfo = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dtgvImportBillInfo = new System.Windows.Forms.DataGridView();
             this.btnDeleteBillInfo = new System.Windows.Forms.Button();
             this.btnUpdateBillInfo = new System.Windows.Forms.Button();
             this.btnRefreshBillInfo = new System.Windows.Forms.Button();
             this.btnInsertBillInfo = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbIngredient = new System.Windows.Forms.ComboBox();
-            this.dtgvImportBill = new System.Windows.Forms.DataGridView();
-            this.txtUnit = new System.Windows.Forms.TextBox();
-            this.txtUserName = new System.Windows.Forms.TextBox();
-            this.btnInsert = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.dtgvImportBillInfo = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvImportBill)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,7 +95,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCountImport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvImportBillInfo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvImportBill)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -103,31 +109,72 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnSearchByDate);
+            this.panel2.Controls.Add(this.dtpToDate);
+            this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.panel6);
             this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.dtpkViewHDN);
+            this.panel2.Controls.Add(this.dtpFromDate);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(39, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1599, 88);
             this.panel2.TabIndex = 10;
             // 
+            // btnSearchByDate
+            // 
+            this.btnSearchByDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnSearchByDate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearchByDate.FlatAppearance.BorderSize = 0;
+            this.btnSearchByDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchByDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchByDate.ForeColor = System.Drawing.Color.White;
+            this.btnSearchByDate.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchByDate.Image")));
+            this.btnSearchByDate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearchByDate.Location = new System.Drawing.Point(482, 15);
+            this.btnSearchByDate.Name = "btnSearchByDate";
+            this.btnSearchByDate.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnSearchByDate.Size = new System.Drawing.Size(137, 63);
+            this.btnSearchByDate.TabIndex = 37;
+            this.btnSearchByDate.Text = "  Xem";
+            this.btnSearchByDate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSearchByDate.UseVisualStyleBackColor = false;
+            this.btnSearchByDate.Click += new System.EventHandler(this.btnSearchByDate_Click);
+            // 
+            // dtpToDate
+            // 
+            this.dtpToDate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpToDate.Location = new System.Drawing.Point(123, 48);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(353, 30);
+            this.dtpToDate.TabIndex = 36;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(33, 52);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 23);
+            this.label13.TabIndex = 35;
+            this.label13.Text = "đến ngày:";
+            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.txtSearch);
             this.panel6.Controls.Add(this.btnSearch);
-            this.panel6.Location = new System.Drawing.Point(441, 19);
+            this.panel6.Location = new System.Drawing.Point(633, 15);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1146, 56);
+            this.panel6.Size = new System.Drawing.Size(954, 63);
             this.panel6.TabIndex = 34;
             // 
             // txtSearch
             // 
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSearch.Location = new System.Drawing.Point(6, 17);
+            this.txtSearch.Location = new System.Drawing.Point(10, 22);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(918, 23);
+            this.txtSearch.Size = new System.Drawing.Size(882, 23);
             this.txtSearch.TabIndex = 14;
             // 
             // btnSearch
@@ -139,9 +186,9 @@
             this.btnSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(1090, 0);
+            this.btnSearch.Location = new System.Drawing.Point(898, 0);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(56, 56);
+            this.btnSearch.Size = new System.Drawing.Size(56, 63);
             this.btnSearch.TabIndex = 13;
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -149,24 +196,23 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 23);
+            this.label12.Location = new System.Drawing.Point(8, 18);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(130, 23);
+            this.label12.Size = new System.Drawing.Size(111, 23);
             this.label12.TabIndex = 33;
-            this.label12.Text = "Xem theo ngày:";
+            this.label12.Text = "Xem từ ngày:";
             // 
-            // dtpkViewHDN
+            // dtpFromDate
             // 
-            this.dtpkViewHDN.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpkViewHDN.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpkViewHDN.Location = new System.Drawing.Point(142, 19);
-            this.dtpkViewHDN.Name = "dtpkViewHDN";
-            this.dtpkViewHDN.Size = new System.Drawing.Size(285, 30);
-            this.dtpkViewHDN.TabIndex = 15;
+            this.dtpFromDate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFromDate.Location = new System.Drawing.Point(123, 15);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(353, 30);
+            this.dtpFromDate.TabIndex = 15;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnRefresh);
             this.panel3.Controls.Add(this.btnDelete);
             this.panel3.Controls.Add(this.btnUpdate);
             this.panel3.Controls.Add(this.btnInsert);
@@ -178,6 +224,83 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(627, 777);
             this.panel3.TabIndex = 11;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.Location = new System.Drawing.Point(327, 713);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(140, 53);
+            this.btnDelete.TabIndex = 16;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.Location = new System.Drawing.Point(173, 713);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(140, 53);
+            this.btnUpdate.TabIndex = 15;
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
+            // 
+            // btnInsert
+            // 
+            this.btnInsert.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnInsert.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInsert.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnInsert.Image = ((System.Drawing.Image)(resources.GetObject("btnInsert.Image")));
+            this.btnInsert.Location = new System.Drawing.Point(20, 713);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(140, 53);
+            this.btnInsert.TabIndex = 14;
+            this.btnInsert.UseVisualStyleBackColor = false;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click_1);
+            // 
+            // dtgvImportBill
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgvImportBill.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgvImportBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dtgvImportBill.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvImportBill.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(153)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvImportBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgvImportBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvImportBill.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgvImportBill.GridColor = System.Drawing.Color.Gainsboro;
+            this.dtgvImportBill.Location = new System.Drawing.Point(20, 233);
+            this.dtgvImportBill.Name = "dtgvImportBill";
+            this.dtgvImportBill.RowHeadersVisible = false;
+            this.dtgvImportBill.RowHeadersWidth = 51;
+            this.dtgvImportBill.RowTemplate.Height = 24;
+            this.dtgvImportBill.Size = new System.Drawing.Size(599, 472);
+            this.dtgvImportBill.TabIndex = 13;
+            this.dtgvImportBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvImportBill_CellClick);
             // 
             // panel5
             // 
@@ -323,6 +446,23 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
+            // txtUserName
+            // 
+            this.txtUserName.Location = new System.Drawing.Point(600, 114);
+            this.txtUserName.Multiline = true;
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(293, 31);
+            this.txtUserName.TabIndex = 17;
+            // 
+            // txtUnit
+            // 
+            this.txtUnit.Location = new System.Drawing.Point(600, 26);
+            this.txtUnit.Multiline = true;
+            this.txtUnit.Name = "txtUnit";
+            this.txtUnit.ReadOnly = true;
+            this.txtUnit.Size = new System.Drawing.Size(293, 31);
+            this.txtUnit.TabIndex = 16;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -379,6 +519,15 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Số lượng nhập:";
             // 
+            // cbIngredient
+            // 
+            this.cbIngredient.FormattingEnabled = true;
+            this.cbIngredient.Location = new System.Drawing.Point(191, 69);
+            this.cbIngredient.Name = "cbIngredient";
+            this.cbIngredient.Size = new System.Drawing.Size(275, 31);
+            this.cbIngredient.TabIndex = 4;
+            this.cbIngredient.SelectedIndexChanged += new System.EventHandler(this.cbIngredient_SelectedIndexChanged);
+            // 
             // txtImportBillInfo
             // 
             this.txtImportBillInfo.Location = new System.Drawing.Point(191, 24);
@@ -388,6 +537,15 @@
             this.txtImportBillInfo.Size = new System.Drawing.Size(275, 31);
             this.txtImportBillInfo.TabIndex = 3;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 74);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(150, 23);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Nguyên liệu nhập:";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -396,18 +554,6 @@
             this.label8.Size = new System.Drawing.Size(111, 23);
             this.label8.TabIndex = 6;
             this.label8.Text = "Mã CT phiếu:";
-            // 
-            // dtgvImportBillInfo
-            // 
-            this.dtgvImportBillInfo.BackgroundColor = System.Drawing.Color.White;
-            this.dtgvImportBillInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtgvImportBillInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvImportBillInfo.Location = new System.Drawing.Point(682, 321);
-            this.dtgvImportBillInfo.Name = "dtgvImportBillInfo";
-            this.dtgvImportBillInfo.RowHeadersWidth = 51;
-            this.dtgvImportBillInfo.RowTemplate.Height = 24;
-            this.dtgvImportBillInfo.Size = new System.Drawing.Size(944, 460);
-            this.dtgvImportBillInfo.TabIndex = 16;
             // 
             // btnDeleteBillInfo
             // 
@@ -419,7 +565,7 @@
             this.btnDeleteBillInfo.ForeColor = System.Drawing.Color.White;
             this.btnDeleteBillInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteBillInfo.Image")));
             this.btnDeleteBillInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteBillInfo.Location = new System.Drawing.Point(1299, 797);
+            this.btnDeleteBillInfo.Location = new System.Drawing.Point(1129, 797);
             this.btnDeleteBillInfo.Name = "btnDeleteBillInfo";
             this.btnDeleteBillInfo.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnDeleteBillInfo.Size = new System.Drawing.Size(158, 56);
@@ -439,7 +585,7 @@
             this.btnUpdateBillInfo.ForeColor = System.Drawing.Color.White;
             this.btnUpdateBillInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdateBillInfo.Image")));
             this.btnUpdateBillInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdateBillInfo.Location = new System.Drawing.Point(1130, 797);
+            this.btnUpdateBillInfo.Location = new System.Drawing.Point(960, 797);
             this.btnUpdateBillInfo.Name = "btnUpdateBillInfo";
             this.btnUpdateBillInfo.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnUpdateBillInfo.Size = new System.Drawing.Size(158, 56);
@@ -459,7 +605,7 @@
             this.btnRefreshBillInfo.ForeColor = System.Drawing.Color.White;
             this.btnRefreshBillInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnRefreshBillInfo.Image")));
             this.btnRefreshBillInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRefreshBillInfo.Location = new System.Drawing.Point(1468, 797);
+            this.btnRefreshBillInfo.Location = new System.Drawing.Point(1298, 797);
             this.btnRefreshBillInfo.Name = "btnRefreshBillInfo";
             this.btnRefreshBillInfo.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnRefreshBillInfo.Size = new System.Drawing.Size(158, 56);
@@ -479,7 +625,7 @@
             this.btnInsertBillInfo.ForeColor = System.Drawing.Color.White;
             this.btnInsertBillInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnInsertBillInfo.Image")));
             this.btnInsertBillInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInsertBillInfo.Location = new System.Drawing.Point(961, 797);
+            this.btnInsertBillInfo.Location = new System.Drawing.Point(791, 797);
             this.btnInsertBillInfo.Name = "btnInsertBillInfo";
             this.btnInsertBillInfo.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnInsertBillInfo.Size = new System.Drawing.Size(158, 56);
@@ -489,141 +635,73 @@
             this.btnInsertBillInfo.UseVisualStyleBackColor = false;
             this.btnInsertBillInfo.Click += new System.EventHandler(this.btnInsertBillInfo_Click);
             // 
-            // label6
+            // dtgvImportBillInfo
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 74);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 23);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Nguyên liệu nhập:";
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgvImportBillInfo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgvImportBillInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvImportBillInfo.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvImportBillInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(153)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvImportBillInfo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgvImportBillInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvImportBillInfo.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dtgvImportBillInfo.GridColor = System.Drawing.Color.Gainsboro;
+            this.dtgvImportBillInfo.Location = new System.Drawing.Point(682, 321);
+            this.dtgvImportBillInfo.Name = "dtgvImportBillInfo";
+            this.dtgvImportBillInfo.RowHeadersWidth = 51;
+            this.dtgvImportBillInfo.RowTemplate.Height = 24;
+            this.dtgvImportBillInfo.Size = new System.Drawing.Size(947, 460);
+            this.dtgvImportBillInfo.TabIndex = 16;
+            this.dtgvImportBillInfo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvImportBillInfo_CellClick);
             // 
-            // cbIngredient
+            // button1
             // 
-            this.cbIngredient.FormattingEnabled = true;
-            this.cbIngredient.Location = new System.Drawing.Point(191, 69);
-            this.cbIngredient.Name = "cbIngredient";
-            this.cbIngredient.Size = new System.Drawing.Size(275, 31);
-            this.cbIngredient.TabIndex = 4;
-            this.cbIngredient.SelectedIndexChanged += new System.EventHandler(this.cbIngredient_SelectedIndexChanged);
-            // 
-            // dtgvImportBill
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtgvImportBill.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgvImportBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dtgvImportBill.BackgroundColor = System.Drawing.Color.White;
-            this.dtgvImportBill.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(153)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvImportBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dtgvImportBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvImportBill.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dtgvImportBill.GridColor = System.Drawing.Color.White;
-            this.dtgvImportBill.Location = new System.Drawing.Point(20, 233);
-            this.dtgvImportBill.Name = "dtgvImportBill";
-            this.dtgvImportBill.RowHeadersVisible = false;
-            this.dtgvImportBill.RowHeadersWidth = 51;
-            this.dtgvImportBill.RowTemplate.Height = 24;
-            this.dtgvImportBill.Size = new System.Drawing.Size(599, 472);
-            this.dtgvImportBill.TabIndex = 13;
-            this.dtgvImportBill.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvImportBill_CellClick);
-            // 
-            // txtUnit
-            // 
-            this.txtUnit.Location = new System.Drawing.Point(600, 26);
-            this.txtUnit.Multiline = true;
-            this.txtUnit.Name = "txtUnit";
-            this.txtUnit.ReadOnly = true;
-            this.txtUnit.Size = new System.Drawing.Size(293, 31);
-            this.txtUnit.TabIndex = 16;
-            // 
-            // txtUserName
-            // 
-            this.txtUserName.Location = new System.Drawing.Point(600, 114);
-            this.txtUserName.Multiline = true;
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(293, 31);
-            this.txtUserName.TabIndex = 17;
-            // 
-            // btnInsert
-            // 
-            this.btnInsert.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnInsert.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInsert.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnInsert.Image = ((System.Drawing.Image)(resources.GetObject("btnInsert.Image")));
-            this.btnInsert.Location = new System.Drawing.Point(20, 713);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(140, 53);
-            this.btnInsert.TabIndex = 14;
-            this.btnInsert.UseVisualStyleBackColor = false;
-            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click_1);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUpdate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.Location = new System.Drawing.Point(173, 713);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(140, 53);
-            this.btnUpdate.TabIndex = 15;
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(327, 713);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(140, 53);
-            this.btnDelete.TabIndex = 16;
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefresh.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(479, 713);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(140, 53);
-            this.btnRefresh.TabIndex = 17;
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click_1);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(1468, 797);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(158, 56);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "   In HĐ";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // frmImportMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1638, 865);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dtgvImportBillInfo);
             this.Controls.Add(this.btnDeleteBillInfo);
             this.Controls.Add(this.btnUpdateBillInfo);
             this.Controls.Add(this.btnRefreshBillInfo);
             this.Controls.Add(this.btnInsertBillInfo);
-            this.Controls.Add(this.dtgvImportBillInfo);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel3);
@@ -638,6 +716,7 @@
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvImportBill)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -651,7 +730,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCountImport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvImportBillInfo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvImportBill)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -683,8 +761,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dtgvImportBillInfo;
-        private System.Windows.Forms.DateTimePicker dtpkViewHDN;
+        private System.Windows.Forms.DateTimePicker dtpFromDate;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TextBox txtSearch;
@@ -701,6 +778,10 @@
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.DataGridView dtgvImportBillInfo;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker dtpToDate;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnSearchByDate;
     }
 }

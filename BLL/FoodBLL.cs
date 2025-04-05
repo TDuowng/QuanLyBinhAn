@@ -52,5 +52,10 @@ namespace BLL
             return FoodDAO.GetFoodListInToFlow();
         }
 
+        public static List<FoodDTO> FilterFoodByIngredient(int idIngredient)
+        {
+            return FoodDAO.FilterFoodByIngredient(idIngredient);
+        }
+
     }
 }

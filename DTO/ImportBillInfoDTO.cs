@@ -15,27 +15,28 @@ namespace DTO
         private float price;
         private int count;
         private string nameIngredient;
-        private float totalPrice => Price * Count;
+        private float totalPrice;
         public ImportBillInfoDTO(int idImportBillInfo, int idImportBill, int idIngredient, float price, int count, string nameIngredient)
         {
-            this.idImportBillInfo = idImportBillInfo;
-            this.idImportBill = idImportBill;
-            this.idIngredient = idIngredient;
-            this.price = price;
-            this.count = count;
-            this.nameIngredient = nameIngredient;
+            this.IdImportBillInfo = idImportBillInfo;
+            this.IdImportBill = idImportBill;
+            this.IdIngredient = idIngredient;
+            this.Price = price;
+            this.Count = count;
+            this.NameIngredient = nameIngredient;
         }
 
         public ImportBillInfoDTO() { }
 
         public ImportBillInfoDTO(DataRow dataRow)
         {
-            this.idImportBillInfo = (int)dataRow["IdImportBillInfo"];
-            this.idImportBill = (int)dataRow["IdImportBill"];
-            this.idIngredient = (int)dataRow["IdIngredient"];
-            this.price = (float)Convert.ToDouble(dataRow["Price"].ToString());
-            this.count = (int)dataRow["Count"];
-            this.nameIngredient = dataRow["NameIngredient"].ToString();
+            this.IdImportBillInfo = (int)dataRow["MaCTHDN"];
+            this.IdImportBill = (int)dataRow["MAHDN"];
+            this.IdIngredient = (int)dataRow["MaNL"];
+            this.NameIngredient = dataRow["TenNL"].ToString();
+            this.Price = (float)Convert.ToDouble(dataRow["DonGia"].ToString());
+            this.Count = (int)dataRow["SLNhap"];
+            this.TotalPrice = (float)Convert.ToDouble(dataRow["ThanhTien"].ToString());
         }
 
 
@@ -43,11 +44,9 @@ namespace DTO
         public int IdImportBillInfo { get => idImportBillInfo; set => idImportBillInfo = value; }
         public int IdImportBill { get => idImportBill; set => idImportBill = value; }
         public int IdIngredient { get => idIngredient; set => idIngredient = value; }
+        public string NameIngredient { get => nameIngredient; set => nameIngredient = value; }
         public float Price { get => price; set => price = value; }
         public int Count { get => count; set => count = value; }
-        public string NameIngredient { get => nameIngredient; set => nameIngredient = value; }
-
-        
-        
+        public float TotalPrice { get => totalPrice; set => totalPrice = value; }
     }
 }

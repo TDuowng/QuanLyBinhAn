@@ -20,6 +20,7 @@ namespace GUI
             LoadEmployeeIntoCombobox();
             LoadListAccount();
             LoadTypeAccountCombobox();
+            SetupAutoComplete();
         }
 
         #region Methods
@@ -122,7 +123,22 @@ namespace GUI
             chkKhachHang.Checked = false;
             chkDanhMuc.Checked = false;
         }
+        private void SetupAutoComplete()
+        {
+            // Lấy danh sách tên nguyên liệu để gợi ý
+            var account = EmployeeBLL.GetListEmployee()
+                                  .Select(i => i.Name)
+                                  .ToArray();
 
+            // Cấu hình AutoComplete
+            txtSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            collection.AddRange(account);
+
+            txtSearch.AutoCompleteCustomSource = collection;
+        }
         #endregion
 
         #region Events

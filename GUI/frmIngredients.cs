@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DAO;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,9 @@ namespace GUI
             LoadListIngredients();
             LoadUnits();
             LoadProvide();
+            SetupAutoComplete();
+
+            
         }
 
         #region Methods
@@ -33,11 +37,13 @@ namespace GUI
             dtgvIngredients.Columns["Count"].HeaderText = "SL Tồn";
             dtgvIngredients.Columns["Unit"].HeaderText = "ĐV Tính";
             dtgvIngredients.Columns["OverDate"].HeaderText = "Ngày hết hạn";
+            dtgvIngredients.Columns["OverDate"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dtgvIngredients.Columns["Note"].HeaderText = "Ghi chú";
             dtgvIngredients.RowTemplate.Height = 40;
             numCount.Value = IngredientsBLL.GetCountIngredients();
 
         }
+
 
         private void LoadProvide()
         {
@@ -45,17 +51,6 @@ namespace GUI
             cbProvide.DisplayMember = "NameProvide";
             cbProvide.ValueMember = "IdProvide";
         }
-
-        private void LocNguyenLieu()
-        {
-            bool conHang = rdoConHang.Checked;
-            bool hetHang = rdoHetHang.Checked;
-            bool tonKhoThap = rdoTonKhoThap.Checked;
-            dtgvIngredients.DataSource = IngredientsBLL.LocNguyenLieu(conHang, hetHang, tonKhoThap);
-            dtgvIngredients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-        }
-
         private void ClearData()
         {
             txtIdIngredient.Text = "";
@@ -74,31 +69,56 @@ namespace GUI
             cbUnit.Items.Clear(); // Xóa danh sách cũ
             cbUnit.Items.AddRange(units.ToArray()); // Thêm lại danh sách mới
         }
+
+        private void SetupAutoComplete()
+        {
+            // Lấy danh sách tên nguyên liệu để gợi ý
+            var ingredients = IngredientsBLL.GetListIngredients()
+                                  .Select(i => i.NameIngredient)
+                                  .ToArray();
+
+            // Cấu hình AutoComplete
+            txtSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            collection.AddRange(ingredients);
+
+            txtSearch.AutoCompleteCustomSource = collection;
+        }
+
+        private void FilterIngredients(int? filterType = null)
+        {
+            try
+            {
+                DataTable filteredData = IngredientsDAO.FilterIngredients(filterType);
+                dtgvIngredients.DataSource = filteredData;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lọc dữ liệu: {ex.Message}",
+                              "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         #endregion
 
         #region Events
         private void rdoConHang_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdoConHang.Checked)
-            {
-                LocNguyenLieu();
-            }
+            if (radConHang.Checked) FilterIngredients(1);
+            dtgvIngredients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void rdoHetHang_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdoHetHang.Checked)
-            {
-                LocNguyenLieu();
-            }
+            if (radHetHang.Checked) FilterIngredients(2);
+            dtgvIngredients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void rdoTonKhoThap_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdoTonKhoThap.Checked)
-            {
-                LocNguyenLieu();
-            }
+            if (radTonKhoThap.Checked) FilterIngredients(3);
+            dtgvIngredients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -223,7 +243,22 @@ namespace GUI
 
         private void btnThongke_Click(object sender, EventArgs e)
         {
+            int months = (int)numMonthsAhead.Value;
 
+            if (months <= 0)
+            {
+                MessageBox.Show("Vui lòng nhập số tháng lớn hơn 0");
+                return;
+            }
+
+            var ingredients = IngredientsBLL.GetExpiringIngredients(months);
+            dtgvIngredients.DataSource = ingredients;
+            dtgvIngredients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            if (ingredients.Count == 0)
+            {
+                MessageBox.Show($"Không có nguyên liệu nào hết hạn trong {months} tháng tới");
+            }
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -233,7 +268,20 @@ namespace GUI
 
         private void cbProvide_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (cbProvide.SelectedValue != null && cbProvide.SelectedValue is int)
+                {
+                    int providerId = (int)cbProvide.SelectedValue;
+                    var ingredients = IngredientsBLL.GetIngredientsByProvider(providerId);
+                    dtgvIngredients.DataSource = ingredients;
+                    dtgvIngredients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải nguyên liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void cbIngredient_SelectedIndexChanged(object sender, EventArgs e)
@@ -254,6 +302,32 @@ namespace GUI
             cbUnit.Text = row.Cells["Unit"].Value.ToString();
             dtpkOverDate.Value = Convert.ToDateTime(row.Cells["OverDate"].Value);
             txtNote.Text = row.Cells["Note"].Value.ToString();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string keyword = txtSearch.Text.Trim();
+
+                // Gọi phương thức tìm kiếm
+                List<IngredientsDTO> searchResult = IngredientsBLL.SearchIngredients(keyword);
+
+                // Hiển thị kết quả lên DataGridView
+                dtgvIngredients.DataSource = searchResult;
+
+                // Thông báo nếu không có kết quả
+                if (searchResult.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy nguyên liệu phù hợp",
+                                  "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tìm kiếm: {ex.Message}",
+                              "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
 

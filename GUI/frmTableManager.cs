@@ -43,7 +43,14 @@ namespace GUI
             LoadTargetTableComboBox();
 
             dgvFood.SelectionChanged += DgvFood_SelectionChanged;
+
+            SetupAutoComplete();
         }
+
+
+
+
+        #region Methods
 
         private void DgvFood_SelectionChanged(object sender, EventArgs e)
         {
@@ -57,9 +64,22 @@ namespace GUI
             }
         }
 
+        private void SetupAutoComplete()
+        {
+            var food = FoodBLL.GetFoodList()
+                                  .Select(i => i.Name)
+                                  .ToArray();
 
+            // Cấu hình AutoComplete
+            txtSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
-        #region Methods
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            collection.AddRange(food);
+
+            txtSearch.AutoCompleteCustomSource = collection;
+        }
+
 
         private void SetupSidebar()
         {
@@ -141,40 +161,7 @@ namespace GUI
             cboCategory.SelectedIndexChanged += CboCategory_SelectedIndexChanged;
         }
 
-        private void CboCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboCategory.SelectedIndex == -1) return;
-
-            int categoryId = (int)cboCategory.SelectedValue;
-
-            if (categoryId == -1) // Nếu chọn "Tất cả"
-            {
-                LoadAllFoods();
-            }
-            else // Nếu chọn một loại cụ thể
-            {
-                List<FoodDTO> foodList = FoodBLL.GetListFoodByCategoryID(categoryId);
-
-                dgvFood.DataSource = foodList.Select(f => new
-                {
-                    f.ID,
-                    f.Name,
-                    f.Price
-                }).ToList();
-
-                // Đặt tên cột cho DataGridView
-                if (dgvFood.Columns.Contains("ID"))
-                    dgvFood.Columns["ID"].HeaderText = "Mã món";
-                if (dgvFood.Columns.Contains("Name"))
-                    dgvFood.Columns["Name"].HeaderText = "Tên món";
-                if (dgvFood.Columns.Contains("Price"))
-                    dgvFood.Columns["Price"].HeaderText = "Đơn giá";
-                dgvFood.RowTemplate.Height = 40;
-
-                selectedFoodRow = null;
-                dgvFood.ClearSelection();
-            }
-        }
+        
 
         private void ApplyPermissions()
         {
@@ -201,32 +188,7 @@ namespace GUI
             }
         }
 
-        private void UcTable_Click(object sender, EventArgs e)
-        {
-            UcTable uc = sender as UcTable;
-            if (uc != null)
-            {
-                if (uc.Tag is TableDTO table)  // Kiểm tra Tag có dữ liệu không
-                {
-                    if (selectedTableUc != null && selectedTableUc != uc)
-                    {
-                        selectedTableUc.SetSelected(false);
-                    }
-
-                    uc.SetSelected(true);
-                    selectedTableUc = uc;
-
-                    selectedTableId = table.IdTable;  // Gán đúng MaBan
-                    lsvBill.Tag = table;
-
-                    ShowBill(selectedTableId);
-                }
-                else
-                {
-                    MessageBox.Show("Lỗi: UcTable không có TableDTO!");
-                }
-            }
-        }
+        
 
         private void ShowBill(int tableId)
         {
@@ -289,14 +251,67 @@ namespace GUI
 
         #endregion
 
-        private void LoadBillInfo(int tableId)
-        {
-            
-        }
-
-
         #region Event
+        private void CboCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCategory.SelectedIndex == -1) return;
 
+            int categoryId = (int)cboCategory.SelectedValue;
+
+            if (categoryId == -1) // Nếu chọn "Tất cả"
+            {
+                LoadAllFoods();
+            }
+            else // Nếu chọn một loại cụ thể
+            {
+                List<FoodDTO> foodList = FoodBLL.GetListFoodByCategoryID(categoryId);
+
+                dgvFood.DataSource = foodList.Select(f => new
+                {
+                    f.ID,
+                    f.Name,
+                    f.Price
+                }).ToList();
+
+                // Đặt tên cột cho DataGridView
+                if (dgvFood.Columns.Contains("ID"))
+                    dgvFood.Columns["ID"].HeaderText = "Mã món";
+                if (dgvFood.Columns.Contains("Name"))
+                    dgvFood.Columns["Name"].HeaderText = "Tên món";
+                if (dgvFood.Columns.Contains("Price"))
+                    dgvFood.Columns["Price"].HeaderText = "Đơn giá";
+                dgvFood.RowTemplate.Height = 40;
+
+                selectedFoodRow = null;
+                dgvFood.ClearSelection();
+            }
+        }
+        private void UcTable_Click(object sender, EventArgs e)
+        {
+            UcTable uc = sender as UcTable;
+            if (uc != null)
+            {
+                if (uc.Tag is TableDTO table)  // Kiểm tra Tag có dữ liệu không
+                {
+                    if (selectedTableUc != null && selectedTableUc != uc)
+                    {
+                        selectedTableUc.SetSelected(false);
+                    }
+
+                    uc.SetSelected(true);
+                    selectedTableUc = uc;
+
+                    selectedTableId = table.IdTable;  // Gán đúng MaBan
+                    lsvBill.Tag = table;
+
+                    ShowBill(selectedTableId);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi: UcTable không có TableDTO!");
+                }
+            }
+        }
 
         private void btnTable_Click(object sender, EventArgs e)
         {
@@ -320,9 +335,6 @@ namespace GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        #endregion
-
         private void btnCheckout_Click(object sender, EventArgs e)
         {
             if (selectedTableId == -1)
@@ -479,7 +491,7 @@ namespace GUI
                 dgvFood.DataSource = foodList;
                 dgvFood.Columns["ID"].HeaderText = "Mã thực đơn";
                 dgvFood.Columns["Name"].HeaderText = "Tên thực đơn";
-                dgvFood.Columns["IdCategory"].Visible = false; 
+                dgvFood.Columns["IdCategory"].Visible = false;
                 dgvFood.Columns["CategoryName"].HeaderText = "Loại thực đơn";
                 dgvFood.Columns["CategoryName"].Visible = false;
                 dgvFood.Columns["Price"].HeaderText = "Đơn giá";
@@ -490,7 +502,7 @@ namespace GUI
             }
             else
             {
-                LoadAllFoods(); // Load all food items if the search term is empty
+                LoadAllFoods(); 
             }
         }
 
@@ -499,5 +511,8 @@ namespace GUI
             frmChangePassword f = new frmChangePassword(currentUserName);
             f.ShowDialog();
         }
+        #endregion
+
+
     }
 }

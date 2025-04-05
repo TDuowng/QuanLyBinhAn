@@ -21,6 +21,8 @@ namespace GUI
             LoadListEmployee();
             LoadPositions();
             this.cbPosition.KeyDown += new KeyEventHandler(cbPosition_KeyDown);
+
+            SetupAutoComplete();
         }
 
         #region Method
@@ -72,6 +74,22 @@ namespace GUI
             radMale.Checked = true;
             ptbImageEmployee.Image = null;
             dtgvEmployee.ClearSelection();
+        }
+
+        private void SetupAutoComplete()
+        {
+            var food = EmployeeBLL.GetListEmployee()
+                                  .Select(i => i.Name)
+                                  .ToArray();
+
+            // Cấu hình AutoComplete
+            txtSearchEmployee.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtSearchEmployee.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            collection.AddRange(food);
+
+            txtSearchEmployee.AutoCompleteCustomSource = collection;
         }
 
         #endregion

@@ -21,6 +21,8 @@ namespace GUI
             LoadListWork();
             LoadListWorkShift();
             cbWork.SelectedIndex = -1;
+
+            SetupAutoComplete();
         }
 
         #region Methods
@@ -186,6 +188,22 @@ namespace GUI
             {
                 MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void SetupAutoComplete()
+        {
+            var food = EmployeeBLL.GetListEmployee()
+                                  .Select(i => i.Name)
+                                  .ToArray();
+
+            // Cấu hình AutoComplete
+            txtSearchSalary.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtSearchSalary.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            collection.AddRange(food);
+
+            txtSearchSalary.AutoCompleteCustomSource = collection;
         }
 
 

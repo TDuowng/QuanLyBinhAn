@@ -143,5 +143,17 @@ namespace DAO
             }
             return list;
         }
+
+        public static List<FoodDTO> FilterFoodByIngredient(int idIngredient)
+        {
+            string query = "USP_FilterFoodByIngredient @MaNL";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { idIngredient });
+            List<FoodDTO> foodList = new List<FoodDTO>();
+            foreach (DataRow row in data.Rows)
+            {
+                foodList.Add(new FoodDTO(row));
+            }
+            return foodList;
+        }
     }
 }

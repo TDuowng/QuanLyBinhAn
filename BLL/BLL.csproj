@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AccountBLL.cs" />
     <Compile Include="CategoryBLL.cs" />
+    <Compile Include="CookBLL.cs" />
     <Compile Include="EmployeeBLL.cs" />
     <Compile Include="FoodBLL.cs" />
     <Compile Include="BillBLL.cs" />

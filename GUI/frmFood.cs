@@ -22,6 +22,8 @@ namespace GUI
             LoadFoodCategory();
             LoadFood();
             LoadCategoryIntoCombobox(cbCategory);
+
+            SetupAutoComplete();
             
         }
 
@@ -86,6 +88,22 @@ namespace GUI
                 image.Save(ms, image.RawFormat);
                 return ms.ToArray();
             }
+        }
+
+        private void SetupAutoComplete()
+        {
+            var food = FoodBLL.GetFoodList()
+                                  .Select(i => i.Name)
+                                  .ToArray();
+
+            // Cấu hình AutoComplete
+            txtSearchFood.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtSearchFood.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            collection.AddRange(food);
+
+            txtSearchFood.AutoCompleteCustomSource = collection;
         }
         #endregion
 

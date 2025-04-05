@@ -2,7 +2,9 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,9 +49,29 @@ namespace BLL
             return IngredientsDAO.GetAllUnits();
         }
 
-        public  static List<IngredientsDTO> GetIngredientsWithUnitAndPrice()
+        public static List<IngredientsDTO> GetIngredientsWithUnitAndPrice()
         {
             return IngredientsDAO.GetIngredientsWithUnitAndPrice();
+        }
+
+        public static List<IngredientsDTO> SearchIngredients(string keyword)
+        {
+            return IngredientsDAO.SearchIngredients(keyword);
+        }
+
+        public static DataTable FilterIngredients(int filterType)
+        {
+            return IngredientsDAO.FilterIngredients(filterType);
+        }
+
+        public static List<IngredientsDTO> GetIngredientsByProvider(int providerId)
+        {
+            return IngredientsDAO.GetIngredientsByProvider(providerId);
+        }
+
+        public static List<IngredientsDTO> GetExpiringIngredients(int monthsAhead)
+        {
+            return IngredientsDAO.GetExpiringIngredients(monthsAhead);
         }
 
     }

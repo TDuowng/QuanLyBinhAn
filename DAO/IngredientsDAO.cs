@@ -100,6 +100,56 @@ namespace DAO
             return list;
         }
 
+        public static List<IngredientsDTO> SearchIngredients(string keyword)
+        {
+            List<IngredientsDTO> list = new List<IngredientsDTO>();
+
+            string query = "EXEC USP_SearchIngredients @Keyword";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query,
+                new object[] { keyword });
+
+            foreach (DataRow item in data.Rows)
+            {
+                IngredientsDTO ingredient = new IngredientsDTO(item);
+                list.Add(ingredient);
+            }
+            return list;
+        }
+
+        public static DataTable FilterIngredients(int? filterType = null)
+        {
+            string query = "EXEC USP_LocNguyenLieu @FilterType";
+            return DataProvider.Instance.ExecuteQuery(query, new object[] { filterType.HasValue ? (object)filterType.Value : DBNull.Value });
+        }
+
+        public static List<IngredientsDTO> GetIngredientsByProvider(int providerId)
+        {
+            List<IngredientsDTO> list = new List<IngredientsDTO>();
+
+            string query = "EXEC USP_GetIngredientsByProvider @ProviderId";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { providerId });
+
+            foreach (DataRow item in data.Rows)
+            {
+                IngredientsDTO ingredient = new IngredientsDTO(item);
+                list.Add(ingredient);
+            }
+            return list;
+        }
+
+        public static List<IngredientsDTO> GetExpiringIngredients(int monthsAhead)
+        {
+            List<IngredientsDTO> list = new List<IngredientsDTO>();
+            string query = "EXEC USP_GetExpiredIngredients @MonthsAhead";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { monthsAhead });
+
+            foreach (DataRow row in data.Rows)
+            {
+                list.Add(new IngredientsDTO(row));
+            }
+            return list;
+        }
+
 
     }
 }
