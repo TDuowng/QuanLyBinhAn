@@ -39,11 +39,14 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnExportExcel = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.numTotal = new System.Windows.Forms.NumericUpDown();
             this.numBorrow = new System.Windows.Forms.NumericUpDown();
             this.txtAdress = new System.Windows.Forms.TextBox();
@@ -63,8 +66,6 @@
             this.btnInsert = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dtgvProvide = new System.Windows.Forms.DataGridView();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtNote = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -134,6 +135,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.btnExportExcel);
             this.panel3.Controls.Add(this.btnPrint);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
@@ -142,6 +144,27 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(493, 777);
             this.panel3.TabIndex = 9;
+            // 
+            // btnExportExcel
+            // 
+            this.btnExportExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
+            this.btnExportExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportExcel.FlatAppearance.BorderSize = 0;
+            this.btnExportExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportExcel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExportExcel.Image = ((System.Drawing.Image)(resources.GetObject("btnExportExcel.Image")));
+            this.btnExportExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportExcel.Location = new System.Drawing.Point(261, 666);
+            this.btnExportExcel.Name = "btnExportExcel";
+            this.btnExportExcel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnExportExcel.Size = new System.Drawing.Size(218, 60);
+            this.btnExportExcel.TabIndex = 14;
+            this.btnExportExcel.Text = "   XUẤT EXCEL ";
+            this.btnExportExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportExcel.UseVisualStyleBackColor = false;
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // btnPrint
             // 
@@ -156,9 +179,9 @@
             this.btnPrint.Location = new System.Drawing.Point(15, 666);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnPrint.Size = new System.Drawing.Size(464, 60);
+            this.btnPrint.Size = new System.Drawing.Size(218, 60);
             this.btnPrint.TabIndex = 13;
-            this.btnPrint.Text = "            IN DANH SÁCH NHÀ CUNG CẤP";
+            this.btnPrint.Text = "  IN DANH SÁCH ";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrint.UseVisualStyleBackColor = false;
@@ -214,6 +237,22 @@
             this.groupBox1.Size = new System.Drawing.Size(447, 586);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // txtNote
+            // 
+            this.txtNote.Location = new System.Drawing.Point(130, 452);
+            this.txtNote.Name = "txtNote";
+            this.txtNote.Size = new System.Drawing.Size(289, 30);
+            this.txtNote.TabIndex = 8;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(40, 455);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 23);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Ghi chú:";
             // 
             // numTotal
             // 
@@ -477,22 +516,6 @@
             this.dtgvProvide.TabIndex = 1;
             this.dtgvProvide.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvProvide_CellClick);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(40, 455);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 23);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Ghi chú:";
-            // 
-            // txtNote
-            // 
-            this.txtNote.Location = new System.Drawing.Point(130, 452);
-            this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(289, 30);
-            this.txtNote.TabIndex = 8;
-            // 
             // frmProvide
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -560,5 +583,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnExportExcel;
     }
 }

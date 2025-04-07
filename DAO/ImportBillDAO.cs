@@ -87,8 +87,5 @@ namespace DAO
 
             return list;
         }
-
-
-
     }
 }

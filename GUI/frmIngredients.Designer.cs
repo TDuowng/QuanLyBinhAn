@@ -29,19 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIngredients));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbProvide = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.groupFilter = new System.Windows.Forms.Panel();
+            this.radConHang = new System.Windows.Forms.RadioButton();
             this.radHetHang = new System.Windows.Forms.RadioButton();
             this.radTonKhoThap = new System.Windows.Forms.RadioButton();
-            this.radConHang = new System.Windows.Forms.RadioButton();
+            this.cbProvide = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -80,10 +81,10 @@
             this.dtgvIngredients = new System.Windows.Forms.DataGridView();
             this.label15 = new System.Windows.Forms.Label();
             this.numCount = new System.Windows.Forms.NumericUpDown();
-            this.groupFilter = new System.Windows.Forms.Panel();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupFilter.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -96,7 +97,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numMonthsAhead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvIngredients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCount)).BeginInit();
-            this.groupFilter.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel5
@@ -140,23 +140,30 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // cbProvide
+            // groupFilter
             // 
-            this.cbProvide.FormattingEnabled = true;
-            this.cbProvide.Location = new System.Drawing.Point(146, 83);
-            this.cbProvide.Name = "cbProvide";
-            this.cbProvide.Size = new System.Drawing.Size(391, 31);
-            this.cbProvide.TabIndex = 3;
-            this.cbProvide.SelectedIndexChanged += new System.EventHandler(this.cbProvide_SelectedIndexChanged);
+            this.groupFilter.Controls.Add(this.radConHang);
+            this.groupFilter.Controls.Add(this.radHetHang);
+            this.groupFilter.Controls.Add(this.radTonKhoThap);
+            this.groupFilter.Location = new System.Drawing.Point(146, 32);
+            this.groupFilter.Name = "groupFilter";
+            this.groupFilter.Size = new System.Drawing.Size(391, 35);
+            this.groupFilter.TabIndex = 4;
             // 
-            // label3
+            // radConHang
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 86);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 23);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Nhà cung cấp:";
+            this.radConHang.AutoSize = true;
+            this.radConHang.BackColor = System.Drawing.SystemColors.Window;
+            this.radConHang.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radConHang.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.radConHang.Location = new System.Drawing.Point(3, 0);
+            this.radConHang.Name = "radConHang";
+            this.radConHang.Size = new System.Drawing.Size(115, 28);
+            this.radConHang.TabIndex = 1;
+            this.radConHang.Tag = "1";
+            this.radConHang.Text = "Còn hàng";
+            this.radConHang.UseVisualStyleBackColor = false;
+            this.radConHang.CheckedChanged += new System.EventHandler(this.rdoConHang_CheckedChanged);
             // 
             // radHetHang
             // 
@@ -184,20 +191,23 @@
             this.radTonKhoThap.UseVisualStyleBackColor = true;
             this.radTonKhoThap.CheckedChanged += new System.EventHandler(this.rdoTonKhoThap_CheckedChanged);
             // 
-            // radConHang
+            // cbProvide
             // 
-            this.radConHang.AutoSize = true;
-            this.radConHang.BackColor = System.Drawing.SystemColors.Window;
-            this.radConHang.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.radConHang.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.radConHang.Location = new System.Drawing.Point(3, 0);
-            this.radConHang.Name = "radConHang";
-            this.radConHang.Size = new System.Drawing.Size(115, 28);
-            this.radConHang.TabIndex = 1;
-            this.radConHang.Tag = "1";
-            this.radConHang.Text = "Còn hàng";
-            this.radConHang.UseVisualStyleBackColor = false;
-            this.radConHang.CheckedChanged += new System.EventHandler(this.rdoConHang_CheckedChanged);
+            this.cbProvide.FormattingEnabled = true;
+            this.cbProvide.Location = new System.Drawing.Point(146, 83);
+            this.cbProvide.Name = "cbProvide";
+            this.cbProvide.Size = new System.Drawing.Size(391, 31);
+            this.cbProvide.TabIndex = 3;
+            this.cbProvide.SelectedIndexChanged += new System.EventHandler(this.cbProvide_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 86);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(121, 23);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Nhà cung cấp:";
             // 
             // label2
             // 
@@ -433,7 +443,7 @@
             // 
             // dtpkOverDate
             // 
-            this.dtpkOverDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpkOverDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpkOverDate.Location = new System.Drawing.Point(167, 328);
             this.dtpkOverDate.Name = "dtpkOverDate";
             this.dtpkOverDate.Size = new System.Drawing.Size(370, 30);
@@ -581,10 +591,10 @@
             this.btnPrint.ForeColor = System.Drawing.Color.White;
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(819, 18);
+            this.btnPrint.Location = new System.Drawing.Point(819, 8);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnPrint.Size = new System.Drawing.Size(158, 42);
+            this.btnPrint.Size = new System.Drawing.Size(158, 54);
             this.btnPrint.TabIndex = 29;
             this.btnPrint.Text = "      In ";
             this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -601,10 +611,10 @@
             this.btnThongke.ForeColor = System.Drawing.Color.White;
             this.btnThongke.Image = ((System.Drawing.Image)(resources.GetObject("btnThongke.Image")));
             this.btnThongke.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThongke.Location = new System.Drawing.Point(650, 19);
+            this.btnThongke.Location = new System.Drawing.Point(650, 9);
             this.btnThongke.Name = "btnThongke";
             this.btnThongke.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnThongke.Size = new System.Drawing.Size(158, 42);
+            this.btnThongke.Size = new System.Drawing.Size(158, 54);
             this.btnThongke.TabIndex = 30;
             this.btnThongke.Text = "  Thống kê";
             this.btnThongke.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -613,44 +623,44 @@
             // 
             // dtgvIngredients
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtgvIngredients.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgvIngredients.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvIngredients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dtgvIngredients.BackgroundColor = System.Drawing.Color.White;
             this.dtgvIngredients.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvIngredients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvIngredients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgvIngredients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvIngredients.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgvIngredients.DefaultCellStyle = dataGridViewCellStyle7;
             this.dtgvIngredients.GridColor = System.Drawing.Color.White;
             this.dtgvIngredients.Location = new System.Drawing.Point(647, 180);
             this.dtgvIngredients.Name = "dtgvIngredients";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgvIngredients.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvIngredients.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dtgvIngredients.RowHeadersVisible = false;
             this.dtgvIngredients.RowHeadersWidth = 51;
             this.dtgvIngredients.RowTemplate.Height = 24;
@@ -683,16 +693,6 @@
             this.numCount.TabIndex = 14;
             this.numCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // groupFilter
-            // 
-            this.groupFilter.Controls.Add(this.radConHang);
-            this.groupFilter.Controls.Add(this.radHetHang);
-            this.groupFilter.Controls.Add(this.radTonKhoThap);
-            this.groupFilter.Location = new System.Drawing.Point(146, 32);
-            this.groupFilter.Name = "groupFilter";
-            this.groupFilter.Size = new System.Drawing.Size(391, 35);
-            this.groupFilter.TabIndex = 4;
-            // 
             // frmIngredients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -714,6 +714,8 @@
             this.panel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupFilter.ResumeLayout(false);
+            this.groupFilter.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
@@ -730,8 +732,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numMonthsAhead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvIngredients)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCount)).EndInit();
-            this.groupFilter.ResumeLayout(false);
-            this.groupFilter.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

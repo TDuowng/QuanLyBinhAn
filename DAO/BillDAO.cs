@@ -48,8 +48,47 @@ namespace DAO
             }
             return null;
         }
+        public static DataTable GetListBillByDate(DateTime checkIn, DateTime checkOut)
+        {
+            string query = "EXEC USP_GetListBillByDate @CheckIn , @CheckOut";
+            return DataProvider.Instance.ExecuteQuery(query, new object[] { checkIn , checkOut });
+        }
 
-        
+
+        public static DataTable GetListBillByDateAndPage(DateTime checkIn, DateTime checkOut, int curenPage, int pageSize)
+        {
+            return DataProvider.Instance.ExecuteQuery("EXEC USP_GetListBillByDate_Paging @CheckIn , @CheckOut , @PageNumber , @PageSize", new object[] { checkIn , checkOut , curenPage , pageSize });
+        }
+
+        public static int GetTotalBillRows(DateTime checkIn, DateTime checkOut)
+        {
+            string query = "EXEC USP_GetTotalBillRows @CheckIn , @CheckOut";
+            return (int)DataProvider.Instance.ExecuteScalar(query, new object[] { checkIn , checkOut });
+        }
+
+        public static decimal GetRevenueByDate(DateTime date)
+        {
+            string query = "EXEC USP_GetRevenueByDate @Date";
+            object result = DataProvider.Instance.ExecuteScalar(query, new object[] { date.Date });
+
+            // Xử lý trường hợp null (không có doanh thu trong ngày)
+            if (result == DBNull.Value || result == null)
+                return 0;
+
+            return Convert.ToDecimal(result);
+        }
+
+        public static DataTable GetBillInfoByProc(int billId)
+        {
+            string query = "EXEC USP_GetInvoiceData @idBill";
+            return DataProvider.Instance.ExecuteQuery(query, new object[] { billId });
+        }
+
+        public static DataTable GetBillDetailsByProc(int billId)
+        {
+            string query = "EXEC USP_GetBillDetails @idBill";
+            return DataProvider.Instance.ExecuteQuery(query, new object[] { billId });
+        }
 
     }
 }

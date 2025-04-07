@@ -61,6 +61,11 @@ namespace BLL
             return WorkShiftDAO.GetTongLuongByEmployeeIDAndDateRange(maNV, fromDate, toDate);
         }
 
+        public static DataTable GetPayroll(int idEmployee, DateTime fromDate, DateTime toDate)
+        {
+            return WorkShiftDAO.GetPayroll(idEmployee, fromDate, toDate);
+        }
+
 
     }
 }

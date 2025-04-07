@@ -45,5 +45,36 @@ namespace BLL
             }
             return total;
         }
+
+        public static DataTable GetListBillByDate(DateTime checkIn, DateTime checkOut)
+        {
+            return BillDAO.GetListBillByDate(checkIn, checkOut);
+        }
+
+        public static DataTable GetListBillByDateAndPage(DateTime checkIn, DateTime checkOut, int curenPage, int pageSize)
+        {
+            return BillDAO.GetListBillByDateAndPage(checkIn, checkOut, curenPage, pageSize);
+        }
+
+        public static int GetTotalBillRows(DateTime checkIn, DateTime checkOut)
+        {
+            return BillDAO.GetTotalBillRows(checkIn, checkOut);
+        }
+
+        public static decimal GetRevenueByDate(DateTime date)
+        {
+            return BillDAO.GetRevenueByDate(date);
+        }
+
+        public static DataTable GetBillInfoForReport(int billId)
+        {
+            return BillDAO.GetBillInfoByProc(billId);
+        }
+
+        public static DataTable GetBillDetailsForReport(int billId)
+        {
+            return BillDAO.GetBillDetailsByProc(billId);
+        }
+
     }
 }

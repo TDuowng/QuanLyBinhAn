@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,9 @@ namespace GUI
             LoadProvide();
             SetupAutoComplete();
 
-            
+            dtpkOverDate.CustomFormat = "dd/MM/yyyy";
+
+
         }
 
         #region Methods
@@ -263,7 +266,28 @@ namespace GUI
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Lấy danh sách nguyên liệu
+                var ingredient = IngredientsBLL.GetListIngredients();
 
+                // Kiểm tra nếu danh sách rỗng
+                if (ingredient == null || !ingredient.Any())
+                {
+                    MessageBox.Show("Không có nguyên liệu nào để in", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Tạo form báo cáo và hiển thị
+                frmReportViewer reportViewer = new frmReportViewer();
+                string reportPath = Path.Combine(Application.StartupPath, "IngredientsData", "D:\\QLTP\\GUI\\rptIngredients.rdlc");
+                reportViewer.LoadIngredientReport(ingredient, reportPath); 
+                reportViewer.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void cbProvide_SelectedIndexChanged(object sender, EventArgs e)

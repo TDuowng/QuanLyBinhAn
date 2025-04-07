@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,6 @@ namespace GUI
             dtgvProvide.Columns["Borrow"].DefaultCellStyle.Format = "N0";
             dtgvProvide.Columns["Total"].HeaderText = "Tổng mua";
             dtgvProvide.Columns["Total"].DefaultCellStyle.Format = "N0";
-            dtgvProvide.RowTemplate.Height = 30;
             dtgvProvide.RowTemplate.Height = 40;
         }
         private bool IsValidPhoneNumber(string phoneNumber)
@@ -70,6 +70,32 @@ namespace GUI
             collection.AddRange(provide);
 
             txtSearch.AutoCompleteCustomSource = collection;
+        }
+
+        /// <summary>
+        /// Chuyển đổi danh sách thành DataTable để xuất ra Excel
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items"></param>
+        /// <returns></returns>
+
+        public static DataTable ToDataTable<T>(List<T> items)
+        {
+            var table = new DataTable(typeof(T).Name);
+            var props = typeof(T).GetProperties();
+
+            foreach (var prop in props)
+                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+
+            foreach (var item in items)
+            {
+                var values = new object[props.Length];
+                for (int i = 0; i < props.Length; i++)
+                    values[i] = props[i].GetValue(item);
+                table.Rows.Add(values);
+            }
+
+            return table;
         }
         #endregion
 
@@ -208,7 +234,28 @@ namespace GUI
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Lấy danh sách tất cả nhà cung cấp
+                var provideList = ProvideBLL.GetListProvide();
 
+                // Kiểm tra nếu danh sách rỗng
+                if (provideList == null || !provideList.Any())
+                {
+                    MessageBox.Show("Không có nhà cung cấp nào để in", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Tạo form báo cáo và hiển thị
+                frmReportViewer reportViewer = new frmReportViewer();
+                string reportPath = Path.Combine(Application.StartupPath, "Reports", "D:\\QLTP\\GUI\\rptProvide.rdlc");
+                reportViewer.LoadProvideReport(provideList, reportPath); // Truyền danh sách nhà cung cấp
+                reportViewer.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void dtgvProvide_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -225,6 +272,31 @@ namespace GUI
                 numTotal.Text = row.Cells["Total"].Value.ToString();
             }
         }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog sv = new SaveFileDialog();
+                sv.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                sv.FilterIndex = 1;
+                sv.FileName = "DanhSachNhaCungCap.xlsx";
+                if (sv.ShowDialog() == DialogResult.OK)
+                {
+                    var list = (List<ProvideDTO>)dtgvProvide.DataSource;
+                    DataTable dt = ToDataTable(list);
+                    ExportFileExcel.ExportProvideToExcel(dt, sv.FileName);
+                    MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Có lỗi khi xuất file: {ex.Message}", "Lỗi",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
 
         #endregion
 

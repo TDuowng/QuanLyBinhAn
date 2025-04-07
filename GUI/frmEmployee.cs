@@ -92,6 +92,7 @@ namespace GUI
             txtSearchEmployee.AutoCompleteCustomSource = collection;
         }
 
+
         #endregion
 
         #region Event
@@ -324,7 +325,58 @@ namespace GUI
                 LoadListEmployee(); // Load all employees items if the search term is empty
             }
         }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog sv = new SaveFileDialog();
+                sv.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                sv.FilterIndex = 1;
+                sv.FileName = "DanhSachNhanVien.xlsx";
+                if (sv.ShowDialog() == DialogResult.OK)
+                {
+                    var list = (List<EmployeeDTO>)dtgvEmployee.DataSource;
+                    DataTable dt = frmProvide.ToDataTable(list);
+                    ExportFileExcel.ExportEmployeeToExcel(dt, sv.FileName);
+                    MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Có lỗi khi xuất file: {ex.Message}", "Lỗi",
+                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Lấy danh sách nguyên liệu
+                var employee = EmployeeBLL.GetListEmployee();
+
+                // Kiểm tra nếu danh sách rỗng
+                if (employee == null || !employee.Any())
+                {
+                    MessageBox.Show("Không có nguyên liệu nào để in", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Tạo form báo cáo và hiển thị
+                frmReportViewer reportViewer = new frmReportViewer();
+                string reportPath = Path.Combine(Application.StartupPath, "EmployeeDaTa", "D:\\QLTP\\GUI\\rptEmployee.rdlc");
+                reportViewer.LoadEmployeeReport(employee, reportPath);
+                reportViewer.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         #endregion
+
 
     }
 }

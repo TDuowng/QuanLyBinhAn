@@ -38,7 +38,6 @@
             this.panelReport = new System.Windows.Forms.Panel();
             this.btnBestSeller = new System.Windows.Forms.Button();
             this.btnSell = new System.Windows.Forms.Button();
-            this.btnDailyReport = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
             this.panelMaterial = new System.Windows.Forms.Panel();
             this.btnListMaterial = new System.Windows.Forms.Button();
@@ -145,11 +144,10 @@
             this.panelReport.BackColor = System.Drawing.SystemColors.Control;
             this.panelReport.Controls.Add(this.btnBestSeller);
             this.panelReport.Controls.Add(this.btnSell);
-            this.panelReport.Controls.Add(this.btnDailyReport);
             this.panelReport.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelReport.Location = new System.Drawing.Point(0, 715);
             this.panelReport.Name = "panelReport";
-            this.panelReport.Size = new System.Drawing.Size(249, 150);
+            this.panelReport.Size = new System.Drawing.Size(249, 100);
             this.panelReport.TabIndex = 16;
             // 
             // btnBestSeller
@@ -163,15 +161,16 @@
             this.btnBestSeller.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnBestSeller.Image = global::GUI.Properties.Resources.playorange;
             this.btnBestSeller.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBestSeller.Location = new System.Drawing.Point(0, 100);
+            this.btnBestSeller.Location = new System.Drawing.Point(0, 50);
             this.btnBestSeller.Name = "btnBestSeller";
             this.btnBestSeller.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
             this.btnBestSeller.Size = new System.Drawing.Size(249, 50);
             this.btnBestSeller.TabIndex = 2;
-            this.btnBestSeller.Text = "   Món ăn bán chạy";
+            this.btnBestSeller.Text = "   Thống kê tổng hợp";
             this.btnBestSeller.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBestSeller.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBestSeller.UseVisualStyleBackColor = false;
+            this.btnBestSeller.Click += new System.EventHandler(this.btnBestSeller_Click);
             // 
             // btnSell
             // 
@@ -184,7 +183,7 @@
             this.btnSell.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnSell.Image = global::GUI.Properties.Resources.playorange;
             this.btnSell.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSell.Location = new System.Drawing.Point(0, 50);
+            this.btnSell.Location = new System.Drawing.Point(0, 0);
             this.btnSell.Name = "btnSell";
             this.btnSell.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
             this.btnSell.Size = new System.Drawing.Size(249, 50);
@@ -194,27 +193,6 @@
             this.btnSell.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSell.UseVisualStyleBackColor = false;
             this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
-            // 
-            // btnDailyReport
-            // 
-            this.btnDailyReport.BackColor = System.Drawing.Color.White;
-            this.btnDailyReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDailyReport.FlatAppearance.BorderSize = 0;
-            this.btnDailyReport.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnDailyReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDailyReport.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDailyReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.btnDailyReport.Image = global::GUI.Properties.Resources.playorange;
-            this.btnDailyReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDailyReport.Location = new System.Drawing.Point(0, 0);
-            this.btnDailyReport.Name = "btnDailyReport";
-            this.btnDailyReport.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnDailyReport.Size = new System.Drawing.Size(249, 50);
-            this.btnDailyReport.TabIndex = 0;
-            this.btnDailyReport.Text = "   Doanh thu hằng ngày";
-            this.btnDailyReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDailyReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDailyReport.UseVisualStyleBackColor = false;
             // 
             // btnReport
             // 
@@ -500,7 +478,7 @@
             this.btnLogOut.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLogOut.Image = ((System.Drawing.Image)(resources.GetObject("btnLogOut.Image")));
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(0, 865);
+            this.btnLogOut.Location = new System.Drawing.Point(0, 815);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnLogOut.Size = new System.Drawing.Size(249, 65);
@@ -597,7 +575,6 @@
         private System.Windows.Forms.Panel panelReport;
         private System.Windows.Forms.Button btnBestSeller;
         private System.Windows.Forms.Button btnSell;
-        private System.Windows.Forms.Button btnDailyReport;
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Panel panelMaterial;
         private System.Windows.Forms.Button btnListMaterial;

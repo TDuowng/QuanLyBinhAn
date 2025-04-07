@@ -156,7 +156,7 @@ namespace GUI
 
         private void btnCook_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmCook(), sender);
+            openChildForm(new frmRecipe(), sender);
         }
 
         private void btnSalary_Click(object sender, EventArgs e)
@@ -171,7 +171,7 @@ namespace GUI
 
         private void btnImportMaterial_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmImportMaterial(currentUserName), sender);
+            openChildForm(new frmImportIngredient(currentUserName), sender);
         }
 
         private void btnListMaterial_Click(object sender, EventArgs e)
@@ -182,6 +182,11 @@ namespace GUI
         private void btnSell_Click(object sender, EventArgs e)
         {
             openChildForm(new frmReport(), sender);
+        }
+
+        private void btnBestSeller_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmStatistics(), sender);
         }
     }
 }

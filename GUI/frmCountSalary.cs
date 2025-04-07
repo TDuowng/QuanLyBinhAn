@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,16 @@ namespace GUI
             LoadListEmployee();
             LoadListWork();
             LoadListWorkShift();
+            LoadDateTimePicker();
             cbWork.SelectedIndex = -1;
 
             SetupAutoComplete();
+            dtpkFromDate.CustomFormat = "dd/MM/yyyy";
+            dtpkToDate.CustomFormat = "dd/MM/yyyy";
+            dtpkDateWork.CustomFormat = "dd/MM/yyyy";
+            dtpkIn.CustomFormat = "HH:mm";
+            dtpkOut.CustomFormat = "HH:mm";
+            dtpkToDate.Value = dtpkFromDate.Value.AddMonths(1).AddDays(-1);
         }
 
         #region Methods
@@ -45,7 +53,12 @@ namespace GUI
             dtgvEmployee.Columns["TypeEmployee"].Visible = false;
             dtgvEmployee.RowTemplate.Height = 40;
         }
-
+        private void LoadDateTimePicker()
+        {
+            DateTime today = DateTime.Now;
+            dtpkFromDate.Value = new DateTime(today.Year, today.Month, 1);
+            dtpkToDate.Value = dtpkFromDate.Value.AddMonths(1).AddDays(-1);
+        }
         private void LoadListWork()
         {
             List<WorkDTO> workList = WorkBLL.GetListWork();
@@ -137,6 +150,7 @@ namespace GUI
             dtgvWorkShift.Columns["NameEmployee"].Visible = showNameEmployee; // Hiển thị hoặc ẩn cột NameEmployee
             dtgvWorkShift.Columns["NameWork"].HeaderText = "Tên ca";
             dtgvWorkShift.Columns["DateWork"].HeaderText = "Ngày làm";
+            dtgvWorkShift.Columns["DateWork"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dtgvWorkShift.Columns["CheckinHour"].HeaderText = "Giờ check-in";
             dtgvWorkShift.Columns["CheckoutHour"].HeaderText = "Giờ check-out";
             dtgvWorkShift.Columns["CheckinHour"].DefaultCellStyle.Format = "HH:mm";
@@ -222,11 +236,6 @@ namespace GUI
             }
         }
 
-
-        private void btnPrintList_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnSearchSalary_Click(object sender, EventArgs e)
         {
@@ -341,7 +350,7 @@ namespace GUI
                 }
 
                 // Get values from the form controls
-                int idWorkShift = Convert.ToInt32(dtgvWorkShift.SelectedRows[0].Cells["IdWorkShift"].Value);
+                int idWorkShift = Convert.ToInt32(dtgvWorkShift.CurrentRow.Cells["IdWorkShift"].Value);
                 int idEmployee = Convert.ToInt32(txtIdEmployee.Text);
                 int idWork = Convert.ToInt32(cbWork.SelectedValue);
                 DateTime dateWork = dtpkDateWork.Value;
@@ -520,6 +529,63 @@ namespace GUI
             LoadListWorkShiftByDateRange(fromDate, toDate);
         }
 
+        private void btnPrintSalary_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Kiểm tra xem DataGridView có dữ liệu không
+                if (dtgvEmployee.Rows.Count == 0)
+                {
+                    MessageBox.Show("Danh sách nhân viên trống! Vui lòng thêm nhân viên trước khi in phiếu lương.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Kiểm tra xem có dòng hiện tại không
+                if (dtgvEmployee.CurrentRow == null)
+                {
+                    MessageBox.Show("Vui lòng chọn một nhân viên để in phiếu lương!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Lấy ID nhân viên từ dòng hiện tại
+                int idEmployee = Convert.ToInt32(dtgvEmployee.CurrentRow.Cells["IdEmployee"].Value);
+
+                // Lấy khoảng thời gian từ DateTimePicker
+
+                // Lấy khoảng thời gian từ DateTimePicker
+                DateTime fromDate = dtpkFromDate.Value.Date;
+                DateTime toDate = dtpkToDate.Value.Date;
+
+                if (fromDate > toDate)
+                {
+                    MessageBox.Show("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Gọi stored procedure để lấy thông tin phiếu lương
+                DataTable payrollData = WorkShiftBLL.GetPayroll(idEmployee, fromDate, toDate);
+                if (payrollData == null || payrollData.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không có dữ liệu phiếu lương cho nhân viên này trong khoảng thời gian đã chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Tạo form báo cáo và hiển thị
+                frmReportViewer reportViewer = new frmReportViewer();
+                string reportPath = Path.Combine(Application.StartupPath, "PayRoll", "D:\\QLTP\\GUI\\rptSalary.rdlc");
+                if (!File.Exists(reportPath))
+                {
+                    MessageBox.Show("File báo cáo không tồn tại: " + reportPath, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                reportViewer.LoadPayrollReport(payrollData, reportPath);
+                reportViewer.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         #endregion
 

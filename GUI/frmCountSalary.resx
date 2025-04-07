@@ -136,7 +136,7 @@
   <data name="btnWork.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAM+SURBVFhH1dZZ
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAM+SURBVFhH1dZZ
         6OdjFMfxGcYyTLJlG2tKJI0Ssu8lS1OTJRoRMuaGCxo3LoRc4MaFixFliZhygeJCTVnCBSkpWbNeINn3
         5aXzd77/Of/z/85/fjPTXHjXt37f83ye8z2/5znPec68eZsAtuu2LQZ2xAV4BO/gB//xCz7E07gae/S5
         mwW2xTX4Mj+4If7AauzZfW00OAzv9S/gL3yBN/EJfusCfItzus+JwVn4rjl9KrdhUdMuwBm4D78XfQR6
@@ -167,7 +167,7 @@
         PdzGjq4gvrwjONzNJvVN+RjG+PPfqvALrKFyZ1TbXUUAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnPrintList.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnPrintSalary.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFYSURBVFhH7Ze9

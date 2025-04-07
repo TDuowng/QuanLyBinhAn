@@ -7,6 +7,3 @@ D:\QLTP\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
 D:\QLTP\DAO\obj\Debug\DAO.csproj.Up2Date
 D:\QLTP\DAO\obj\Debug\DAO.dll
 D:\QLTP\DAO\obj\Debug\DAO.pdb
-D:\QLTP\DAO\bin\Debug\System.Drawing.Common.dll
-D:\QLTP\DAO\bin\Debug\System.Drawing.Common.pdb
-D:\QLTP\DAO\bin\Debug\System.Drawing.Common.xml

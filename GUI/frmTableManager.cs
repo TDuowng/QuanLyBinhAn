@@ -45,12 +45,31 @@ namespace GUI
             dgvFood.SelectionChanged += DgvFood_SelectionChanged;
 
             SetupAutoComplete();
+
+            nmrQuantity.Value = 1; // Đặt giá trị mặc định cho số lượng món ăn
         }
 
 
-
-
         #region Methods
+
+        private void ShowBillReport(int billId)
+        {
+            try
+            {
+                // Tạo form report viewer
+                frmReportViewer reportViewer = new frmReportViewer();
+
+                // Gọi phương thức để hiển thị report
+                reportViewer.ShowBillReportFromProc(billId);
+
+                // Hiển thị form
+                reportViewer.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi in hóa đơn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void DgvFood_SelectionChanged(object sender, EventArgs e)
         {
@@ -354,6 +373,9 @@ namespace GUI
                 if (MessageBox.Show($"Bạn có chắc muốn thanh toán hóa đơn cho {table.TableName}?\nTổng tiền: {finalPrice:N0} VNĐ", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     BillBLL.CheckOut(idBill, discount, finalPrice, "Thanh toán từ btnCheckout");
+
+                    ShowBillReport(idBill);
+
                     ShowBill(selectedTableId);
                     selectedTableUc.SetTableData(table.TableName, "Bàn trống");
                     selectedTableUc.SetSelected(false);

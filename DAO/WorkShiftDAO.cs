@@ -165,6 +165,18 @@ namespace DAO
             return 0;
         }
 
+        public static DataTable GetPayroll(int idEmployee, DateTime fromDate, DateTime toDate)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaNV", idEmployee),
+                new SqlParameter("@FromDate", fromDate),
+                new SqlParameter("@ToDate", toDate)
+            };
+
+            return DataProvider.Instance.ExecuteStoredProcedureWithReturn("USP_GetPayroll", parameters);
+        }
+
 
     }
 }
