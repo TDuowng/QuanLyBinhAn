@@ -82,6 +82,51 @@ namespace GUI
             rptViewer.RefreshReport();
         }
 
+        public void LoadRevenueReport(DataTable revenueData, string reportPath)
+        {
+            rptViewer.LocalReport.DataSources.Clear();
+            rptViewer.LocalReport.ReportPath = reportPath;
+            rptViewer.LocalReport.DataSources.Add(new ReportDataSource("RevenueData", revenueData));
+            rptViewer.RefreshReport();
+        }
+        public void LoadBillReport(DateTime checkIn, DateTime checkOut)
+        {
+            try
+            {
+                // Lấy dữ liệu từ stored procedure
+                DataTable billData = BillBLL.GetListBillByDate(checkIn, checkOut);
+
+                // Xóa dữ liệu cũ trong ReportViewer
+                rptViewer.LocalReport.DataSources.Clear();
+
+                // Tạo ReportDataSource
+                rptViewer.ProcessingMode = ProcessingMode.Local;
+                ReportDataSource rds = new ReportDataSource("BillDataSet", billData);
+                rptViewer.LocalReport.DataSources.Add(rds);
+
+                // Đặt đường dẫn đến file RDLC
+                rptViewer.LocalReport.ReportPath = @"D:\QLTP\GUI\rptReport.rdlc";
+
+                // Truyền tham số CheckIn và CheckOut vào báo cáo
+                ReportParameter[] parameters = new ReportParameter[]
+                {
+                    new ReportParameter("CheckIn", checkIn.ToString("dd/MM/yyyy")),
+                    new ReportParameter("CheckOut", checkOut.ToString("dd/MM/yyyy"))
+                };
+                rptViewer.LocalReport.SetParameters(parameters);
+
+                // Hiển thị ReportViewer
+                rptViewer.Visible = true;
+                rptViewer.RefreshReport();
+
+                // Điều chỉnh kích thước form
+                this.Size = new Size(1050, 925);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tạo báo cáo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         public void ShowBillReportFromProc(int billId)
         {
             try

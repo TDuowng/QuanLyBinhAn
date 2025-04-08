@@ -1,10 +1,12 @@
 ﻿using BLL;
 using DTO;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +40,84 @@ namespace GUI
 
             // Đăng ký sự kiện khi thay đổi ngày ở DateTimePicker doanh thu
             dtpkDateRevenue.ValueChanged += DtpkDateRevenue_ValueChanged;
+        }
+
+
+        #region Methods
+        private void LoadDateTimePickerBill()
+        {
+            DateTime today = DateTime.Now;
+            dtpkFromDate.Value = new DateTime(today.Year, today.Month, 1);
+            dtpkToDate.Value = dtpkFromDate.Value.AddMonths(1).AddDays(-1);
+        }
+        private void DtpkDateRevenue_ValueChanged(object sender, EventArgs e)
+        {
+            LoadRevenueByDate(dtpkDateRevenue.Value);
+        }
+        private void LoadListBillByDate(DateTime checkIn, DateTime checkOut)
+        {
+            dtgvBill.DataSource =BillBLL .GetListBillByDate(checkIn, checkOut);
+            FormatBillGridView();
+        }
+        private void FormatBillGridView()
+        {
+            dtgvBill.RowTemplate.Height = 40;
+
+            if (dtgvBill.Columns.Contains("Ngày vào"))
+                dtgvBill.Columns["Ngày vào"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
+
+            if (dtgvBill.Columns.Contains("Ngày ra"))
+                dtgvBill.Columns["Ngày ra"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
+
+            if (dtgvBill.Columns.Contains("Tổng tiền"))
+                dtgvBill.Columns["Tổng tiền"].DefaultCellStyle.Format = "N0";
+        }
+        private void LoadDataByPage()
+        {
+            checkIn = dtpkFromDate.Value.Date;
+            // Thêm thời gian cuối ngày cho checkOut để bao gồm cả ngày được chọn
+            checkOut = dtpkToDate.Value.Date.AddDays(1).AddSeconds(-1);
+
+            DataTable data = BLL.BillBLL.GetListBillByDateAndPage(checkIn, checkOut, currentPage, pageSize);
+            dtgvBill.DataSource = data;
+            FormatBillGridView();
+
+            txtPage.Text = $"{currentPage}/{totalPages}";
+            UpdateButtonState();
+
+        }
+
+        private void CalculateTotalPages()
+        {
+            checkIn = dtpkFromDate.Value.Date;
+            // Thêm thời gian cuối ngày cho checkOut để bao gồm cả ngày được chọn
+            checkOut = dtpkToDate.Value.Date.AddDays(1).AddSeconds(-1);
+
+            int totalRows = BLL.BillBLL.GetTotalBillRows(checkIn, checkOut);
+            totalPages = (int)Math.Ceiling((double)totalRows / pageSize);
+            if (totalPages == 0) totalPages = 1; // Để tránh lỗi khi không có dữ liệu
+
+            // Đảm bảo currentPage hợp lệ
+            if (currentPage > totalPages)
+                currentPage = totalPages;
+        }
+
+
+        private void UpdateButtonState()
+        {
+            btnFirst.Enabled = currentPage > 1;
+            btnPrevious.Enabled = currentPage > 1;
+            btnNext.Enabled = currentPage < totalPages;
+            btnLast.Enabled = currentPage < totalPages;
+        }
+
+        private void LoadRevenueByDate(DateTime date)
+        {
+            // Lấy doanh thu từ BLL
+            decimal revenue = BillBLL.GetRevenueByDate(date);
+
+            // Hiển thị doanh thu với định dạng tiền tệ
+            txtRevenue.Text = revenue.ToString("N0") + " VNĐ";
         }
 
         private void LoadRevenueByDayChart()
@@ -106,82 +186,6 @@ namespace GUI
                 MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #region Methods
-        private void LoadDateTimePickerBill()
-        {
-            DateTime today = DateTime.Now;
-            dtpkFromDate.Value = new DateTime(today.Year, today.Month, 1);
-            dtpkToDate.Value = dtpkFromDate.Value.AddMonths(1).AddDays(-1);
-        }
-        private void DtpkDateRevenue_ValueChanged(object sender, EventArgs e)
-        {
-            LoadRevenueByDate(dtpkDateRevenue.Value);
-        }
-        private void LoadListBillByDate(DateTime checkIn, DateTime checkOut)
-        {
-            dtgvBill.DataSource = BLL.BillBLL.GetListBillByDate(checkIn, checkOut);
-            FormatBillGridView();
-        }
-        private void FormatBillGridView()
-        {
-            dtgvBill.RowTemplate.Height = 40;
-
-            if (dtgvBill.Columns.Contains("Ngày vào"))
-                dtgvBill.Columns["Ngày vào"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
-
-            if (dtgvBill.Columns.Contains("Ngày ra"))
-                dtgvBill.Columns["Ngày ra"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
-
-            if (dtgvBill.Columns.Contains("Tổng tiền"))
-                dtgvBill.Columns["Tổng tiền"].DefaultCellStyle.Format = "N0";
-        }
-        private void LoadDataByPage()
-        {
-            checkIn = dtpkFromDate.Value.Date;
-            // Thêm thời gian cuối ngày cho checkOut để bao gồm cả ngày được chọn
-            checkOut = dtpkToDate.Value.Date.AddDays(1).AddSeconds(-1);
-
-            DataTable data = BLL.BillBLL.GetListBillByDateAndPage(checkIn, checkOut, currentPage, pageSize);
-            dtgvBill.DataSource = data;
-            FormatBillGridView();
-
-            txtPage.Text = $"{currentPage}/{totalPages}";
-            UpdateButtonState();
-
-        }
-
-        private void CalculateTotalPages()
-        {
-            checkIn = dtpkFromDate.Value.Date;
-            // Thêm thời gian cuối ngày cho checkOut để bao gồm cả ngày được chọn
-            checkOut = dtpkToDate.Value.Date.AddDays(1).AddSeconds(-1);
-
-            int totalRows = BLL.BillBLL.GetTotalBillRows(checkIn, checkOut);
-            totalPages = (int)Math.Ceiling((double)totalRows / pageSize);
-            if (totalPages == 0) totalPages = 1; // Để tránh lỗi khi không có dữ liệu
-
-            // Đảm bảo currentPage hợp lệ
-            if (currentPage > totalPages)
-                currentPage = totalPages;
-        }
-
-
-        private void UpdateButtonState()
-        {
-            btnFirst.Enabled = currentPage > 1;
-            btnPrevious.Enabled = currentPage > 1;
-            btnNext.Enabled = currentPage < totalPages;
-            btnLast.Enabled = currentPage < totalPages;
-        }
-
-        private void LoadRevenueByDate(DateTime date)
-        {
-            // Lấy doanh thu từ BLL
-            decimal revenue = BLL.BillBLL.GetRevenueByDate(date);
-
-            // Hiển thị doanh thu với định dạng tiền tệ
-            txtRevenue.Text = revenue.ToString("N0") + " VNĐ";
-        }
         #endregion
 
         #region Events
@@ -207,6 +211,8 @@ namespace GUI
             }
         }
 
+
+
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (currentPage < totalPages)
@@ -227,6 +233,30 @@ namespace GUI
         }
         private void btnPrintList_Click(object sender, EventArgs e)
         {
+            //try
+            //{
+            //    DateTime checkIn = dtpkFromDate.Value;
+            //    DateTime checkOut = dtpkToDate.Value.Date.AddDays(1).AddSeconds(-1);
+
+            //    // Lấy danh sách hóa đơn
+            //    DataTable listBill = BillBLL.GetListBillByDate(checkIn, checkOut);
+
+            //    // Kiểm tra nếu danh sách rỗng
+            //    if (listBill.Rows.Count == 0)
+            //    {
+            //        MessageBox.Show("Không có hóa đơn nào để in", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        return;
+            //    }
+
+            //    // Tạo form báo cáo và hiển thị
+            //    frmReportViewer reportViewer = new frmReportViewer();
+            //    reportViewer.LoadBillReport(checkIn, checkOut);
+            //    reportViewer.ShowDialog();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Lỗi khi in báo cáo: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         #endregion
 

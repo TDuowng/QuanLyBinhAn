@@ -20,7 +20,7 @@ namespace BLL
 
         public static TableDTO GetTableById(int tableId)
         {
-            return TableDAO.GetTableById(tableId); // Giả sử TableDAO có phương thức này
+            return TableDAO.GetTableById(tableId); 
         }
         public static bool InsertTable(TableDTO table)
         { 

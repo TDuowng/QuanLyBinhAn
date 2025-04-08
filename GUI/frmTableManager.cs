@@ -52,6 +52,7 @@ namespace GUI
 
         #region Methods
 
+
         private void ShowBillReport(int billId)
         {
             try
@@ -336,11 +337,6 @@ namespace GUI
         {
             LoadTableList();
         }
-        private void frmTableManager_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnAdmin_Click(object sender, EventArgs e)
         {
             if (userType == 0 || userPermissions.Count > 0) // Admin hoặc có ít nhất 1 quyền
@@ -532,6 +528,23 @@ namespace GUI
         {
             frmChangePassword f = new frmChangePassword(currentUserName);
             f.ShowDialog();
+        }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận thoát", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            // Kiểm tra kết quả từ hộp thoại
+            if (result == DialogResult.OK)
+            {
+                // Đóng form hiện tại
+                this.Hide();
+
+                // Mở form Đăng nhập
+                frmLogin loginForm = new frmLogin();
+                loginForm.ShowDialog();
+                this.Close();
+            }
+            // Nếu nhấn Cancel, không làm gì
         }
         #endregion
 

@@ -188,5 +188,23 @@ namespace GUI
         {
             openChildForm(new frmStatistics(), sender);
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận thoát", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            // Kiểm tra kết quả từ hộp thoại
+            if (result == DialogResult.OK)
+            {
+                // Đóng form hiện tại
+                this.Hide();
+
+                // Mở form Đăng nhập
+                frmLogin loginForm = new frmLogin();
+                loginForm.ShowDialog();
+                this.Close();
+            }
+            // Nếu nhấn Cancel, không làm gì
+        }
     }
 }

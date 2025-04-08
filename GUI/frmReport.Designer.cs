@@ -335,7 +335,7 @@
             this.btnPrintList.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnPrintList.Size = new System.Drawing.Size(188, 52);
             this.btnPrintList.TabIndex = 27;
-            this.btnPrintList.Text = "  Xuất excel";
+            this.btnPrintList.Text = "  In doanh thu";
             this.btnPrintList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrintList.UseVisualStyleBackColor = false;
             this.btnPrintList.Click += new System.EventHandler(this.btnPrintList_Click);
