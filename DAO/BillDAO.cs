@@ -90,5 +90,15 @@ namespace DAO
             return DataProvider.Instance.ExecuteQuery(query, new object[] { billId });
         }
 
+        public static bool DeleteBill(int idBill)
+        {
+            string query = "EXEC USP_DeleteBill @MaHDB  ";
+            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { idBill }) == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRecipe));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnPrint = new System.Windows.Forms.Button();
@@ -55,9 +57,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvQuantitive = new System.Windows.Forms.DataGridView();
+            this.txtUnit = new System.Windows.Forms.TextBox();
+            this.nmrQuantitive = new System.Windows.Forms.NumericUpDown();
             this.rikDescription = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.rikQuantitative = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cboMainIngredient = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -70,6 +74,8 @@
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvQuantitive)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrQuantitive)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -124,9 +130,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(119)))), ((int)(((byte)(20)))));
             this.lblTitle.Location = new System.Drawing.Point(881, 165);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(510, 38);
+            this.lblTitle.Size = new System.Drawing.Size(253, 38);
             this.lblTitle.TabIndex = 15;
-            this.lblTitle.Text = "CÔNG THỨC NẤU GÀ SỐT TƯƠNG TỎI";
+            this.lblTitle.Text = "CÔNG THỨC NẤU ";
             // 
             // panel9
             // 
@@ -381,9 +387,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dgvQuantitive);
+            this.groupBox2.Controls.Add(this.txtUnit);
+            this.groupBox2.Controls.Add(this.nmrQuantitive);
             this.groupBox2.Controls.Add(this.rikDescription);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.rikQuantitative);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.cboMainIngredient);
             this.groupBox2.Controls.Add(this.label4);
@@ -393,12 +401,57 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
+            // dgvQuantitive
+            // 
+            this.dgvQuantitive.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvQuantitive.BackgroundColor = System.Drawing.Color.White;
+            this.dgvQuantitive.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvQuantitive.Location = new System.Drawing.Point(15, 185);
+            this.dgvQuantitive.Name = "dgvQuantitive";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvQuantitive.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvQuantitive.RowHeadersVisible = false;
+            this.dgvQuantitive.RowHeadersWidth = 51;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvQuantitive.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvQuantitive.RowTemplate.Height = 24;
+            this.dgvQuantitive.Size = new System.Drawing.Size(647, 117);
+            this.dgvQuantitive.TabIndex = 14;
+            this.dgvQuantitive.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQuantitive_CellClick);
+            // 
+            // txtUnit
+            // 
+            this.txtUnit.Location = new System.Drawing.Point(557, 132);
+            this.txtUnit.Name = "txtUnit";
+            this.txtUnit.ReadOnly = true;
+            this.txtUnit.Size = new System.Drawing.Size(105, 30);
+            this.txtUnit.TabIndex = 13;
+            // 
+            // nmrQuantitive
+            // 
+            this.nmrQuantitive.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.nmrQuantitive.Location = new System.Drawing.Point(147, 133);
+            this.nmrQuantitive.Name = "nmrQuantitive";
+            this.nmrQuantitive.Size = new System.Drawing.Size(404, 30);
+            this.nmrQuantitive.TabIndex = 12;
+            // 
             // rikDescription
             // 
             this.rikDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rikDescription.Location = new System.Drawing.Point(15, 338);
+            this.rikDescription.Location = new System.Drawing.Point(15, 348);
             this.rikDescription.Name = "rikDescription";
-            this.rikDescription.Size = new System.Drawing.Size(647, 275);
+            this.rikDescription.Size = new System.Drawing.Size(647, 265);
             this.rikDescription.TabIndex = 11;
             this.rikDescription.Text = "";
             // 
@@ -406,26 +459,17 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(23, 310);
+            this.label6.Location = new System.Drawing.Point(23, 317);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 25);
             this.label6.TabIndex = 10;
             this.label6.Text = "Các bước làm:";
             // 
-            // rikQuantitative
-            // 
-            this.rikQuantitative.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rikQuantitative.Location = new System.Drawing.Point(15, 179);
-            this.rikQuantitative.Name = "rikQuantitative";
-            this.rikQuantitative.Size = new System.Drawing.Size(647, 116);
-            this.rikQuantitative.TabIndex = 9;
-            this.rikQuantitative.Text = "";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(23, 151);
+            this.label5.Location = new System.Drawing.Point(23, 137);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 25);
             this.label5.TabIndex = 8;
@@ -434,22 +478,23 @@
             // cboMainIngredient
             // 
             this.cboMainIngredient.FormattingEnabled = true;
-            this.cboMainIngredient.Location = new System.Drawing.Point(199, 91);
+            this.cboMainIngredient.Location = new System.Drawing.Point(147, 83);
             this.cboMainIngredient.Name = "cboMainIngredient";
-            this.cboMainIngredient.Size = new System.Drawing.Size(463, 31);
+            this.cboMainIngredient.Size = new System.Drawing.Size(515, 31);
             this.cboMainIngredient.TabIndex = 7;
+            this.cboMainIngredient.SelectedIndexChanged += new System.EventHandler(this.cboMainIngredient_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(23, 91);
+            this.label4.Location = new System.Drawing.Point(23, 87);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(167, 25);
+            this.label4.Size = new System.Drawing.Size(118, 25);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Nguyên liệu chính:";
+            this.label4.Text = "Nguyên liệu:";
             // 
-            // frmCook
+            // frmRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -460,7 +505,7 @@
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "frmCook";
+            this.Name = "frmRecipe";
             this.Text = "CÔNG THỨC NẤU ĂN";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -477,6 +522,8 @@
             this.panel6.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvQuantitive)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmrQuantitive)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -507,7 +554,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RichTextBox rikDescription;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RichTextBox rikQuantitative;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cboMainIngredient;
         private System.Windows.Forms.Label label4;
@@ -515,5 +561,8 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TextBox txtIdCook;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView dgvQuantitive;
+        private System.Windows.Forms.TextBox txtUnit;
+        private System.Windows.Forms.NumericUpDown nmrQuantitive;
     }
 }

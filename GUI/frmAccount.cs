@@ -114,8 +114,6 @@ namespace GUI
             txtUserName.Clear();
             txtDisplayName.Clear();
             txtEmail.Clear();
-            cbEmployee.SelectedIndex = -1;
-            cbTypeAccount.SelectedIndex = -1;
             chkBanHang.Checked = false;
             chkBaoCao.Checked = false;
             chkNhanVien.Checked = false;

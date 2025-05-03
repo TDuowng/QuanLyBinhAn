@@ -74,5 +74,14 @@ namespace BLL
             return IngredientsDAO.GetExpiringIngredients(monthsAhead);
         }
 
+        public static string GetIngredientNameById(int idIngredient)
+        {
+            return IngredientsDAO.GetIngredientNameById(idIngredient);
+        }
+        public static string GetUnitById(int idIngredient)
+        {
+            return IngredientsDAO.GetUnitById(idIngredient);
+        }
+
     }
 }

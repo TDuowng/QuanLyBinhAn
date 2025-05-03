@@ -33,7 +33,7 @@ namespace GUI
 
         }
 
-        public void LoadReport(string nameCook, string ingredientName, string quantitative, string description, string reportPath)
+        public void LoadReport(string nameCook, string ingredientName, float quantitative, string description, string reportPath)
         {
             rptViewer.LocalReport.DataSources.Clear();
             rptViewer.LocalReport.ReportPath = reportPath;

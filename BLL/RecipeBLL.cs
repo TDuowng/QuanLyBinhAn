@@ -10,12 +10,17 @@ namespace BLL
 {
     public class RecipeBLL
     {
-        public static bool InsertRecipe(DTO.RecipeDTO recipe)
+
+        public static List<RecipeDTO> GetListRecipeByFoodId(int foodId)
+        {
+            return RecipeDAO.GetListRecipeByFoodId(foodId);
+        }
+        public static bool InsertRecipe(RecipeDTO recipe)
         {
             return RecipeDAO.InsertRecipe(recipe);
         }
 
-        public static bool UpdateRecipe(DTO.RecipeDTO recipe)
+        public static bool UpdateRecipe(RecipeDTO recipe)
         {
             return RecipeDAO.UpdateRecipe(recipe);
         }
@@ -28,6 +33,16 @@ namespace BLL
         public static RecipeDTO GetRecipeByFoodId(int foodId)
         {
             return RecipeDAO.GetRecipeByFoodId(foodId);
+        }
+
+        public static bool CheckIngredientExists(int idDish, int idIngredient)
+        {
+            return RecipeDAO.CheckIngredientExists(idDish, idIngredient);
+        }
+
+        public static bool InsertQuantitative(RecipeDTO quantitative)
+        {
+            return RecipeDAO.InsertQuantitative(quantitative);
         }
     }
 }

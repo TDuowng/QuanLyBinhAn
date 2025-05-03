@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -44,6 +45,8 @@ namespace GUI
 
             dgvFood.SelectionChanged += DgvFood_SelectionChanged;
 
+            dgvBill.RowTemplate.Height = 40;
+
             SetupAutoComplete();
 
             nmrQuantity.Value = 1; // Đặt giá trị mặc định cho số lượng món ăn
@@ -52,6 +55,98 @@ namespace GUI
 
         #region Methods
 
+        private void ShowBill(int tableId)
+        {
+            dgvBill.Columns.Clear();
+            dgvBill.DataSource = null;
+
+            int billId = BillBLL.GetUncheckBillIDByTableID(tableId);
+            float totalPrice = 0;
+
+            // Tạo danh sách dữ liệu cho DataGridView
+            var billItems = new List<object>();
+
+            if (billId != -1)
+            {
+                List<BillDetailDTO> billDetails = BillDetailBLL.GetBillDetailsByBillId(billId);
+                foreach (BillDetailDTO detail in billDetails)
+                {
+                    FoodDTO food = FoodBLL.GetListFood().FirstOrDefault(f => f.ID == detail.FoodId);
+                    if (food != null)
+                    {
+                        billItems.Add(new
+                        {
+                            FoodId = food.ID,
+                            FoodName = food.Name,
+                            Quantity = detail.Quantity,
+                            Price = food.Price,
+                            Total = food.Price * detail.Quantity
+                        });
+                        totalPrice += food.Price * detail.Quantity;
+                    }
+                }
+            }
+
+            // Gán dữ liệu vào DataGridView
+            dgvBill.DataSource = billItems;
+
+            // Đặt tên cột
+            if (dgvBill.Columns.Contains("FoodId"))
+            {
+                dgvBill.Columns["FoodId"].HeaderText = "Mã món";
+                dgvBill.Columns["FoodId"].Visible = false;
+            }
+
+            if (dgvBill.Columns.Contains("FoodName"))
+                dgvBill.Columns["FoodName"].HeaderText = "Tên món";
+            if (dgvBill.Columns.Contains("Quantity"))
+                dgvBill.Columns["Quantity"].HeaderText = "SL";
+            if (dgvBill.Columns.Contains("Price"))
+            {
+                dgvBill.Columns["Price"].HeaderText = "Đơn giá";
+                dgvBill.Columns["Price"].DefaultCellStyle.Format = "N0";
+            }
+            if (dgvBill.Columns.Contains("Total"))
+            {
+                dgvBill.Columns["Total"].HeaderText = "Thành tiền";
+                dgvBill.Columns["Total"].DefaultCellStyle.Format = "N0";
+            }
+
+            dgvBill.RowTemplate.Height = 40;
+
+            if(billId != -1)
+            {
+                // Thêm nút tăng
+                DataGridViewImageColumn addButtonColumn = new DataGridViewImageColumn
+                {
+                    Name = "AddQuantity",
+                    HeaderText = "(+)",
+                    Image = Properties.Resources.plus,
+                    ImageLayout = DataGridViewImageCellLayout.Normal,
+                    Width = 50
+                };
+                dgvBill.Columns.Add(addButtonColumn);
+            }
+
+            if (billId != -1)
+            {
+
+                // Thêm cột hình ảnh cho nút "Xóa"
+                DataGridViewImageColumn deleteButtonColumn = new DataGridViewImageColumn
+                {
+                    Name = "Delete",
+                    HeaderText = "(-)",
+                    Image = Properties.Resources.remove,
+                    ImageLayout = DataGridViewImageCellLayout.Normal,
+                    Width = 50
+                };
+                dgvBill.Columns.Add(deleteButtonColumn);
+
+                // Cập nhật tổng tiền
+                lblTotal.Text = totalPrice.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + " VNĐ";
+                UpdateFinalPrice();
+            }
+        }
 
         private void ShowBillReport(int billId)
         {
@@ -103,7 +198,7 @@ namespace GUI
 
         private void SetupSidebar()
         {
-            btnTable.Click += BtnTable_Click;
+            bànĂnToolStripMenuItem.Click += BtnTable_Click;
         }
 
         
@@ -186,7 +281,7 @@ namespace GUI
         private void ApplyPermissions()
         {
 
-            btnAdmin.Visible = (userType == 0 || userPermissions.Count > 0); // Admin hoặc User có quyền mới thấy nút
+            quảnLýToolStripMenuItem.Visible = (userType == 0 || userPermissions.Count > 0); // Admin hoặc User có quyền mới thấy nút
         }
 
         private void LoadTableList()
@@ -206,36 +301,6 @@ namespace GUI
                 uc.OnSelect += UcTable_Click;
                 flowTable.Controls.Add(uc);
             }
-        }
-
-        
-
-        private void ShowBill(int tableId)
-        {
-            lsvBill.Items.Clear();
-            int billId = BillBLL.GetUncheckBillIDByTableID(tableId);
-            float totalPrice = 0;
-
-            if (billId != -1)
-            {
-                List<BillDetailDTO> billDetails = BillDetailBLL.GetBillDetailsByBillId(billId);
-                foreach (BillDetailDTO detail in billDetails)
-                {
-                    FoodDTO food = FoodBLL.GetListFood().FirstOrDefault(f => f.ID == detail.FoodId);
-                    if (food != null)
-                    {
-                        ListViewItem item = new ListViewItem(food.Name);
-                        item.SubItems.Add(detail.Quantity.ToString());
-                        item.SubItems.Add(food.Price.ToString("N0"));
-                        item.SubItems.Add((food.Price * detail.Quantity).ToString("N0"));
-                        totalPrice += food.Price * detail.Quantity;
-                        lsvBill.Items.Add(item);
-                    }
-                }
-            }
-
-            lblTotal.Text = totalPrice.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) + " VNĐ";
-            UpdateFinalPrice();
         }
 
         private void UpdateFinalPrice()
@@ -321,33 +386,15 @@ namespace GUI
                     uc.SetSelected(true);
                     selectedTableUc = uc;
 
-                    selectedTableId = table.IdTable;  // Gán đúng MaBan
-                    lsvBill.Tag = table;
+                    selectedTableId = table.IdTable;
 
                     ShowBill(selectedTableId);
+
                 }
                 else
                 {
                     MessageBox.Show("Lỗi: UcTable không có TableDTO!");
                 }
-            }
-        }
-
-        private void btnTable_Click(object sender, EventArgs e)
-        {
-            LoadTableList();
-        }
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            if (userType == 0 || userPermissions.Count > 0) // Admin hoặc có ít nhất 1 quyền
-            {
-                frmAdmin adminForm = new frmAdmin(currentUserName, userType, userPermissions);
-                adminForm.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Bạn không có quyền truy cập vào quản lý!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void btnCheckout_Click(object sender, EventArgs e)
@@ -365,6 +412,7 @@ namespace GUI
                 int discount = (int)nmrDiscount.Value;
                 float finalPrice = totalPrice - (totalPrice * discount / 100);
 
+
                 TableDTO table = selectedTableUc.Tag as TableDTO;
                 if (MessageBox.Show($"Bạn có chắc muốn thanh toán hóa đơn cho {table.TableName}?\nTổng tiền: {finalPrice:N0} VNĐ", "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
@@ -377,7 +425,8 @@ namespace GUI
                     selectedTableUc.SetSelected(false);
                     selectedTableId = -1;
                     selectedTableUc = null;
-                    nmrDiscount.Value = 0;
+                    nmrDiscount.Value = 1;
+                    LoadTableList();
                 }
             }
 
@@ -385,42 +434,49 @@ namespace GUI
 
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-            if (selectedTableId == -1)
+            try
             {
-                MessageBox.Show("Hãy chọn bàn trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                if (selectedTableId == -1)
+                {
+                    MessageBox.Show("Hãy chọn bàn trước!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            if (selectedFoodRow == null)
+                if (selectedFoodRow == null)
+                {
+                    MessageBox.Show("Hãy chọn một món từ danh sách!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                int quantity = (int)nmrQuantity.Value;
+                // Lấy món được chọn từ DataGridView
+                int foodId = (int)selectedFoodRow.Cells["ID"].Value;
+                FoodDTO food = FoodBLL.GetListFood().FirstOrDefault(f => f.ID == foodId);
+
+                if (food == null)
+                {
+                    MessageBox.Show("Không tìm thấy món ăn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                int idBill = BillBLL.GetUncheckBillIDByTableID(selectedTableId);
+                if (idBill == -1)
+                {
+                    BillBLL.InsertBill(selectedTableId, currentUserName, "Thêm món từ DataGridView");
+                    idBill = BillBLL.GetUncheckBillIDByTableID(selectedTableId);
+                }
+
+                BillDetailBLL.InsertOrUpdateBillDetail(idBill, food.ID, quantity);
+                ShowBill(selectedTableId);
+                UpdateTableStatus();
+                nmrQuantity.Value = 1;
+
+                selectedFoodRow = null;
+                dgvFood.ClearSelection();
+            }
+            catch (SqlException ex)
             {
-                MessageBox.Show("Hãy chọn một món từ danh sách!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show($"Lỗi: {ex.Message}. Vui lòng kiểm tra nguyên liệu trong kho.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            int quantity = (int)nmrQuantity.Value;
-            // Lấy món được chọn từ DataGridView
-            int foodId = (int)selectedFoodRow.Cells["ID"].Value;
-            FoodDTO food = FoodBLL.GetListFood().FirstOrDefault(f => f.ID == foodId);
-
-            if (food == null)
-            {
-                MessageBox.Show("Không tìm thấy món ăn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            int idBill = BillBLL.GetUncheckBillIDByTableID(selectedTableId);
-            if (idBill == -1)
-            {
-                BillBLL.InsertBill(selectedTableId, currentUserName, "Thêm món từ DataGridView");
-                idBill = BillBLL.GetUncheckBillIDByTableID(selectedTableId);
-            }
-
-            BillDetailBLL.InsertOrUpdateBillDetail(idBill, food.ID, quantity);
-            ShowBill(selectedTableId);
-            UpdateTableStatus();
-            nmrQuantity.Value = 0;
-
-            selectedFoodRow = null;
-            dgvFood.ClearSelection();
         }
 
         private void nmrDiscount_ValueChanged(object sender, EventArgs e)
@@ -456,8 +512,10 @@ namespace GUI
             {
                 TableBLL.SwitchTable(selectedTableId, targetTableId, currentUserName);
                 LoadTableList();
-                if (lsvBill.Tag != null)
-                    ShowBill(selectedTableId);
+                if (selectedTableId != -1) // Kiểm tra bàn đã được chọn
+                {
+                    ShowBill(selectedTableId); // Gọi ShowBill để cập nhật hóa đơn
+                }
             }
         }
 
@@ -495,8 +553,10 @@ namespace GUI
             {
                 TableBLL.MergerTables(selectedTableId, targetTableId, currentUserName);
                 LoadTableList();
-                if (lsvBill.Tag != null)
-                    ShowBill(selectedTableId);
+                if (selectedTableId != -1) // Kiểm tra bàn đã được chọn
+                {
+                    ShowBill(selectedTableId); // Gọi ShowBill để cập nhật hóa đơn
+                }
             }
         }
 
@@ -529,7 +589,51 @@ namespace GUI
             frmChangePassword f = new frmChangePassword(currentUserName);
             f.ShowDialog();
         }
-        private void btnExit_Click(object sender, EventArgs e)
+
+        private void thanhToánToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnCheckout_Click(this, new EventArgs());
+        }
+
+        private void thêmMónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnAddFood_Click(this, new EventArgs());
+        }
+
+        private void gộpBànToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnMergeTables_Click(this, new EventArgs());
+        }
+
+        private void chuyểnBànToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnSwitchTable_Click(this, new EventArgs());
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            đăngXuấtToolStripMenuItem1_Click(this, new EventArgs());
+        }
+        private void bànĂnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadTableList();
+        }
+
+        private void quảnLýToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (userType == 0 || userPermissions.Count > 0) // Admin hoặc có ít nhất 1 quyền
+            {
+                frmAdmin adminForm = new frmAdmin(currentUserName, userType, userPermissions);
+                adminForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập vào quản lý!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void đăngXuấtToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận thoát", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
@@ -546,8 +650,89 @@ namespace GUI
             }
             // Nếu nhấn Cancel, không làm gì
         }
+
         #endregion
+        private bool isProcessingClick = false;
+        private void dgvBill_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (isProcessingClick || e.RowIndex < 0 || selectedTableId == -1) return;
+                isProcessingClick = true;
+
+                int billId = BillBLL.GetUncheckBillIDByTableID(selectedTableId);
+                if (billId == -1) return;
+
+                int foodId = (int)dgvBill.Rows[e.RowIndex].Cells["FoodId"].Value;
+
+                // Xử lý nút "Tăng" (tăng số lượng)
+                if (dgvBill.Columns.Contains("AddQuantity") && e.ColumnIndex == dgvBill.Columns["AddQuantity"].Index)
+                {
+                    int currentQuantity = (int)dgvBill.Rows[e.RowIndex].Cells["Quantity"].Value;
+                    BillDetailBLL.InsertOrUpdateBillDetail(billId, foodId, 1);
+                    ShowBill(selectedTableId); // Cập nhật lại giao diện
+                    UpdateTableStatus();
+                }
+
+                // Xử lý nút "Xóa"
+                if (dgvBill.Columns.Contains("Delete") && e.ColumnIndex == dgvBill.Columns["Delete"].Index)
+                {
+                    // Lấy số lượng hiện tại từ giao diện để kiểm tra
+                    int currentQuantity = (int)dgvBill.Rows[e.RowIndex].Cells["Quantity"].Value;
+                    // Gọi thủ tục với @SoLuong = 1 để tăng đúng 1 đơn vị
+                    BillDetailBLL.InsertOrUpdateBillDetail(billId, foodId, -1);
+                    ShowBill(selectedTableId); // Cập nhật lại giao diện
+                    UpdateTableStatus();
+                }
+
+                isProcessingClick = false;
+            }catch (SqlException ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}. Vui lòng kiểm tra nguyên liệu trong kho.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
 
+        private void btnDeleteBill_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra xem bàn đã được chọn hay chưa
+            if (selectedTableId == -1)
+            {
+                MessageBox.Show("Hãy chọn bàn để xóa hóa đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy billId của hóa đơn chưa thanh toán
+            int billId = BillBLL.GetUncheckBillIDByTableID(selectedTableId);
+            if (billId == -1)
+            {
+                MessageBox.Show("Không có món ăn nào để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Hiển thị hộp thoại xác nhận
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa toàn bộ món ăn?",
+                                                  "Xác nhận xóa",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    // Gọi phương thức xóa hóa đơn
+                    BillBLL.DeleteBill(billId);
+
+                    // Cập nhật lại giao diện
+                    ShowBill(selectedTableId);
+
+                    MessageBox.Show("Xóa tất cả món ăn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Đã xảy ra lỗi khi xóa tất cả món ăn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

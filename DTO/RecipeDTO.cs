@@ -15,12 +15,12 @@ namespace DTO
         private int idDish;
         private int idIngredient;
         private string nameCook;
-        private string quantitative;
+        private float quantitative;
         private string description;
 
         public string IngredientName { get; set; }
 
-        public RecipeDTO(int idCook, int idDish, int idIngredient, string nameCook, string quantitative, string description)
+        public RecipeDTO(int idCook, int idDish, int idIngredient, string nameCook, float quantitative, string description)
         {
             this.IdCook = idCook;
             this.IdDish = idDish;
@@ -32,7 +32,7 @@ namespace DTO
 
         public RecipeDTO() { }
 
-        public RecipeDTO(string nameCook, string ingredientName, string quantitative, string description)
+        public RecipeDTO(string nameCook, string ingredientName, float quantitative, string description)
         {
             this.NameCook = nameCook;
             this.IngredientName = ingredientName; // Cần thêm property này nếu chưa có
@@ -46,7 +46,7 @@ namespace DTO
             this.IdDish = (int)row["MaTD"];
             this.IdIngredient = (int)row["MaNL"];
             this.NameCook = row["TenCT"].ToString();
-            this.Quantitative = row["DinhLuong"].ToString();
+            this.Quantitative = Convert.ToSingle(row["DinhLuong"]);
             this.Description = row["CachLam"].ToString();
             this.IngredientName = row["TenNL"].ToString();
         }
@@ -55,7 +55,7 @@ namespace DTO
         public int IdDish { get => idDish; set => idDish = value; }
         public int IdIngredient { get => idIngredient; set => idIngredient = value; }
         public string NameCook { get => nameCook; set => nameCook = value; }
-        public string Quantitative { get => quantitative; set => quantitative = value; }
+        public float Quantitative { get => quantitative; set => quantitative = value; }
         public string Description { get => description; set => description = value; }
 
     }

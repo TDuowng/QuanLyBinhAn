@@ -1,0 +1,6 @@
+D:\QLTP\TestProjectQLTP\bin\Debug\TestProjectQLTP.dll
+D:\QLTP\TestProjectQLTP\bin\Debug\TestProjectQLTP.pdb
+D:\QLTP\TestProjectQLTP\obj\Debug\TestProjectQLTP.csproj.AssemblyReference.cache
+D:\QLTP\TestProjectQLTP\obj\Debug\TestProjectQLTP.csproj.CoreCompileInputs.cache
+D:\QLTP\TestProjectQLTP\obj\Debug\TestProjectQLTP.dll
+D:\QLTP\TestProjectQLTP\obj\Debug\TestProjectQLTP.pdb

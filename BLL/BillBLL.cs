@@ -21,6 +21,11 @@ namespace BLL
             BillDAO.InsertBill(tableId, userName, note);
         }
 
+        public static bool DeleteBill(int idBill)
+        {
+            return BillDAO.DeleteBill(idBill);
+        }
+
         public static void CheckOut(int billId, int discount, float totalPrice, string note = null)
         {
             BillDAO.CheckOut(billId, discount, totalPrice, note);

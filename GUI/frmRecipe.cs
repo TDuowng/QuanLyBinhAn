@@ -18,6 +18,13 @@ namespace GUI
             LoadFoodList();
             LoadIngredientIntoCombobox();
             LoadCategoryIntoCombobox();
+            ConfigureQuantitiveGridView();
+
+            // Cấu hình NumericUpDown để hỗ trợ số thập phân
+            nmrQuantitive.DecimalPlaces = 2; // Số chữ số thập phân
+            nmrQuantitive.Maximum = 1000.00m; 
+            nmrQuantitive.Minimum = 0.00m; 
+            nmrQuantitive.Increment = 0.1m; 
         }
         #region Methods
         private void LoadFoodList()
@@ -40,6 +47,29 @@ namespace GUI
 
         }
 
+        private void ConfigureQuantitiveGridView()
+        {
+            dgvQuantitive.Columns.Clear();
+            dgvQuantitive.Columns.Add("TenNL", "Tên nguyên liệu");
+            dgvQuantitive.Columns.Add("DinhLuong", "Định lượng");
+            dgvQuantitive.Columns.Add("DVTinh", "Đơn vị tính");
+
+            dgvQuantitive.Columns["DinhLuong"].DefaultCellStyle.Format = "N2"; // Định dạng 2 chữ số thập phân
+            dgvQuantitive.RowTemplate.Height = 30;
+        }
+
+        private void LoadListQuantitative(int idFood)
+        {
+            dgvQuantitive.Rows.Clear();
+            List<RecipeDTO> recipeList = RecipeBLL.GetListRecipeByFoodId(idFood);
+            foreach (var recipe in recipeList)
+            {
+                string tenNL = IngredientsBLL.GetIngredientNameById(recipe.IdIngredient);
+                string dvTinh = IngredientsBLL.GetUnitById(recipe.IdIngredient);
+                dgvQuantitive.Rows.Add(tenNL, recipe.Quantitative, dvTinh);
+            }
+        }
+
         private void UcFood_OnSelect(object sender, EventArgs e)
         {
             UcFood uc = sender as UcFood;
@@ -58,7 +88,7 @@ namespace GUI
                     selectedFoodUc = uc;
                     selectedFoodId = food.ID;
                     LoadRecipeDetails(food.ID);
-
+                    LoadListQuantitative(food.ID); // Load danh sách định lượng
                     // Cập nhật tên công thức
                     lblTitle.Text = "CÔNG THỨC NẤU " + food.Name.ToUpper();
                 }
@@ -91,7 +121,6 @@ namespace GUI
                 // Hiển thị thông tin công thức
                 txtIdCook.Text = recipe.IdCook.ToString(); // ID công thức
                 cboMainIngredient.SelectedValue = recipe.IdIngredient;
-                rikQuantitative.Text = recipe.Quantitative; // Định lượng
                 rikDescription.Text = recipe.Description; // Cách làm
             }
             else
@@ -99,7 +128,6 @@ namespace GUI
                 // Nếu món chưa có công thức thì để trống các controls
                 txtIdCook.Text = string.Empty;
                 cboMainIngredient.SelectedIndex = -1;
-                rikQuantitative.Text = string.Empty;
                 rikDescription.Text = string.Empty;
             }
         }
@@ -107,8 +135,10 @@ namespace GUI
         private void ClearFormFields()
         {
             cboMainIngredient.SelectedIndex = -1;
-            rikQuantitative.Text = string.Empty;
             rikDescription.Text = string.Empty;
+            txtUnit.Text = string.Empty;
+            nmrQuantitive.Text = string.Empty;
+            dgvQuantitive.Rows.Clear();
 
         }
 
@@ -118,7 +148,6 @@ namespace GUI
             cboCategory.DisplayMember = "Name";
             cboCategory.ValueMember = "ID";
         }
-
         #endregion
 
         #region Events
@@ -134,7 +163,7 @@ namespace GUI
 
                 if (cboMainIngredient.SelectedItem == null)
                 {
-                    MessageBox.Show("Vui lòng chọn nguyên liệu chính!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Vui lòng chọn nguyên liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -144,17 +173,12 @@ namespace GUI
                     return;
                 }
 
-                if (string.IsNullOrWhiteSpace(rikQuantitative.Text))
-                {
-                    MessageBox.Show("Vui lòng nhập định lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
                 string recipeName = "CÔNG THỨC NẤU " + food.Name;
                 int idFood = food.ID;
                 int idIngredient = (int)cboMainIngredient.SelectedValue;
-                string quantity = rikQuantitative.Text.Trim();
                 string instructions = rikDescription.Text.Trim();
+                float quantity = (float)nmrQuantitive.Value;
 
                 RecipeDTO recipe = new RecipeDTO()
                 {
@@ -170,6 +194,7 @@ namespace GUI
                     MessageBox.Show("Thêm công thức thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // Cập nhật lại thông tin hiển thị
                     LoadRecipeDetails(idFood);
+                    LoadListQuantitative(idFood);
                 }
                 else
                 {
@@ -210,7 +235,7 @@ namespace GUI
                     return;
                 }
 
-                if (string.IsNullOrWhiteSpace(rikQuantitative.Text))
+                if ((int)nmrQuantitive.Value == 0)
                 {
                     MessageBox.Show("Vui lòng nhập định lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -218,7 +243,7 @@ namespace GUI
 
                 recipe.IdIngredient = (int)cboMainIngredient.SelectedValue;
                 recipe.Description = rikDescription.Text.Trim();
-                recipe.Quantitative = rikQuantitative.Text.Trim();
+                recipe.Quantitative = (float)nmrQuantitive.Value;
 
                 if (!RecipeBLL.UpdateRecipe(recipe))
                 {
@@ -279,34 +304,34 @@ namespace GUI
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (selectedFoodId == -1)
-                {
-                    MessageBox.Show("Vui lòng chọn món ăn trước khi in công thức!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                var recipe = RecipeBLL.GetRecipeByFoodId(selectedFoodId);
-                if (recipe == null)
-                {
-                    MessageBox.Show("Món ăn này chưa có công thức. Không thể in!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                frmReportViewer reportViewer = new frmReportViewer();
-                reportViewer.LoadReport(
-                    nameCook: recipe.NameCook,
-                    ingredientName: recipe.IngredientName,
-                    description: recipe.Description,
-                    quantitative: recipe.Quantitative,
-                    reportPath: "D:\\QLTP\\GUI\\rptRecipe.rdlc"
-                    );
-                reportViewer.ShowDialog();
+            //try
+            //{
+            //    if (selectedFoodId == -1)
+            //    {
+            //        MessageBox.Show("Vui lòng chọn món ăn trước khi in công thức!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        return;
+            //    }
+            //    var recipe = RecipeBLL.GetRecipeByFoodId(selectedFoodId);
+            //    if (recipe == null)
+            //    {
+            //        MessageBox.Show("Món ăn này chưa có công thức. Không thể in!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        return;
+            //    }
+            //    frmReportViewer reportViewer = new frmReportViewer();
+            //    reportViewer.LoadReport(
+            //        nameCook: recipe.NameCook,
+            //        ingredientName: recipe.IngredientName,
+            //        description: recipe.Description,
+            //        quantitative: recipe.Quantitative.ToString(),
+            //        reportPath: "D:\\QLTP\\GUI\\rptRecipe.rdlc"
+            //        );
+            //    reportViewer.ShowDialog();
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void btnSearchCook_Click(object sender, EventArgs e)
@@ -369,8 +394,47 @@ namespace GUI
                 }
             }
         }
+
         #endregion
 
+        
+        private void cboMainIngredient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboMainIngredient.SelectedValue != null)
+            {
+                var selectedIngredient = cboMainIngredient.SelectedItem as IngredientsDTO;
+                if (selectedIngredient != null)
+                {
+                    txtUnit.Text = selectedIngredient.Unit;
+                }
+            }
+        }
 
+        private void dgvQuantitive_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Đảm bảo không nhấp vào header
+            {
+                DataGridViewRow row = dgvQuantitive.Rows[e.RowIndex];
+                string tenNguyenLieu = row.Cells["TenNL"].Value?.ToString();
+                float dinhLuong = float.Parse(row.Cells["DinhLuong"].Value?.ToString() ?? "0.0");
+                string donViTinh = row.Cells["DVTinh"].Value?.ToString();
+
+                // Tìm và chọn nguyên liệu trong cboIngredient
+                foreach (IngredientsDTO ingredient in cboMainIngredient.Items)
+                {
+                    if (ingredient.NameIngredient == tenNguyenLieu)
+                    {
+                        cboMainIngredient.SelectedItem = ingredient;
+                        break;
+                    }
+                }
+
+                // Cập nhật nmrQuantitive
+                nmrQuantitive.Value = (decimal)dinhLuong;
+
+                // Cập nhật txtUnit
+                txtUnit.Text = donViTinh;
+            }
+        }
     }
 }

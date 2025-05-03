@@ -150,6 +150,19 @@ namespace DAO
             return list;
         }
 
+        public static string GetIngredientNameById(int idIngredient)
+        {
+            string query = "SELECT TenNL FROM NguyenLieu WHERE MaNL = @MaNL";
+            return DataProvider.Instance.ExecuteScalar(query, new object[] { idIngredient })?.ToString() ?? string.Empty;
+        }
 
+        public static string GetUnitById(int idIngredient)
+        {
+            string query = "SELECT DVTinh FROM NguyenLieu WHERE MaNL = @MaNL";
+            return DataProvider.Instance.ExecuteScalar(query, new object[] { idIngredient })?.ToString() ?? string.Empty;
+        }
     }
+
+
+
 }

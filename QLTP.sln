@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{BBD2F132-1265-400A-A464-61C3FA7C9FBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProjectQLTP", "TestProjectQLTP\TestProjectQLTP.csproj", "{5B1D5AA2-658C-4AC4-9652-1086E0D2B199}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{BBD2F132-1265-400A-A464-61C3FA7C9FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBD2F132-1265-400A-A464-61C3FA7C9FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBD2F132-1265-400A-A464-61C3FA7C9FBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B1D5AA2-658C-4AC4-9652-1086E0D2B199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B1D5AA2-658C-4AC4-9652-1086E0D2B199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B1D5AA2-658C-4AC4-9652-1086E0D2B199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B1D5AA2-658C-4AC4-9652-1086E0D2B199}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
