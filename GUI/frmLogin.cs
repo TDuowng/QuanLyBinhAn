@@ -69,6 +69,9 @@ namespace GUI
                 txtUserName.SelectAll();
             }
 
+
+
+
         }
 
         private void lblExit_Click(object sender, EventArgs e)

@@ -1,6 +1,7 @@
 ﻿using BLL;
 using DAO;
 using DTO;
+using OfficeOpenXml.Export.HtmlExport.StyleCollectors.StyleContracts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -49,7 +50,8 @@ namespace GUI
 
             SetupAutoComplete();
 
-            nmrQuantity.Value = 1; // Đặt giá trị mặc định cho số lượng món ăn
+            nmrQuantity.Value = 1;
+
         }
 
 
@@ -98,18 +100,28 @@ namespace GUI
             }
 
             if (dgvBill.Columns.Contains("FoodName"))
+            {
                 dgvBill.Columns["FoodName"].HeaderText = "Tên món";
+                dgvBill.Columns["FoodName"].Width = 190;
+            } 
+                
             if (dgvBill.Columns.Contains("Quantity"))
+            {
                 dgvBill.Columns["Quantity"].HeaderText = "SL";
+                dgvBill.Columns["Quantity"].Width = 50;
+            }
+                
             if (dgvBill.Columns.Contains("Price"))
             {
                 dgvBill.Columns["Price"].HeaderText = "Đơn giá";
                 dgvBill.Columns["Price"].DefaultCellStyle.Format = "N0";
+                dgvBill.Columns["Price"].Width = 95;
             }
             if (dgvBill.Columns.Contains("Total"))
             {
                 dgvBill.Columns["Total"].HeaderText = "Thành tiền";
                 dgvBill.Columns["Total"].DefaultCellStyle.Format = "N0";
+                dgvBill.Columns["Total"].Width = 115;
             }
 
             dgvBill.RowTemplate.Height = 40;
@@ -123,7 +135,7 @@ namespace GUI
                     HeaderText = "(+)",
                     Image = Properties.Resources.plus,
                     ImageLayout = DataGridViewImageCellLayout.Normal,
-                    Width = 50
+                    Width = 40
                 };
                 dgvBill.Columns.Add(addButtonColumn);
             }
@@ -138,7 +150,7 @@ namespace GUI
                     HeaderText = "(-)",
                     Image = Properties.Resources.remove,
                     ImageLayout = DataGridViewImageCellLayout.Normal,
-                    Width = 50
+                    Width = 40
                 };
                 dgvBill.Columns.Add(deleteButtonColumn);
 
@@ -373,6 +385,10 @@ namespace GUI
         }
         private void UcTable_Click(object sender, EventArgs e)
         {
+            lblTotal.Text = string.Empty;
+            lblDiscountAmount.Text = string.Empty;
+            lblFinalPrice.Text = string.Empty;
+
             UcTable uc = sender as UcTable;
             if (uc != null)
             {
@@ -408,6 +424,7 @@ namespace GUI
             int idBill = BillBLL.GetUncheckBillIDByTableID(selectedTableId);
             if (idBill != -1)
             {
+
                 float totalPrice = BillBLL.CalculateTotalPrice(idBill);
                 int discount = (int)nmrDiscount.Value;
                 float finalPrice = totalPrice - (totalPrice * discount / 100);
@@ -425,9 +442,21 @@ namespace GUI
                     selectedTableUc.SetSelected(false);
                     selectedTableId = -1;
                     selectedTableUc = null;
-                    nmrDiscount.Value = 1;
+                    nmrDiscount.Value = 0;
                     LoadTableList();
+
+                    lblTotal.Text = string.Empty;
+                    lblDiscountAmount.Text = string.Empty;
+                    lblFinalPrice.Text = string.Empty;
+
+
                 }
+            }
+
+            if (idBill == -1)
+            {
+                dgvBill.Rows.Clear();
+                return;
             }
 
         }
@@ -515,8 +544,10 @@ namespace GUI
                 if (selectedTableId != -1) // Kiểm tra bàn đã được chọn
                 {
                     ShowBill(selectedTableId); // Gọi ShowBill để cập nhật hóa đơn
+
                 }
             }
+            
         }
 
         private void btnMergeTables_Click(object sender, EventArgs e)
