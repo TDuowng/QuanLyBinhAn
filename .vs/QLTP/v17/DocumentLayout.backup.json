@@ -3,8 +3,68 @@
   "WorkspaceRootPath": "D:\\QLTP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5B1D5AA2-658C-4AC4-9652-1086E0D2B199}|TestProjectQLTP\\TestProjectQLTP.csproj|d:\\qltp\\testprojectqltp\\testcase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|d:\\qltp\\gui\\frmingredients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmingredients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmimportingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmimportingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmprovide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmprovide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmcountsalary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmcountsalary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|D:\\QLTP\\dao\\ingredientsdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\ingredientsdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|D:\\QLTP\\dao\\billdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\billdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|D:\\QLTP\\dao\\fooddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\fooddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|D:\\QLTP\\dao\\workdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\workdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|D:\\QLTP\\dto\\workdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|solutionrelative:dto\\workdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|D:\\QLTP\\dao\\tabledao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\tabledao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|D:\\QLTP\\dao\\employeedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\employeedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|D:\\QLTP\\dto\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|solutionrelative:dto\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5B1D5AA2-658C-4AC4-9652-1086E0D2B199}|TestProjectQLTP\\TestProjectQLTP.csproj|D:\\QLTP\\testprojectqltp\\testcase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5B1D5AA2-658C-4AC4-9652-1086E0D2B199}|TestProjectQLTP\\TestProjectQLTP.csproj|solutionrelative:testprojectqltp\\testcase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmtablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmtablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BBD2F132-1265-400A-A464-61C3FA7C9FBA}|BLL\\BLL.csproj|D:\\QLTP\\bll\\accountbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,36 +75,20 @@
       "RelativeMoniker": "D:0:0:{BBD2F132-1265-400A-A464-61C3FA7C9FBA}|BLL\\BLL.csproj|solutionrelative:bll\\workshiftbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|D:\\QLTP\\dao\\ingredientsdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\ingredientsdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmrecipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmrecipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmtablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmtablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmtablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmtablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmimportingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmimportingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmrecipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmrecipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -59,20 +103,12 @@
       "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|D:\\QLTP\\dao\\billdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\billdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BBD2F132-1265-400A-A464-61C3FA7C9FBA}|BLL\\BLL.csproj|D:\\QLTP\\bll\\billbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBD2F132-1265-400A-A464-61C3FA7C9FBA}|BLL\\BLL.csproj|solutionrelative:bll\\billbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmcountsalary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmcountsalary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -123,28 +159,12 @@
       "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\rptbill.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|D:\\QLTP\\dao\\employeedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0B6F237B-A1BE-4700-AA54-267BA5AA72D8}|DAO\\DAO.csproj|solutionrelative:dao\\employeedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|D:\\QLTP\\dto\\workdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6009DF07-8E12-44A6-A718-FD1966318C8F}|DTO\\DTO.csproj|solutionrelative:dto\\workdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\rptemployee.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}",
       "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\rptemployee.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\exportfileexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\exportfileexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmingredients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmingredients.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmprovide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|solutionrelative:gui\\frmprovide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC5A67DF-468A-4AE2-9457-8A98999B1A3F}|GUI\\GUI.csproj|D:\\QLTP\\gui\\frmprovide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -158,28 +178,182 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmIngredients.cs [Design]",
+              "DocumentMoniker": "D:\\QLTP\\GUI\\frmIngredients.cs",
+              "RelativeDocumentMoniker": "GUI\\frmIngredients.cs",
+              "ToolTip": "D:\\QLTP\\GUI\\frmIngredients.cs [Design]",
+              "RelativeToolTip": "GUI\\frmIngredients.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T16:37:35.483Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmImportIngredient.cs [Design]",
+              "DocumentMoniker": "D:\\QLTP\\GUI\\frmImportIngredient.cs",
+              "RelativeDocumentMoniker": "GUI\\frmImportIngredient.cs",
+              "ToolTip": "D:\\QLTP\\GUI\\frmImportIngredient.cs [Design]",
+              "RelativeToolTip": "GUI\\frmImportIngredient.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T16:03:16.587Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frmCountSalary.cs [Design]",
+              "DocumentMoniker": "D:\\QLTP\\GUI\\frmCountSalary.cs",
+              "RelativeDocumentMoniker": "GUI\\frmCountSalary.cs",
+              "ToolTip": "D:\\QLTP\\GUI\\frmCountSalary.cs [Design]",
+              "RelativeToolTip": "GUI\\frmCountSalary.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T01:45:03.105Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmProvide.cs [Design]",
+              "DocumentMoniker": "D:\\QLTP\\GUI\\frmProvide.cs",
+              "RelativeDocumentMoniker": "GUI\\frmProvide.cs",
+              "ToolTip": "D:\\QLTP\\GUI\\frmProvide.cs [Design]",
+              "RelativeToolTip": "GUI\\frmProvide.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T16:38:24.099Z"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "frmTableManager.cs",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmTableManager.cs",
-              "RelativeDocumentMoniker": "GUI\\frmTableManager.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmTableManager.cs",
-              "RelativeToolTip": "GUI\\frmTableManager.cs",
-              "ViewState": "AgIAACUCAAAAAAAAAAAAADQCAAANAAAAAAAAAA==",
+              "Title": "frmEmployee.cs [Design]",
+              "DocumentMoniker": "D:\\QLTP\\GUI\\frmEmployee.cs",
+              "RelativeDocumentMoniker": "GUI\\frmEmployee.cs",
+              "ToolTip": "D:\\QLTP\\GUI\\frmEmployee.cs [Design]",
+              "RelativeToolTip": "GUI\\frmEmployee.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T08:48:33.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-03T09:17:04.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "WorkDAO.cs",
+              "DocumentMoniker": "D:\\QLTP\\DAO\\WorkDAO.cs",
+              "RelativeDocumentMoniker": "DAO\\WorkDAO.cs",
+              "ToolTip": "D:\\QLTP\\DAO\\WorkDAO.cs",
+              "RelativeToolTip": "DAO\\WorkDAO.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAkwDgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T03:11:23.825Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "WorkDTO.cs",
+              "DocumentMoniker": "D:\\QLTP\\DTO\\WorkDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\WorkDTO.cs",
+              "ToolTip": "D:\\QLTP\\DTO\\WorkDTO.cs",
+              "RelativeToolTip": "DTO\\WorkDTO.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T09:41:29.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TableDAO.cs",
+              "DocumentMoniker": "D:\\QLTP\\DAO\\TableDAO.cs",
+              "RelativeDocumentMoniker": "DAO\\TableDAO.cs",
+              "ToolTip": "D:\\QLTP\\DAO\\TableDAO.cs",
+              "RelativeToolTip": "DAO\\TableDAO.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T04:58:24.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EmployeeDAO.cs",
+              "DocumentMoniker": "D:\\QLTP\\DAO\\EmployeeDAO.cs",
+              "RelativeDocumentMoniker": "DAO\\EmployeeDAO.cs",
+              "ToolTip": "D:\\QLTP\\DAO\\EmployeeDAO.cs",
+              "RelativeToolTip": "DAO\\EmployeeDAO.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAAwDIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T09:41:39.351Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "EmployeeDTO.cs",
+              "DocumentMoniker": "D:\\QLTP\\DTO\\EmployeeDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\EmployeeDTO.cs",
+              "ToolTip": "D:\\QLTP\\DTO\\EmployeeDTO.cs",
+              "RelativeToolTip": "DTO\\EmployeeDTO.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-15T04:48:09.502Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmLogin.cs [Design]",
+              "DocumentMoniker": "D:\\QLTP\\GUI\\frmLogin.cs",
+              "RelativeDocumentMoniker": "GUI\\frmLogin.cs",
+              "ToolTip": "D:\\QLTP\\GUI\\frmLogin.cs [Design]",
+              "RelativeToolTip": "GUI\\frmLogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T10:12:05.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BillDAO.cs",
+              "DocumentMoniker": "D:\\QLTP\\DAO\\BillDAO.cs",
+              "RelativeDocumentMoniker": "DAO\\BillDAO.cs",
+              "ToolTip": "D:\\QLTP\\DAO\\BillDAO.cs",
+              "RelativeToolTip": "DAO\\BillDAO.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAADwvzIAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T09:30:02.964Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IngredientsDAO.cs",
+              "DocumentMoniker": "D:\\QLTP\\DAO\\IngredientsDAO.cs",
+              "RelativeDocumentMoniker": "DAO\\IngredientsDAO.cs",
+              "ToolTip": "D:\\QLTP\\DAO\\IngredientsDAO.cs",
+              "RelativeToolTip": "DAO\\IngredientsDAO.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAUwJ4AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T10:49:16.02Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FoodDAO.cs",
+              "DocumentMoniker": "D:\\QLTP\\DAO\\FoodDAO.cs",
+              "RelativeDocumentMoniker": "DAO\\FoodDAO.cs",
+              "ToolTip": "D:\\QLTP\\DAO\\FoodDAO.cs",
+              "RelativeToolTip": "DAO\\FoodDAO.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAIwJIAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-17T03:28:33.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "frmRecipe.cs [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmRecipe.cs",
               "RelativeDocumentMoniker": "GUI\\frmRecipe.cs",
@@ -190,19 +364,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IngredientsDAO.cs",
-              "DocumentMoniker": "D:\\QLTP\\DAO\\IngredientsDAO.cs",
-              "RelativeDocumentMoniker": "DAO\\IngredientsDAO.cs",
-              "ToolTip": "D:\\QLTP\\DAO\\IngredientsDAO.cs",
-              "RelativeToolTip": "DAO\\IngredientsDAO.cs",
-              "ViewState": "AgIAAIwAAAAAAAAAAAAAAJcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T10:49:16.02Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 17,
               "Title": "WorkShiftBLL.cs",
               "DocumentMoniker": "D:\\QLTP\\BLL\\WorkShiftBLL.cs",
               "RelativeDocumentMoniker": "BLL\\WorkShiftBLL.cs",
@@ -214,20 +376,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 14,
               "Title": "TestCase.cs",
               "DocumentMoniker": "D:\\QLTP\\TestProjectQLTP\\TestCase.cs",
               "RelativeDocumentMoniker": "TestProjectQLTP\\TestCase.cs",
               "ToolTip": "D:\\QLTP\\TestProjectQLTP\\TestCase.cs",
               "RelativeToolTip": "TestProjectQLTP\\TestCase.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAuwIUAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-04T08:24:53.39Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-04T08:24:53.39Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 16,
               "Title": "AccountBLL.cs",
               "DocumentMoniker": "D:\\QLTP\\BLL\\AccountBLL.cs",
               "RelativeDocumentMoniker": "BLL\\AccountBLL.cs",
@@ -235,35 +396,34 @@
               "RelativeToolTip": "BLL\\AccountBLL.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:41:24.288Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T09:41:24.288Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 19,
+              "Title": "frmTableManager.cs",
+              "DocumentMoniker": "D:\\QLTP\\GUI\\frmTableManager.cs",
+              "RelativeDocumentMoniker": "GUI\\frmTableManager.cs",
+              "ToolTip": "D:\\QLTP\\GUI\\frmTableManager.cs",
+              "RelativeToolTip": "GUI\\frmTableManager.cs",
+              "ViewState": "AgIAACUCAAAAAAAAAAAAADQCAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T08:48:33.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "frmTableManager.cs [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmTableManager.cs",
               "RelativeDocumentMoniker": "GUI\\frmTableManager.cs",
               "ToolTip": "D:\\QLTP\\GUI\\frmTableManager.cs [Design]",
               "RelativeToolTip": "GUI\\frmTableManager.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T12:22:51.617Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-03T12:22:51.617Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "frmEmployee.cs [Design]",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmEmployee.cs",
-              "RelativeDocumentMoniker": "GUI\\frmEmployee.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmEmployee.cs [Design]",
-              "RelativeToolTip": "GUI\\frmEmployee.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-03T09:17:04.721Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 20,
               "Title": "frmLogin.cs",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmLogin.cs",
               "RelativeDocumentMoniker": "GUI\\frmLogin.cs",
@@ -275,18 +435,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "frmLogin.cs [Design]",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmLogin.cs",
-              "RelativeDocumentMoniker": "GUI\\frmLogin.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmLogin.cs [Design]",
-              "RelativeToolTip": "GUI\\frmLogin.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T10:12:05.422Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 21,
               "Title": "frmImportIngredient.cs",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmImportIngredient.cs",
               "RelativeDocumentMoniker": "GUI\\frmImportIngredient.cs",
@@ -298,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 22,
               "Title": "frmEmployee.cs",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmEmployee.cs",
               "RelativeDocumentMoniker": "GUI\\frmEmployee.cs",
@@ -310,7 +459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 23,
               "Title": "frmReportViewer.cs",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmReportViewer.cs",
               "RelativeDocumentMoniker": "GUI\\frmReportViewer.cs",
@@ -322,31 +471,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 24,
               "Title": "frmAccount.cs [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmAccount.cs",
               "RelativeDocumentMoniker": "GUI\\frmAccount.cs",
               "ToolTip": "D:\\QLTP\\GUI\\frmAccount.cs [Design]",
               "RelativeToolTip": "GUI\\frmAccount.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-19T11:56:14.616Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-04-19T11:56:14.616Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "BillDAO.cs",
-              "DocumentMoniker": "D:\\QLTP\\DAO\\BillDAO.cs",
-              "RelativeDocumentMoniker": "DAO\\BillDAO.cs",
-              "ToolTip": "D:\\QLTP\\DAO\\BillDAO.cs",
-              "RelativeToolTip": "DAO\\BillDAO.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAEwF8AAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-02T09:30:02.964Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 26,
               "Title": "frmTable.cs [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmTable.cs",
               "RelativeDocumentMoniker": "GUI\\frmTable.cs",
@@ -357,7 +493,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 25,
               "Title": "BillBLL.cs",
               "DocumentMoniker": "D:\\QLTP\\BLL\\BillBLL.cs",
               "RelativeDocumentMoniker": "BLL\\BillBLL.cs",
@@ -369,19 +505,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "frmCountSalary.cs [Design]",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmCountSalary.cs",
-              "RelativeDocumentMoniker": "GUI\\frmCountSalary.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmCountSalary.cs [Design]",
-              "RelativeToolTip": "GUI\\frmCountSalary.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T01:45:03.105Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 34,
               "Title": "frmReport.cs",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmReport.cs",
               "RelativeDocumentMoniker": "GUI\\frmReport.cs",
@@ -389,12 +513,11 @@
               "RelativeToolTip": "GUI\\frmReport.cs",
               "ViewState": "AgIAAOMAAAAAAAAAAAAIwPEAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T16:30:32.134Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T16:30:32.134Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 31,
               "Title": "rptIngredients.rdlc [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\rptIngredients.rdlc",
               "RelativeDocumentMoniker": "GUI\\rptIngredients.rdlc",
@@ -405,7 +528,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 27,
               "Title": "frmAdmin.cs",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmAdmin.cs",
               "RelativeDocumentMoniker": "GUI\\frmAdmin.cs",
@@ -417,7 +540,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 28,
               "Title": "frmForgotPassword.cs [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmForgotPassword.cs",
               "RelativeDocumentMoniker": "GUI\\frmForgotPassword.cs",
@@ -428,7 +551,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 29,
               "Title": "frmCountSalary.cs",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmCountSalary.cs",
               "RelativeDocumentMoniker": "GUI\\frmCountSalary.cs",
@@ -436,12 +559,11 @@
               "RelativeToolTip": "GUI\\frmCountSalary.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T01:46:02.902Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T01:46:02.902Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 30,
               "Title": "frmReportViewer.cs [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmReportViewer.cs",
               "RelativeDocumentMoniker": "GUI\\frmReportViewer.cs",
@@ -452,19 +574,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 33,
               "Title": "frmReport.cs [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmReport.cs",
               "RelativeDocumentMoniker": "GUI\\frmReport.cs",
               "ToolTip": "D:\\QLTP\\GUI\\frmReport.cs [Design]",
               "RelativeToolTip": "GUI\\frmReport.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T16:29:54.202Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-04-07T16:29:54.202Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 32,
               "Title": "frmAdmin.cs [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmAdmin.cs",
               "RelativeDocumentMoniker": "GUI\\frmAdmin.cs",
@@ -475,19 +596,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "EmployeeDAO.cs",
-              "DocumentMoniker": "D:\\QLTP\\DAO\\EmployeeDAO.cs",
-              "RelativeDocumentMoniker": "DAO\\EmployeeDAO.cs",
-              "ToolTip": "D:\\QLTP\\DAO\\EmployeeDAO.cs",
-              "RelativeToolTip": "DAO\\EmployeeDAO.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAgwDIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:41:39.351Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 38,
               "Title": "rptBill.rdlc [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\rptBill.rdlc",
               "RelativeDocumentMoniker": "GUI\\rptBill.rdlc",
@@ -498,7 +607,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 36,
               "Title": "rptRecipe.rdlc [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\rptRecipe.rdlc",
               "RelativeDocumentMoniker": "GUI\\rptRecipe.rdlc",
@@ -509,7 +618,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 37,
               "Title": "rptProvide.rdlc [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\rptProvide.rdlc",
               "RelativeDocumentMoniker": "GUI\\rptProvide.rdlc",
@@ -520,7 +629,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 35,
               "Title": "frmStatistics.cs [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmStatistics.cs",
               "RelativeDocumentMoniker": "GUI\\frmStatistics.cs",
@@ -531,19 +640,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "WorkDTO.cs",
-              "DocumentMoniker": "D:\\QLTP\\DTO\\WorkDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\WorkDTO.cs",
-              "ToolTip": "D:\\QLTP\\DTO\\WorkDTO.cs",
-              "RelativeToolTip": "DTO\\WorkDTO.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:41:29.312Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 39,
               "Title": "rptEmployee.rdlc [Design]",
               "DocumentMoniker": "D:\\QLTP\\GUI\\rptEmployee.rdlc",
               "RelativeDocumentMoniker": "GUI\\rptEmployee.rdlc",
@@ -554,29 +651,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "frmProvide.cs [Design]",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmProvide.cs",
-              "RelativeDocumentMoniker": "GUI\\frmProvide.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmProvide.cs [Design]",
-              "RelativeToolTip": "GUI\\frmProvide.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T16:38:24.099Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "frmIngredients.cs [Design]",
-              "DocumentMoniker": "D:\\QLTP\\GUI\\frmIngredients.cs",
-              "RelativeDocumentMoniker": "GUI\\frmIngredients.cs",
-              "ToolTip": "D:\\QLTP\\GUI\\frmIngredients.cs [Design]",
-              "RelativeToolTip": "GUI\\frmIngredients.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T16:37:35.483Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 40,
               "Title": "ExportFileExcel.cs",
               "DocumentMoniker": "D:\\QLTP\\GUI\\ExportFileExcel.cs",
               "RelativeDocumentMoniker": "GUI\\ExportFileExcel.cs",
@@ -588,7 +663,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 41,
               "Title": "frmProvide.cs",
               "DocumentMoniker": "D:\\QLTP\\GUI\\frmProvide.cs",
               "RelativeDocumentMoniker": "GUI\\frmProvide.cs",
